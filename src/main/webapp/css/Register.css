@@ -1,0 +1,288 @@
+@CHARSET "UTF-8";
+<style>
+	* {
+		font-family: "微软雅黑", "黑体", "宋体";
+		color: #333;
+	}
+	a {
+		color: #069;
+	}	
+	body {
+		margin: 0;
+		padding: 0;
+		background: #ddd;
+	}
+	.form-bak {
+		width: 800px;
+		height: 750px;
+		margin: 40px auto;
+		background: #eee;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px #999;
+	}
+
+	.student_or_teacher{
+		height: 60px;
+		width: 540px;
+	}
+	
+	.student_or_teacher a{
+		text-decoration : none 
+	}
+	
+	.student_or_teacher strong {
+		font-size: 24px;
+		line-height: 60px;
+		margin-top: 10px;
+		color: #333;
+	}
+	
+	.choose_student{
+		line-height: 60px;
+		float: left;
+		margin-left: 150px;
+		
+	}
+	.choose_teacher{
+		float: right;
+		line-height: 60px;
+		margin-right: 150px;
+	}
+	
+	.bottom_line{
+		border-bottom:2px solid #660000;
+		width: 130px;
+		margin:-10px 0px 0px 135px;
+	}
+
+	.studentPart{
+		width: 800px;
+/*		width: 540px;*/
+		height: 680px;
+		float: left;
+	}
+	
+	.teacherPart{
+		width: 800px;
+		height: 680px;
+		float: left;
+		display: none;
+	}
+
+ 	.left {
+		float: left;
+		width: 540px;
+		height: 680px;
+	} 
+	
+	 .right {
+		float: right;
+		width: 250px;
+		height: 650px;
+		margin: 20px 0 0 0;
+		border-left: 1px solid #ccc;
+	} 
+	
+	
+	.line {
+		width: 100%;
+		height: 80px;
+		margin: 16px 0 0 0;
+	}
+	
+	.info {
+		float: left;
+		height: 100%;
+		width: 200px;
+	}
+	
+	.info strong,
+	.info span {
+		display: block;
+		text-align: right;
+	}
+	
+	.info strong {
+		font-size: 24px;
+		line-height: 36px;
+		margin-top: 10px;
+		color: #333;
+	}
+	
+	.info span {
+		font-size: 12px;
+		line-height: 24px;
+		color: #666;
+		font-family: "微软雅黑", "宋体";
+	}
+	
+	.input input {
+		background: none;
+		border: none;
+		outline: none;
+		font-size: 30px;
+		line-height: 58px;
+		height: 58px;
+		width: 260px;
+		padding: 0px 0 9px 9px;
+		border-radius: 10px;
+	}
+	
+	.input {
+		float: right;
+		width: 278px;
+		height: 58px;
+		background: #f6f6f6;
+		border: 1px solid #999;
+		border-radius: 10px;
+		box-shadow: inset 0 2px 5px #999;
+		margin: 10px 0;
+		position: relative;
+		
+	}
+	
+	.error,
+	.corect {
+		height: 20px;
+		width: 20px;
+		position: absolute;
+		top: 19px;
+		right: 9px;
+		background: url("js/ICON_20.svg") no-repeat 0 -20px;
+	}
+	
+	.error span {
+		display: block;
+		position: absolute;
+		top: 30px;
+		right: 20px;
+		background: #fcc;
+		border: 1px solid #f33;
+		font-size: 12px;
+		line-height: 16px;
+		color: #600;
+		padding: 6px 10px 4px 10px;
+		border-radius: 5px;
+		opacity: .8;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	
+	.corect {
+		background-position: 0 0;
+	}
+	
+	.corect span {
+		display: none;
+	}
+	
+	.none {
+		display: none;
+	}
+	
+
+	
+	input[type=submit] {
+		background: none;
+		border: none;
+		outline: none;
+		margin: 0;
+		padding: 0;
+		cursor: pointer;
+		font-size: 40px;
+		height: 200px;
+		width: 200px;
+		background: #369;
+		margin: 20px 30px 0 30px;
+		color: #eee;
+	}
+	
+	input[type=submit]:disabled {
+		background: #999;
+		cursor: no-drop;
+	}
+	
+	.right div {
+		margin: 0 30px;
+		width: 200px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+	
+	.readagreement-wrap {
+		margin: 20px 30px!important;
+		outline: 1px solid #f99;
+	}
+	
+	#top h1 {
+		font-size: 30px;
+		line-height: 40px;
+		padding: 10px;
+		text-align: center;
+		margin-top:100px;
+	}
+	
+	.agreement,
+	#top {
+		width: 800px;
+		margin: 20px auto;
+		background: #eee;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px #999;
+		text-align: center;
+	}
+	
+	.agreement h1 {
+		display: block;
+		font-size: 24px;
+		line-height: 30px;
+		padding: 20px 20px 10px 20px;
+		margin: 0;
+		color: #333;
+		text-align: center;
+	}
+	
+	.agreement iframe {
+		width: 760px;
+		min-height: 400px;
+		margin: 0 20px 20px 20px;
+		border: none;
+		outline: none;
+	}
+	
+	.agreement .backtotop {
+		display: block;
+		line-height: 20px;
+		padding: 10px;
+		text-align: center;
+	}
+	
+	select {
+
+	 /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+	  border: solid 1px #000;
+	  width:90px;
+	  font-size:15px;
+	  background: #f6f6f6;
+	  border: 1px solid #999;
+	  border-radius: 10px;
+	  box-shadow: inset 0 2px 5px #999;
+	  margin: 10px 0;
+	  position: relative;
+	  /*很关键：将默认的select选择框样式清除*/
+	  appearance:none;
+	  -moz-appearance:none;
+	  -webkit-appearance:none;
+	  /*在选择框的最右侧中间显示小箭头图片*/
+	  /*background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;*/
+	  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+	  padding-right: 14px;
+	  }
+	  
+
+
+	
+
+	
+</style>

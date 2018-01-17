@@ -1,0 +1,121 @@
+A:link {
+	COLOR: #333;
+	TEXT-DECORATION: none;
+}
+
+A:visited {
+	COLOR: #333;
+	TEXT-DECORATION: none;
+}
+
+A:active {
+	COLOR: #333;
+	TEXT-DECORATION: none;
+}
+
+A:hover {
+	COLOR: #FF3300;
+	TEXT-DECORATION: none;
+}
+
+.Top {
+	width: 900px;
+	height: 90px;
+	margin: 0 auto;
+}
+
+.top1 {
+	height: 60px;
+	color: #000000;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	font-weight: bolder;
+	width: inherit;
+	line-height: 58px;
+}
+
+.nav ul {
+	width: 900px;
+	margin: 0px auto;
+	height: 35px;
+	padding: 0;
+}
+
+.nav ul li {
+	float: left;
+}
+
+.nav ul li a {
+	width: 180px;
+	height: 30px;
+	line-height: 30px;
+	background: #ff8000;
+	color: #FFF;
+	font-size: 12px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+}
+
+.nav ul li a:hover {
+	width: 178px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid red;
+	color: red;
+	background: #FFF;
+}
+
+.Middle {
+	width: 900px;
+	height: 500px;
+	align: center;
+	valign: top;
+	margin: 0 auto;
+	dsiplay: inline;
+}
+
+.middle1 {
+	width: 709px;
+	height: 500px;
+	align: center;
+	valign: middle;
+	background: #F6F9FE;
+	overflow-y: scroll;
+	float: left
+}
+
+.Bottom {
+	width: 900px;
+	height: 35px;
+	align: center;
+	valign: top;
+	margin: 0 auto;
+}
+
+.line1 {
+	width: 690px;
+	height: 40px;
+	background: #CF0;
+}
+
+.line2 {
+	width: 690px;
+	height: 200px;
+	dsiplay: inline;
+}
+
+.line21 {
+	width: 150px;
+	height: 200px;
+	float: left;
+	background: #0F0;
+	margin: 10px 10px 10px 10px
+}
+
+.line1-1 {
+	width: 690px;
+	height: 40px;
+	background: #CF0;
+	margin-top: 30px;
+}
