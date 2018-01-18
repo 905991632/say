@@ -142,6 +142,10 @@ A:hover {
 	width:738px;float:left;border:1px solid;border-color:#e4e4e4;text-align:center;overflow:hidden;
 }
 
+.right_div img{
+	margin: 100px 0px 100px 100px;
+}
+
 .right_div_div1{
 	width:736px;height:30px;line-height:30px;border:1px solid;border-color:#e4e4e4;background:#e4e4e4;margin-bottom:10px;
 }
@@ -168,4 +172,117 @@ A:hover {
 
 .right_div_div2_right div input{
 	width: 300px;
+}
+
+.requirement_info_div{
+	width: 900px;
+	border: 1px solid #e4e4e4;
+	margin: 0 auto; 
+}
+
+.requirement_info_div div{
+	width: 600px;
+	border: 1px solid #e4e4e4;
+	margin: 0 auto; 
+	margin-top:50px ;
+	margin-bottom: 50px;
+}
+
+.teacher_info {
+	width: 900px;
+	border: 1px solid #e4e4e4;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.teacher_info_div {
+	width: 800px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.teacher_info_div_left {
+	width: 180px;
+	border: 1px solid #e4e4e4;
+	float: left;
+}
+
+.teacher_info_div_left div {
+	text-align: center;
+	line-height: 50px;
+	width: 180px;
+	height: 50px;
+}
+
+.teacher_info_div_left img {
+	width: 178px;
+	height: 200px;
+}
+
+.teacher_info_div_right {
+	width: 600px;
+	border: 1px solid #e4e4e4;
+	margin-left: 10px;
+	float: left;
+}
+
+.teacher_info_div_right_top {
+	margin: 0 auto;
+	width: 590px;
+	border: 1px solid #e4e4e4;
+	margin-bottom: 20px;
+}
+
+.teacher_info_div_right_bottom {
+	margin: 0 auto;
+	width: 590px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.teacher_info_div_right_bottom_div1 {
+	height: 38px;
+	width: 300px;
+	margin: 0 auto;
+}
+
+.teacher_info_div_right_bottom_div1 a {
+	font-size: 26px;
+	font-family: '微软雅黑';
+	margin-left: 20px;
+	text-decoration: none;
+	/*将这个数据放入点击按钮事件内*/
+}
+
+.teacher_info_div_right_bottom_div1 a:link {
+	text-decoration: none;
+	color: #000000;
+}
+
+.teacher_info_div_right_bottom_div1 a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.teacher_info_div_right_bottom_div1 a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+
+.teacher_info_div_right_bottom_div1 a:active {
+	text-decoration: none;
+	color: #000000;
+}
+
+.teacher_info_div_right_bottom_record{
+	margin-top:10px ;
+	margin-bottom:20px ;
+	width: 590px;
+}
+
+.teacher_info_div_right_bottom_appraisal{
+	margin-top:10px ;
+	margin-bottom:20px ;
+	width: 590px;
 }

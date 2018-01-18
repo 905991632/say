@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span>选择城市</span>
 		</div>
 		<div class="div1_2">
-			<form action="chooseCity" method="post">
+			<form action="chooseCity" method="post" onsubmit="return isChooseCity();">
 				<select name="province" id="province">
 				<c:if test="${province != null}">
 					<option value='<c:out value="${province}"/>'><c:out value="${province}"/></option>

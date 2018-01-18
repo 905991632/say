@@ -32,7 +32,7 @@
 		<div class="top1">
 			<img src="img/logo.png" />
 			<div>
-				<span><c:out value="${USER_CITY}"></c:out></span>
+				<a href="toChooseCity">${USER_CITY }</a>
 			</div>
 		</div>
 		<!-- 导航 -->

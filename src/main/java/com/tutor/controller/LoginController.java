@@ -34,6 +34,14 @@ public class LoginController {
 	@Autowired
 	RequirementService requirementService;
 
+	@RequestMapping(value = "/toChooseCity")
+	public String toChooseCity(HttpServletRequest request, ModelMap model) {
+		return "chooseCity";
+	}
+	
+	
+	
+	
 	// 选择城市
 	@RequestMapping(value = "/chooseCity")
 	public String chooseCity(@ModelAttribute("province") String province ,@ModelAttribute("city") String city ,HttpServletRequest request, ModelMap model) {

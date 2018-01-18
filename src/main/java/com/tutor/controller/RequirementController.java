@@ -31,10 +31,10 @@ public class RequirementController {
 		int result = requirementService.addRequire(requirement);
 		if(result!=1){
 			modelMap.addAttribute("requirement_msg", "发布失败！！");
-			return "student_requirement";
+			return "redirect:toStudent_index";
 		}else {
 			modelMap.addAttribute("requirement_msg", "发布成功！！");
-			return "student_requirement";
+			return "redirect:toStudent_index";
 		}
 	}
 }
