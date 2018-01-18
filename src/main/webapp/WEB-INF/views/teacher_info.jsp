@@ -73,9 +73,9 @@
 							<tbody>
 								<tr>
 									<th>教师编号：</th>
-									<td
-										style="width: 480px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-										11111</td>
+									<td>
+										11111
+									</td>
 								</tr>
 								<tr>
 									<th>教师姓名：</th>
