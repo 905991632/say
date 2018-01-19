@@ -52,8 +52,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师库</a>
-			<span> > 教师信息</span>
+			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">学生库</a>
+			<span> > 学生信息</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -62,48 +62,29 @@
 		<div class="teacher_info">
 			<div class="teacher_info_div">
 				<div class="teacher_info_div_left">
-					<img src="img/teacher.jpg" />
-					<div>
-						<a href="">预约教师</a>
-					</div>
+					<img src="img/student.jpg" />
 				</div>
 				<div class="teacher_info_div_right">
 					<div class="teacher_info_div_right_top">
 						<table class="table table-striped">
 							<tbody>
 								<tr>
-									<th>教师编号：</th>
+									<th>学生编号：</th>
 									<td>
 										11111
 									</td>
 								</tr>
 								<tr>
-									<th>教师姓名：</th>
+									<th>学生姓名：</th>
 									<td>陈晓佳</td>
 								</tr>
 								<tr>
-									<th>教师性别：</th>
+									<th>学生性别：</th>
 									<td>男</td>
 								</tr>
 								<tr>
-									<th>教师年龄：</th>
+									<th>学生年龄：</th>
 									<td>22</td>
-								</tr>
-								<tr>
-									<th>辅导课程：</th>
-									<td>
-										一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学
-									</td>
-								</tr>
-								<tr>
-									<th>辅导地区：</th>
-									<td>
-										从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区
-									</td>
-								</tr>
-								<tr>
-									<th>期望工资：</th>
-									<td>111111111111</td>
 								</tr>
 								<tr>
 									<th>登录时间：</th>
@@ -115,7 +96,7 @@
 					<div class="teacher_info_div_right_bottom">
 						<div class="teacher_info_div_right_bottom_div1">
 							<a href="javascript:void(0);" id="bottom_record" name="bottom_record">家教记录</a> 
-							<a href="javascript:void(0);" id="bottom_appraisal" name="bottom_appraisal">学生评价</a>
+							<a href="javascript:void(0);" id="bottom_appraisal" name="bottom_appraisal">教师评价</a>
 						</div>
 
 						<div class="teacher_info_div_right_bottom_record"

@@ -13,17 +13,9 @@
     <title>家教平台系统</title>
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
 		<script src="js/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="js/student_requirement.js"></script>
-		<script type="text/javascript" src="js/area.js"></script>
+		<script src="js/alterPassword.js"></script>
   </head>
-	<body style="overflow-y: scroll;" onload="myfunction();">
-	<script>
-	if('${requirement_msg}'!=""){
-	alert('${requirement_msg}');
-	}
- 	var USER_PROVINCE = "${USER_PROVINCE}";
-	var USER_CITY = "${USER_CITY}" 
-  	</script>
+	<body style="overflow-y: scroll;">
 		
 	<div class="theTop">
 		<div class="theTop_div1">
@@ -70,8 +62,8 @@
 			<div>&nbsp;当前位置:&nbsp;
 				<a href="">首页</a>
 				<span> > </span>
-				<a href="">学生中心</a>
-				<span> > 发布家教信息</span>
+				<a href="">教师中心</a>
+				<span> > 修改密码</span>
 			</div>
 		</div>
 		<!-- 主内容 -->
@@ -82,7 +74,7 @@
 					<div class="left_div_img1"></div>
 					<ul>
 						<li>
-							<a href="">发布家教信息</a>
+							<a href="toStudent_requirement">发布家教信息</a>
 						</li>
 						<li>
 							<a href="">我的订单</a>
@@ -91,7 +83,7 @@
 							<a href="">我的预约</a>
 						</li>
 						<li>
-							<a href="">我的教师</a>
+							<a href="">我的学生</a>
 						</li>
 						<li>
 							<a href="">我的评价</a>
@@ -110,45 +102,29 @@
 			</div>
 			<!-- 右板块 -->
 			<div class="right_div">
-				<div class="right_div_div1">发布家教信息</div>
+				<div class="right_div_div1">修改密码</div>
 				<div class="right_div_div2"> 
 					<div class="right_div_div2_left">
-						<div>辅导科目：</div>
-						<div>辅导地区：</div>
-						<div>性别要求：</div>
-						<div>薪酬待遇：</div>
-						<div>详细情况：</div>
-
+						<div>旧密码：</div>
+						<div>新密码：</div>
+						<div>确认密码：</div>
 					</div>
-				<form action="student_requirement" method="post" onsubmit="return check();">
+				<form action="" method="post" onsubmit="return f_submit();">
 					<div class="right_div_div2_right">
 						<div>
-							<select id="course" name="course">
-								<option value="请选择">请选择</option>
-							</select>
-						</div>
-						<input name="address" value="${USER_PROVINCE},${USER_CITY}" style="display: none;"/>
-						<div>
-							<select id="area" name="area">
-								<option value="请选择">请选择</option>
-							</select>
+							<input type="password" name="old_password" id="old_password" required="required" onblur="f_old_password();"/>
+							<div id="div_old_password"></div>
 						</div>
 						<div>
-							<select id="sex" name="sex">
-								<option value="请选择">请选择</option>
-								<option value="男女">不限</option>
-								<option value="男">男</option>
-								<option value="女">女</option>
-							</select>
+							<input type="password" name="new_password" id="new_password" required="required" onblur="f_new_password();"/>
+							<div id="div_new_password"></div>
 						</div>
 						<div>
-							<input type="text" name="price" required="required" maxlength="100"/>
+							<input type="password" name="confirm_password" id="confirm_password" required="required" onblur="f_confirm_password();"/>
+							<div id="div_confirm_password"></div>
 						</div>
 						<div>
-							<input type="text" name="detail" required="required" maxlength="100"/>
-						</div>
-						<div>
-							<input style="width: 100px;" type="submit" width="30px" value="发布"/>
+							<input style="width: 100px;" type="submit" width="30px" value="修改"/>
 						</div>
 					</div>
 				</form>

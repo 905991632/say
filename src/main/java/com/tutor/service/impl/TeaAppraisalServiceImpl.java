@@ -12,7 +12,7 @@ import com.tutor.entity.TeaappraisalExample.Criteria;
 import com.tutor.service.TeaAppraisalService;
 
 /*
- * 学生评论老师模块
+ * 学生评论教师模块
  */
 @Service
 public class TeaAppraisalServiceImpl implements TeaAppraisalService {
@@ -21,7 +21,7 @@ public class TeaAppraisalServiceImpl implements TeaAppraisalService {
 	TeaappraisalMapper teaappraisalMapper;
 	
 	/*
-	 * 	添加学生评论老师实体
+	 * 	添加学生评论教师实体
 	 * 	返回1
 	 */
 	@Override
@@ -30,7 +30,7 @@ public class TeaAppraisalServiceImpl implements TeaAppraisalService {
 	}
 
 	/*
-	 * 	更新学生评论老师实体
+	 * 	更新学生评论教师实体
 	 * 	返回1
 	 */
 	@Override
@@ -39,8 +39,8 @@ public class TeaAppraisalServiceImpl implements TeaAppraisalService {
 	}
 
 	/*
-	 * 	筛选学生评论老师实体
-	 * 	返回学生评论老师实体列表
+	 * 	筛选学生评论教师实体
+	 * 	返回学生评论教师实体列表
 	 */
 	@Override
 	public List<Teaappraisal> getStuappraisalsByCondition(Teaappraisal teaappraisal) {

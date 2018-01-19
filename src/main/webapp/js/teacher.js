@@ -1,7 +1,3 @@
-var record_button = $("#bottom_record");
-var appraisal_button = $("#bottom_appraisal");
-var record = $("#right_bottom_record");
-var appraisal = $("#right_bottom_appraisal");
 $(document).ready(function(){
 	$("#bottom_record").css("border-bottom","2px solid #ff8000");
 	$("#right_bottom_appraisal").css("display","none");

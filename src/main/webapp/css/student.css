@@ -195,6 +195,52 @@ A:hover {
 	margin-bottom: 30px;
 }
 
+.right_div_div2_div1 {
+	width: 680px;
+	margin: 0 auto;
+	height:40px;
+}
+
+.right_div_div2_div1 a {
+	font-size: 26px;
+	font-family: '微软雅黑';
+	margin-left: 20px;
+	text-decoration: none;
+	/*将这个数据放入点击按钮事件内*/
+}
+
+.right_div_div2_div1 a:link {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_div2_div1 a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_div2_div1 a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_div2_div1 a:active {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_div2_div2 {
+	width: 680px;
+	margin: 0 auto;
+	margin-top:10px;
+}
+
+
+
+
+
+
+
 .right_div_div2_left {
 	width: 150px;
 	margin: 0 auto;
@@ -350,4 +396,13 @@ A:hover {
 	table-layout: fixed;
 	word-break: break-all;
 	word-wrap: break-word;
+}
+
+.none{
+	display:none;
+}
+
+.error{
+	font-size: 8px;
+	color:#F00
 }

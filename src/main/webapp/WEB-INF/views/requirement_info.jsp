@@ -43,10 +43,10 @@
 						<a href="">首&nbsp;&nbsp;页</a>
 					</li>
 					<li>
-						<a href="">老师库</a>
+						<a href="">教师库</a>
 					</li>
 					<li>
-						<a href="">学员库</a>
+						<a href="">学生库</a>
 					</li>
 					<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
 					<li>
@@ -64,7 +64,7 @@
 			<div>&nbsp;当前位置:&nbsp;
 				<a href="">首页</a>
 				<span> > </span>
-				<a href="">学员库</a>
+				<a href="">学生库</a>
 				<span> > 订单详情</span>
 			</div>
 		</div>
@@ -113,7 +113,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th>学员编号：</th>
+							<th>学生编号：</th>
 							<td>
 								
 							</td>

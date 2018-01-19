@@ -11,7 +11,7 @@ import com.tutor.entity.StuappraisalExample.Criteria;
 import com.tutor.service.StuAppraisalService;
 
 /*
- * 	老师评论学员模块
+ * 	教师评论学生模块
  */
 @Service
 public class StuAppraisalServiceImpl implements StuAppraisalService {
@@ -20,7 +20,7 @@ public class StuAppraisalServiceImpl implements StuAppraisalService {
 	StuappraisalMapper stuappraisalMapper;
 	
 	/*
-	 * 	添加老师评论学生实体
+	 * 	添加教师评论学生实体
 	 * 	返回1
 	 */
 	@Override
@@ -29,7 +29,7 @@ public class StuAppraisalServiceImpl implements StuAppraisalService {
 	}
 	
 	/*
-	 * 	更新老师评论学生实体
+	 * 	更新教师评论学生实体
 	 * 	返回1
 	 */
 	@Override
@@ -38,8 +38,8 @@ public class StuAppraisalServiceImpl implements StuAppraisalService {
 	}
 
 	/*
-	 * 	筛选老师评论学生实体
-	 * 	返回老师评论学生实体列表
+	 * 	筛选教师评论学生实体
+	 * 	返回教师评论学生实体列表
 	 */
 	@Override
 	public List<Stuappraisal> getStuappraisalsByCondition(Stuappraisal stuappraisal) {

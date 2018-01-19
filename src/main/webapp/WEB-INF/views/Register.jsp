@@ -25,10 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 <!--外面一层背景-->	
 <div class="form-bak" id="form-bak">
-<!--显示学员、教员-->	
+<!--显示学生、教员-->	
 	<div class="student_or_teacher">
 		<a class="choose_student" id="choose_student" href="javascript:void(0);"><strong>学生注册</strong></a>
-		<a class="choose_teacher" id="choose_teacher" href="javascript:void(0);"><strong>老师注册</strong></a>
+		<a class="choose_teacher" id="choose_teacher" href="javascript:void(0);"><strong>教师注册</strong></a>
 		
 	</div>
 	<div class="bottom_line" id="bottom_line"></div>
@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="line">
 				<div class="info">
 					<div style="padding-top:13px;">
-						<strong>学员姓名</strong>
+						<strong>学生姓名</strong>
 					</div>
 				</div>
 				<div class="input">
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="line" id="line_student_age">
 				<div class="info">
 					<div style="padding-top:13px;">
-						<strong>学员年龄</strong>
+						<strong>学生年龄</strong>
 					</div>
 				</div>
 				<div class="input">
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="line">
 				<div class="info">
 					<div style="padding-top:13px;">
-						<strong>学员性别</strong>
+						<strong>学生性别</strong>
 					</div>
 				</div>
 				<div style="line-height: 80px; float:right;">

@@ -45,10 +45,10 @@
 						<a href="">首&nbsp;&nbsp;页</a>
 					</li>
 					<li>
-						<a href="">老师库</a>
+						<a href="">教师库</a>
 					</li>
 					<li>
-						<a href="">学员库</a>
+						<a href="">学生库</a>
 					</li>
 					<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
 					<li>
@@ -65,7 +65,7 @@
 		<div class="nowplace">
 			<div>&nbsp;当前位置:&nbsp;
 				<a href="">首页</a>
-				<span> > 学员中心</span>
+				<span> > 学生中心</span>
 			</div>
 		</div>
 		<!-- 主内容 -->
@@ -85,7 +85,10 @@
 							<a href="">我的预约</a>
 						</li>
 						<li>
-							<a href="">我的老师</a>
+							<a href="">我的教师</a>
+						</li>
+						<li>
+							<a href="">我的评价</a>
 						</li>
 					</ul>
 					<div class="left_div_img2"></div>

@@ -231,7 +231,7 @@ public class LoginController {
 	// 跳转登录页面
 	@RequestMapping(value = "/Login")
 	public String Login(Login login, HttpServletRequest request, ModelMap model) {
-		int USER_ID;// 学生表或者老师表的id
+		int USER_ID;// 学生表或者教师表的id
 		String USER_ADDRESS, USER_PROVINCE, USER_CITY;
 		List<Login> loginList = loginService.toLogin(login);
 		if (loginList.size() != 1) {

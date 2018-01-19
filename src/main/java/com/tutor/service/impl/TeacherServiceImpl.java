@@ -11,7 +11,7 @@ import com.tutor.entity.TeacherExample.Criteria;
 import com.tutor.service.TeacherService;
 
 /*
- * 老师跟人信息模块
+ * 教师跟人信息模块
  */
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -19,19 +19,19 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	TeacherMapper teacherMapper;
 	
-	//添加老师
+	//添加教师
 	@Override
 	public int addTeacher(Teacher teacher) {
 		return teacherMapper.insertSelective(teacher);
 	}
 
-	//通过id获取老师
+	//通过id获取教师
 	@Override
 	public Teacher selectByPrimaryKey(int id) {
 		return teacherMapper.selectByPrimaryKey(id);
 	}
 
-	//通过外键获取老师
+	//通过外键获取教师
 	@Override
 	public List<Teacher> getTeacherByForeignKey(int foreignkey) {
 		TeacherExample example = new TeacherExample();
@@ -41,7 +41,7 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	/*
-	 * 	更新改动过的老师属性,需要有id
+	 * 	更新改动过的教师属性,需要有id
 	 * 	返回1
 	 */
 	@Override
@@ -50,7 +50,7 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 	/*
-	 * 	通过条件获取老师列表
+	 * 	通过条件获取教师列表
 	 * 	
 	 */
 	@Override

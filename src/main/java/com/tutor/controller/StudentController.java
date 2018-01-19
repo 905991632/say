@@ -25,7 +25,7 @@ public class StudentController {
 
 	@RequestMapping(value="toStudent_info")
 	public String toStudent_info(HttpServletRequest request,ModelMap modelMap){
-		return "teacher_info";
+		return "student_alterPassword";
 	}
 	
 }
