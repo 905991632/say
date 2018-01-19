@@ -12,7 +12,7 @@
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/teacher.js"></script>
 </head>
@@ -50,7 +50,7 @@
 	<div class="nowplace">
 		<div>
 			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">学生中心</a>
-			<span> > 基本资料</span>
+			<span> > 我的评价</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -74,67 +74,89 @@
 			</div>
 		</div>
 		<!-- 右板块 -->
-		<div class="right_div1">
-			<div class="right_div_div1">基本资料</div>
+		<div class="right_div">
+			<div class="right_div_div1">我的评价</div>
 			<div class="right_div_div2">
 				<div class="right_div_div2_div1">
 					<a href="javascript:void(0);" id="bottom_record"
-						name="bottom_record">基本资料</a> <a href="javascript:void(0);"
-						id="bottom_appraisal" name="bottom_appraisal">修改信息</a>
+						name="bottom_record">评论我的</a> <a href="javascript:void(0);"
+						id="bottom_appraisal" name="bottom_appraisal">我的评论</a>
 				</div>
 				
-				
 				<div class="right_div_div2_div2" id="right_bottom_record">
-
 					<table class="table table-striped">
-						<tbody>
+						<thead>
 							<tr>
-								<th>学生编号：</th>
-								<td>11111</td>
+								<th style="text-align: center;">教师编号</th>
+								<th style="text-align: center;">评价内容</th>
+								<th
+									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
+								<th
+									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<tr>
+								<td
+									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									Tanmay</td>
+								<td
+									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+								</td>
+								<td
+									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									560001</td>
+								<td
+									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									560001</td>
 							</tr>
 							<tr>
-								<th>学生姓名：</th>
-								<td>陈晓佳</td>
-							</tr>
-							<tr>
-								<th>学生性别：</th>
-								<td>男</td>
-							</tr>
-							<tr>
-								<th>学生年龄：</th>
-								<td>22</td>
-							</tr>
-							<tr>
-								<th>登录时间：</th>
-								<td>2018-01-18 12:00:00</td>
+								<td>Uma</td>
+								<td>Pune</td>
+								<td>411027</td>
+								<td>560001</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-
+				
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
-						<table class="table table-striped">
-							<tbody>
-								<tr>
-									<th>学生姓名：</th>
-									<td>陈晓佳</td>
-								</tr>
-								<tr>
-									<th>学生性别：</th>
-									<td>男</td>
-								</tr>
-								<tr>
-									<th>学生年龄：</th>
-									<td>22</td>
-								</tr>
-								<tr>
-									<th>登录时间：</th>
-									<td>2018-01-18 12:00:00</td>
-								</tr>
-							</tbody>
-						</table>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th style="text-align: center;">教师编号</th>
+								<th style="text-align: center;">评价内容</th>
+								<th
+									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
+								<th
+									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<tr>
+								<td
+									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									11111</td>
+								<td
+									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									11111</td>
+								<td
+									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									11111</td>
+								<td
+									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
+									11111</td>
+							</tr>
+							<tr>
+								<td>Uma</td>
+								<td>Pune</td>
+								<td>411027</td>
+								<td>560001</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-
+			
 			</div>
 
 		</div>

@@ -120,7 +120,7 @@ A:hover {
 
 .main_div {
 	width: 900px;
-	height: 500px;
+	overflow: hidden;
 	margin: 0 auto;
 }
 
@@ -165,6 +165,15 @@ A:hover {
 }
 
 .right_div {
+	width: 738px;
+	float: left;
+	border: 1px solid;
+	border-color: #e4e4e4;
+	text-align: center;
+	overflow: hidden;
+}
+
+.right_div1 {
 	width: 738px;
 	float: left;
 	border: 1px solid;
@@ -233,6 +242,7 @@ A:hover {
 	width: 680px;
 	margin: 0 auto;
 	margin-top:10px;
+	overflow: hidden;
 }
 
 
