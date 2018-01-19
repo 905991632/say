@@ -143,7 +143,7 @@
 							<input type="text" name="detail" required="required" maxlength="100"/>
 						</div>
 						<div>
-							<input type="submit" width="30px" value="发布"/>
+							<input style="width: 100px;" type="submit" width="30px" value="发布"/>
 						</div>
 					</div>
 				</form>
