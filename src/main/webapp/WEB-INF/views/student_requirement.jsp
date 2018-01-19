@@ -12,15 +12,13 @@
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<script src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="js/student_requirement.js"></script>
 		<script type="text/javascript" src="js/area.js"></script>
   </head>
 	<body style="overflow-y: scroll;" onload="myfunction();">
 	<script>
-	if('${requirement_msg}'!=""){
-	alert('${requirement_msg}');
-	}
  	var USER_PROVINCE = "${USER_PROVINCE}";
 	var USER_CITY = "${USER_CITY}" 
   	</script>
@@ -110,48 +108,61 @@
 			</div>
 			<!-- 右板块 -->
 			<div class="right_div">
+				
 				<div class="right_div_div1">发布家教信息</div>
-				<div class="right_div_div2"> 
-					<div class="right_div_div2_left">
-						<div>辅导科目：</div>
-						<div>辅导地区：</div>
-						<div>性别要求：</div>
-						<div>薪酬待遇：</div>
-						<div>详细情况：</div>
-
-					</div>
-				<form action="student_requirement" method="post" onsubmit="return check();">
-					<div class="right_div_div2_right">
-						<div>
-							<select id="course" name="course">
-								<option value="请选择">请选择</option>
-							</select>
+			
+				<div class="right_div_div2">
+					<form action="" class="form-horizontal" method="post" onsubmit="return check();">
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">辅导科目：</label>
+							<div class="col-sm-10">
+								<select class="form-control" id="course" name="course">
+									<option value="请选择">请选择</option>
+								</select>
+							</div>
 						</div>
+						
 						<input name="address" value="${USER_PROVINCE},${USER_CITY}" style="display: none;"/>
-						<div>
-							<select id="area" name="area">
-								<option value="请选择">请选择</option>
-							</select>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">辅导地区：</label>
+							<div class="col-sm-10">
+								<select class="form-control" id="area" name="area">
+									<option value="请选择">请选择</option>
+								</select>
+							</div>
 						</div>
-						<div>
-							<select id="sex" name="sex">
-								<option value="请选择">请选择</option>
-								<option value="男女">不限</option>
-								<option value="男">男</option>
-								<option value="女">女</option>
-							</select>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">性别要求：</label>
+							<div class="col-sm-10">
+								<select class="form-control" id="sex" name="sex">
+									<option value="请选择">请选择</option>
+									<option value="男女">不限</option>
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</div>
 						</div>
-						<div>
-							<input type="text" name="price" required="required" maxlength="100"/>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">薪酬待遇：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="price"
+								name="price" required="required" maxlength="100"/>
+							</div>
 						</div>
-						<div>
-							<input type="text" name="detail" required="required" maxlength="100"/>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">详细情况：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="detail"
+								name="detail" required="required" maxlength="100"/>
+							</div>
 						</div>
-						<div>
-							<input style="width: 100px;" type="submit" width="30px" value="发布"/>
-						</div>
-					</div>
-				</form>
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
 				</div>
 			</div>
 		</div>

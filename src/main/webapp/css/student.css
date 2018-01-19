@@ -186,6 +186,13 @@ A:hover {
 	margin: 100px 0px 100px 100px;
 }
 
+.right_div1 img {
+	width:120px;
+	height:120px;
+	border-radius: 60px;
+	margin:0px 0px 5px 0px;
+}
+
 .right_div_div1 {
 	width: 736px;
 	height: 30px;
@@ -195,6 +202,9 @@ A:hover {
 	background: #e4e4e4;
 	margin-bottom: 10px;
 }
+
+
+
 
 .right_div_div2 {
 	width: 700px;
@@ -208,6 +218,39 @@ A:hover {
 	width: 680px;
 	margin: 0 auto;
 	height:40px;
+}
+
+.right_div_alterInfo {
+	width: 680px;
+	margin: 0 auto;
+	height:30px;
+}
+
+.right_div_alterInfo a {
+	font-size: 20px;
+	font-family: '微软雅黑';
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+.right_div_alterInfo a:link {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_alterInfo a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_alterInfo a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+
+.right_div_alterInfo a:active {
+	text-decoration: none;
+	color: #000000;
 }
 
 .right_div_div2_div1 a {

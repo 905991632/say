@@ -72,9 +72,6 @@
 					<div class="left_div_img1"></div>
 					<ul>
 						<li>
-							<a href="toStudent_requirement">发布家教信息</a>
-						</li>
-						<li>
 							<a href="">我的订单</a>
 						</li>
 						<li>

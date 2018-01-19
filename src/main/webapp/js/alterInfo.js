@@ -1,0 +1,11 @@
+$(document).ready(function(){
+	$("#bottom_appraisal").css("display","none");
+	$("#right_bottom_appraisal").css("display","none");
+$("#bottom_record").click(
+	function(){
+		$("#bottom_record").css("display","none");
+		$("#right_bottom_record").css("display","none");
+		$("#right_bottom_appraisal").css("display","block");
+	}
+);
+});

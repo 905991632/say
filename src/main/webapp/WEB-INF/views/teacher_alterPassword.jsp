@@ -12,6 +12,7 @@
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<script src="js/jquery-1.8.3.min.js"></script>
 		<script src="js/alterPassword.js"></script>
   </head>
@@ -104,29 +105,31 @@
 			<div class="right_div">
 				<div class="right_div_div1">修改密码</div>
 				<div class="right_div_div2"> 
-					<div class="right_div_div2_left">
-						<div>旧密码：</div>
-						<div>新密码：</div>
-						<div>确认密码：</div>
-					</div>
 				<form action="" method="post" onsubmit="return f_submit();">
-					<div class="right_div_div2_right">
-						<div>
-							<input type="password" name="old_password" id="old_password" required="required" onblur="f_old_password();"/>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">旧密码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" name="old_password" id="old_password" required="required" onblur="f_old_password();">
+							</div>
 							<div id="div_old_password"></div>
 						</div>
-						<div>
-							<input type="password" name="new_password" id="new_password" required="required" onblur="f_new_password();"/>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">新密码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" name="new_password" id="new_password" required="required" onblur="f_new_password();">
+							</div>
 							<div id="div_new_password"></div>
 						</div>
-						<div>
-							<input type="password" name="confirm_password" id="confirm_password" required="required" onblur="f_confirm_password();"/>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">确认密码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" name="confirm_password" id="confirm_password" required="required" onblur="f_confirm_password();"/>
+							</div>
 							<div id="div_confirm_password"></div>
 						</div>
-						<div>
-							<input style="width: 100px;" type="submit" width="30px" value="修改"/>
-						</div>
-					</div>
+						<button type="submit" class="btn btn-default">修改</button>
 				</form>
 				</div>
 			</div>

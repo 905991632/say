@@ -1,6 +1,6 @@
 function myfunction(){
 
-var province=$("#province"),city=$("#city"),town=$("#town");
+var province=$("#province"),city=$("#city"),town=$("#area");
 for(var i=0;i<provinceList.length;i++){
     addEle(province,provinceList[i].name);
 }
