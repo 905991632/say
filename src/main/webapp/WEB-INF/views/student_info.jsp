@@ -120,7 +120,7 @@
 					<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
 						<div class="form-group">
     						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile">
+    					<input type="file" id="inputfile" name="photo">
   						</div>
   						
 						<div class="form-group">

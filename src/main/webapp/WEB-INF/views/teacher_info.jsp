@@ -91,19 +91,19 @@
 					<table class="table table-striped">
 						<tbody>
 							<tr>
-								<th>学生编号：</th>
+								<th>教师编号：</th>
 								<td>11111</td>
 							</tr>
 							<tr>
-								<th>学生姓名：</th>
+								<th>教师姓名：</th>
 								<td>陈晓佳</td>
 							</tr>
 							<tr>
-								<th>学生性别：</th>
+								<th>教师性别：</th>
 								<td>男</td>
 							</tr>
 							<tr>
-								<th>学生年龄：</th>
+								<th>教师年龄：</th>
 								<td>22</td>
 							</tr>
 							<tr>
@@ -111,12 +111,24 @@
 								<td>22</td>
 							</tr>
 							<tr>
-								<th>家庭住址：</th>
+								<th>辅导课程：</th>
+								<td>22</td>
+							</tr>
+							<tr>
+								<th>辅导地区：</th>
+								<td>22</td>
+							</tr>
+							<tr>
+								<th>期待薪酬：</th>
 								<td>22</td>
 							</tr>
 							<tr>
 								<th>登录时间：</th>
 								<td>2018-01-18 12:00:00</td>
+							</tr>
+							<tr>
+								<th>审核状态：</th>
+								<td>未通过</td>
 							</tr>
 						</tbody>
 					</table>
@@ -127,11 +139,11 @@
 					<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
 						<div class="form-group">
     						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile">
+    					<input type="file" id="inputfile" name="photo">
   						</div>
   						
 						<div class="form-group">
-							<label class="col-sm-2 control-label">学生姓名：</label>
+							<label class="col-sm-2 control-label">教师姓名：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="name"
 								name="name"	placeholder="请输入名字" required>
@@ -139,7 +151,7 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-2 control-label">学生性别：</label>
+							<label class="col-sm-2 control-label">教师性别：</label>
 							<div class="radio-inline">
 								<label> <input type="radio" name="sex"
 									id="optionsRadios1" value="男" checked> 男
@@ -153,7 +165,7 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-2 control-label">学生年龄：</label>
+							<label class="col-sm-2 control-label">教师年龄：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="age"
 								 name="age" placeholder="请输入年龄" required>
