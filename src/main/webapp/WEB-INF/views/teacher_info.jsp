@@ -12,11 +12,20 @@
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap.css">
-<script src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/alterInfo.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/multi-select.css" rel="stylesheet">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/alterInfo.js"></script>
 <script src="js/area.js"></script>
-<script src="js/select.js"></script>
+<script src="js/teacher_info.js"></script>
+<script src="js/jquery.multi-select.js"></script>
+
+<script>
+ 	var USER_PROVINCE = "${USER_PROVINCE}";
+	var USER_CITY = "${USER_CITY}" 
+</script> 
+ 
 </head>
 <body style="overflow-y: scroll;" onload="myfunction()">
 	<div class="theTop">
@@ -87,7 +96,7 @@
 			<div class="right_div_div1">基本资料</div>
 			<div class="right_div_div2">
 				<div class="right_div_div2_div2" id="right_bottom_record">
-					<img src="img/student.jpg" />
+					<img src="img/teacher.jpg" />
 					<table class="table table-striped">
 						<tbody>
 							<tr>
@@ -112,7 +121,7 @@
 							</tr>
 							<tr>
 								<th>辅导课程：</th>
-								<td>22</td>
+								<td>一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，，一年级英语，一年级数学，一年级英语，</td>
 							</tr>
 							<tr>
 								<th>辅导地区：</th>
@@ -135,13 +144,16 @@
 				</div>
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
-					<img src="img/student.jpg" />
-					<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<img src="img/teacher.jpg" />
+					<form action="teacher_info" class="form-horizontal" enctype="multipart/form-data" method="post">
 						<div class="form-group">
     						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile" name="photo">
+    					<input type="file" id="inputfile" name="file">
   						</div>
-  						
+  						<div class="form-group">
+    						<label class="col-sm-2 control-label">身份证：</label>
+    					<input type="file" id="inputfile" name="file">
+  						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师姓名：</label>
 							<div class="col-sm-10">
@@ -181,21 +193,24 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-2 control-label">家庭住址：</label>
+							<label class="col-sm-2 control-label">辅导课程：</label>
 							<div class="col-sm-10">
-							<select class="form-control" name="province" id="province">
-								<option value="请选择">请选择</option>
-							</select>
-							<select class="form-control" name="city" id="city">
-								<option value="请选择">请选择</option>
-							</select>
-							<select class="form-control" name="area" id="area">
-								<option value="请选择">请选择</option>
-							</select>
+								<select  id="courses" multiple='multiple'>
+								</select>
 							</div>
+							<input class="hidden" id="courses_value" name="courses"  />
 						</div>
-						
-						 <button type="submit" class="btn btn-default">提交</button>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">辅导地区：</label>
+							<div class="col-sm-10">
+								<select id="area" multiple='multiple'>
+								</select>
+							</div>
+							<input class="hidden" id="area_value" name="area"  />
+						</div>
+							
+						 <input type="submit" class="btn btn-default" value="提交">
 					</form>
 				</div>
 
@@ -211,6 +226,4 @@
 		</div>
 	</div>
 </body>
-
-
 </html>

@@ -49,7 +49,7 @@ function myfunction(){
     		 
     		 $("#courses_value").val(courses_value.substring(0,courses_value.length-1));
     		 
-    		 if(courses_value.split(",").length>4){
+    		 if(courses_value.split(",").length>5){
     			 $("#courses :not(:checked)").attr("disabled","disabled");        			
     			 $('#courses').multiSelect('refresh');
     		 }
@@ -60,7 +60,7 @@ function myfunction(){
      			 courses_value = courses_value +  $(item).attr("value") + ","; 
      	        });
     		  $("#courses_value").val(courses_value.substring(0,courses_value.length-1));
-    		  if(courses_value.split(",").length<5){
+    		  if(courses_value.split(",").length<6){
      			 $("#courses :not(:checked)").attr("disabled",false);        			
      			 $('#courses').multiSelect('refresh');
      		 }
@@ -78,7 +78,7 @@ function myfunction(){
     			 area_value = area_value +  $(item).attr("value") + ","; 
     	        });
     		 $("#area_value").val(area_value.substring(0,area_value.length-1));
-    		 if(area_value.split(",").length>4){
+    		 if(area_value.split(",").length>5){
     			 $("#area :not(:checked)").attr("disabled","disabled");        			
     			 $('#area').multiSelect('refresh');
     		 }
@@ -90,7 +90,7 @@ function myfunction(){
     			  area_value = area_value +  $(item).attr("value") + ","; 
      	        });
     		  $("#area_value").val(area_value.substring(0,area_value.length-1));
-    		  if(area_value.split(",").length<5){
+    		  if(area_value.split(",").length<6){
       			 $("#area :not(:checked)").attr("disabled",false);        			
       			 $('#area').multiSelect('refresh');
       		 }

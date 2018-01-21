@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tutor.entity.Teacher;
 import com.tutor.service.StudentService;
@@ -31,15 +33,12 @@ public class StudentController {
 	
 	@RequestMapping(value="toTeacher_info")
 	public String toTeacher_info(HttpServletRequest request,ModelMap modelMap){
-		return "teacher_info2";
+		return "teacher_info";
 	}
 	
 	@RequestMapping(value="teacher_info")
-	public String teacher_info(Teacher teacher,HttpServletRequest request,ModelMap modelMap){
-		System.out.println("=======+2"+request.getParameter("name"));
-		System.out.println("==========1="+teacher.getArea());
-		System.out.println("==========2="+teacher.getCourses());
-		return "teacher_info2";
+	public String teacher_info(Teacher teacher,@RequestParam(value = "file", required = false) MultipartFile file,HttpServletRequest request,ModelMap modelMap){
+		return "teacher_info";
 	}
 	
 }

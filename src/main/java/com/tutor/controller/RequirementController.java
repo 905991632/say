@@ -37,4 +37,11 @@ public class RequirementController {
 			return "redirect:toStudent_index";
 		}
 	}
+	
+	@RequestMapping(value="toStudent_myRequirement")
+	public String toStudent_myRequirement(HttpServletRequest request,ModelMap modelMap){
+		return "student_myRequirement";
+	}
+	
+	
 }
