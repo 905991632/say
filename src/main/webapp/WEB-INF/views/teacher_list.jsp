@@ -19,10 +19,15 @@
 <link rel="stylesheet" href="css/common.css">
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <script src="js/tagSelect.js"></script>
+<script src="js/teacher_list.js"></script>
+<script type="text/javascript" src="js/area.js"></script>
 </head>
+<script>
+var USER_PROVINCE = "${USER_PROVINCE}";
+var USER_CITY = "${USER_CITY}" 
+</script>
 
-
-<body style="overflow-y: scroll;">
+<body style="overflow-y: scroll;" onload="myfunction();">
 
 	<div class="theTop">
 		<div class="theTop_div1">
@@ -155,9 +160,8 @@
 						<dt>辅导地区：</dt>
 						<dd>
 							<a href="#" rel="" name="area" class="all on">全部</a>
-							<div class="choose">
-								<a href="#" rel="男" name="area" class="sx_child">男</a> <a
-									href="#" rel="女" name="area" class="sx_child">女</a>
+							<div class="choose" id="choose">
+								<a href="#" rel="从化区" name="area" class="sx_child">从化区</a>
 							</div>
 						</dd>
 					</dl>
