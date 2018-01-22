@@ -61,7 +61,7 @@ var USER_CITY = "${USER_CITY}"
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > 教师库 </span>
+			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > 学生库 </span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -179,33 +179,43 @@ var USER_CITY = "${USER_CITY}"
 			</div>
 		</div>
 
-	<div class="content_div_div2">
-		<c:forEach items="${teacherList}" var="item">
+<div class="content_div_div2">
+	<c:forEach items="${requirementsList}" var="item">
 		<section>
 		<div>
 			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
 		</div>
 		<div>
-			<img class="content_div_div2_img" src='<c:out value="${item.photo}"></c:out>' />
+			<img class="content_div_div2_img" src="images/photo/student.jpg" />
 			<div class="content_div_div2_div">
 				<div>
-					教师编号：<span><c:out value="${item.id }"></c:out></span>
+					编号：<span><c:out value="${item.id }"></c:out></span>
 				</div>
 				<div>
-					教师姓名：<span><c:out value="${item.name }"></c:out></span>
+					课程：<span><c:out value="${item.course }"></c:out></span>
 				</div>
+				
+				<c:choose>
+					<c:when test="${item.sex=='男女'}">
+						<div>
+							性别要求：<span><c:out value="不限"></c:out></span>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div>
+							性别要求：<span><c:out value="${item.sex }"></c:out></span>
+						</div>
+					</c:otherwise>
+				</c:choose>
 				<div>
-					教师性别：<span><c:out value="${item.sex }"></c:out></span>
-				</div>
-				<div>
-					教师年龄：<span><c:out value="${item.age }"></c:out></span>
+					地址：<span><c:out value="${item.area }"></c:out></span>
 				</div>
 			</div>
 		</div>
 		</section>
-		</c:forEach>
+	</c:forEach>
 	</div>
-	
+
 
 	</div>
 </body>

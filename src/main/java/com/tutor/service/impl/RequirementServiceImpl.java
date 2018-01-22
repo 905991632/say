@@ -44,7 +44,7 @@ public class RequirementServiceImpl implements RequirementService {
 			criteria.andCourseEqualTo(requirement.getCourse());
 		}
 		if (requirement.getSex() != null) {
-			criteria.andSexEqualTo(requirement.getSex());
+			criteria.andSexLike("%"+requirement.getSex()+"%");
 		}
 		if(requirement.getAddress()!=null){
 			criteria.andAddressEqualTo(requirement.getAddress());

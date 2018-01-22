@@ -1,6 +1,7 @@
 package com.tutor.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,6 +43,29 @@ public class RequirementController {
 	public String toStudent_myRequirement(HttpServletRequest request,ModelMap modelMap){
 		return "student_myRequirement";
 	}
-	
+
+	@RequestMapping(value="toRequirement_list")
+	public String toRequirement_list(HttpServletRequest request,ModelMap modelMap){
+		if (request.getSession().getAttribute("USER_PROVINCE") == null
+				&& request.getSession().getAttribute("USER_CITY") == null) {
+			return "chooseCity";
+		}
+		Requirement requirement = new Requirement();
+		if(request.getParameter("sex")!=null){
+			requirement.setSex(request.getParameter("sex"));
+		}
+		if(request.getParameter("course")!=null){
+			requirement.setCourse(request.getParameter("course"));
+		}
+		if(request.getParameter("area")!=null){
+			requirement.setArea(request.getParameter("area"));
+		}
+		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
+		String city = (String) request.getSession().getAttribute("USER_CITY");
+		requirement.setAddress(province+","+city);
+		List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
+		modelMap.addAttribute("requirementsList", requirementsList);
+		return "requirement_list";
+	}
 	
 }
