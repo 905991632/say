@@ -14,9 +14,10 @@
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/teacher.js"></script>
+<script type="text/javascript" src="js/teacher_myRequirement.js"></script>
 </head>
 <body style="overflow-y: scroll;">
+
 	<div class="theTop">
 		<div class="theTop_div1">
 			<a href="">亲,请登录</a> <a href="">免费注册</a>
@@ -49,8 +50,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">学生中心</a>
-			<span> > 我的评价</span>
+			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师中心</a>
+			<span> > 我的订单</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -60,10 +61,9 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li><a href="toStudent_requirement">发布家教信息</a></li>
 					<li><a href="">我的订单</a></li>
 					<li><a href="">我的预约</a></li>
-					<li><a href="">我的教师</a></li>
+					<li><a href="">我的学生</a></li>
 					<li><a href="">我的评价</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
@@ -75,90 +75,93 @@
 		</div>
 		<!-- 右板块 -->
 		<div class="right_div">
-			<div class="right_div_div1">我的评价</div>
+			<div class="right_div_div1">我的订单</div>
 			<div class="right_div_div2">
 				<div class="right_div_div2_div1">
-					<a href="javascript:void(0);" id="bottom_record"
-						name="bottom_record">评论我的</a> <a href="javascript:void(0);"
-						id="bottom_appraisal" name="bottom_appraisal">我的评论</a>
+					<a href="javascript:void(0);" id="bottom_1"
+						name="bottom_1">审核中</a> <a href="javascript:void(0);"
+						id="bottom_2" name="bottom_2">未通过</a>
+						<a href="javascript:void(0);"
+						id="bottom_3" name="bottom_3">已完成</a>
 				</div>
-
-				<div class="right_div_div2_div2" id="right_bottom_record">
+				<div class="right_div_div2_div2" id="bottom_1_div">
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th style="text-align: center;">教师编号</th>
-								<th style="text-align: center;">评价内容</th>
-								<th
-									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
-								<th
-									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+								<th style="text-align: center;">订单号</th>
+								<th style="text-align: center;">辅导科目</th>
+								<th style="text-align: center;">时间</th>
+								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
 						<tbody style="text-align: center;">
 							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									Tanmay</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-								</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
+								<td><a href="">123</a></td>
+								<td>Bangalore</td>
+								<td>2018-01-19 10：34：30</td>
+								<td><a href="" class="label label-danger">取消</a></td>
 							</tr>
 							<tr>
-								<td>Uma</td>
+								<td><a href="">456</a></td>
 								<td>Pune</td>
 								<td>411027</td>
-								<td>560001</td>
+								<td><a href="" class="label label-danger">取消</a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
-				<div class="right_div_div2_div2" id="right_bottom_appraisal">
+				<div class="right_div_div2_div2" id="bottom_2_div">
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th style="text-align: center;">教师编号</th>
-								<th style="text-align: center;">评价内容</th>
-								<th
-									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
-								<th
-									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+								<th style="text-align: center;">订单号</th>
+								<th style="text-align: center;">辅导科目</th>
+								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
 						<tbody style="text-align: center;">
 							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
+								<td>123</td>
+								<td>Bangalore</td>
+								<td>2Bangalore</td>
 							</tr>
 							<tr>
-								<td>Uma</td>
+								<td>456</td>
 								<td>Pune</td>
 								<td>411027</td>
-								<td>560001</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+
+
+				<div class="right_div_div2_div2" id="bottom_3_div">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th style="text-align: center;">订单号</th>
+								<th style="text-align: center;">辅导科目</th>
+								<th style="text-align: center;">时间</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<tr>
+								<td>123</td>
+								<td>Bangalore</td>
+								<td>2018-01-19</td>
+							</tr>
+							<tr>
+								<td>456</td>
+								<td>Pune</td>
+								<td>411027</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
 
 			</div>
-
 		</div>
 	</div>
 </body>

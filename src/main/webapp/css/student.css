@@ -226,6 +226,8 @@ A:hover {
 	height:30px;
 }
 
+
+
 .right_div_alterInfo a {
 	font-size: 20px;
 	font-family: '微软雅黑';
@@ -251,6 +253,12 @@ A:hover {
 .right_div_alterInfo a:active {
 	text-decoration: none;
 	color: #000000;
+}
+
+.right_div_div2_div1 span {
+	font-size: 26px;
+	font-family: '微软雅黑';
+	margin-left: 20px;
 }
 
 .right_div_div2_div1 a {
