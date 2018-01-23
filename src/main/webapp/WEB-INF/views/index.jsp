@@ -39,12 +39,11 @@
 		<div class="nav">
 			<ul>
 				<div></div>
-				<li><a href="">首&nbsp;&nbsp;页</a></li>
-				<li><a href="">教师库</a></li>
-				<li><a href="">学生库</a></li>
-				<!--<li><a href="">在线课堂</a></li>-->
+				<li><a href="index">首&nbsp;&nbsp;页</a></li>
+				<li><a href="toTeacher_list">教师库</a></li>
+				<li><a href="toRequirement_list">学生库</a></li>
 				<li><a href="">家教论坛</a></li>
-				<li><a href="">个人中心</a></li>
+				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>
 	</div>

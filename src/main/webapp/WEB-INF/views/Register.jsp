@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,7 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   </head>
 <body>
-	
+	<c:if test="${not empty Register_message}">
+		<script>
+			alert('${Register_message}');
+		</script>
+	</c:if>
     <div id="top">
 		<h1>用户注册</h1>
 	</div>

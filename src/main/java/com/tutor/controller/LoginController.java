@@ -56,7 +56,7 @@ public class LoginController {
 		if (request.getSession().getAttribute("USER_PROVINCE") == null
 				&& request.getSession().getAttribute("USER_CITY") == null) {
 			return "chooseCity";
-		} else {
+		} 
 			String province = (String) request.getSession().getAttribute("USER_PROVINCE");
 			String city = (String) request.getSession().getAttribute("USER_CITY");
 			Teacher teacher = new Teacher();
@@ -70,7 +70,7 @@ public class LoginController {
 			model.addAttribute("teacherList", teacherList);
 			model.addAttribute("requirementsList", requirementsList);
 			return "index";
-		}
+		
 	}
 
 	// 前往首页
@@ -79,7 +79,7 @@ public class LoginController {
 		if (request.getSession().getAttribute("USER_PROVINCE") == null
 				&& request.getSession().getAttribute("USER_CITY") == null) {
 			return "chooseCity";
-		} else {
+		} 
 			String province = (String) request.getSession().getAttribute("USER_PROVINCE");
 			String city = (String) request.getSession().getAttribute("USER_CITY");
 			Teacher teacher = new Teacher();
@@ -90,10 +90,9 @@ public class LoginController {
 			requirement.setPermission(0);
 			requirement.setAddress(province + "," + city);
 			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
-			model.addAttribute("teacherList", teacherList);
+			model.addAttribute("teacherList", teacherService.getTeachers(teacherList, 1).getDataList());
 			model.addAttribute("requirementsList", requirementsList);
 			return "index";
-		}
 	}
 
 	// 去分类导航
@@ -131,7 +130,6 @@ public class LoginController {
 	// 跳转注册页面
 	@RequestMapping(value = "/toRegister")
 	public String toRegister(HttpServletRequest request, ModelMap model) {
-		System.out.println(request.getSession().getServletContext().getRealPath("/"));
 		return "Register";
 	}
 

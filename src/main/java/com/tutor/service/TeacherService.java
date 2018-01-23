@@ -1,6 +1,8 @@
 package com.tutor.service;
 
 import java.util.List;
+
+import com.tutor.dto.Pager;
 import com.tutor.entity.Teacher;
 
 public interface TeacherService {
@@ -15,5 +17,6 @@ public interface TeacherService {
 	
 	List<Teacher> getTeachersByCondition(Teacher teacher);
 	
+	Pager<Teacher> getTeachers(List<Teacher> list,int pageNum);
 	
 }

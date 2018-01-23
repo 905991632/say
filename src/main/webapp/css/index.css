@@ -346,20 +346,20 @@ A:hover {
 .content_div_div2 section {
 	width: 280px;
 	height: 180px;
-	margin: 0px 0px 5px 1%;
+	margin: 0px 0px 10px 10px;
+	border: 1px solid #ffffff;
 	float: left;
 }
 .content_div_div2 section:hover{
-	width: 280px;
-	height: 180px;
-	margin: 0px 0px 5px 1%;
-	border: 1px solid #FF8000;
-	float: left;
+	border: 1px solid #ff8000;
 }
+
 .opcityaa{
-	width: 280px;
-	height: 180px;
-	position:absolute;
+	width: 278px;
+	height: 178px;
+	border: 1px solid #ffffff;
+	position: absolute;
+	
 }
 .content_div_div2_img{
 	width: 120px;

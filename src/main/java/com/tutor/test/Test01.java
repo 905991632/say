@@ -38,9 +38,6 @@ public class Test01 {
 		System.out.println(jsonObject.get("country"));
 		System.out.println(jsonObject.get("province"));
 		System.out.println(jsonObject.get("city"));
-		
-		String string = new String("\u4e2d\u56fd\u5e7f\u4e1c\u6df1\u5733");
-		System.out.println(string);
 	}
 	
 	

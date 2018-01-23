@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tutor.dao.TeacherMapper;
+import com.tutor.dto.Pager;
 import com.tutor.entity.Teacher;
 import com.tutor.entity.TeacherExample;
 import com.tutor.entity.TeacherExample.Criteria;
@@ -97,6 +98,13 @@ public class TeacherServiceImpl implements TeacherService {
 		example.setOrderByClause("loginTime desc");
 		
 		return teacherMapper.selectByExample(example);
+	}
+
+	
+	@Override
+	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum) {
+		Pager<Teacher> pager = new Pager<Teacher>(pageNum,9,list);
+		return pager;
 	}
 	
 	
