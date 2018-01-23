@@ -37,22 +37,11 @@
 			<!-- 导航 -->
 			<div class="nav">
 				<ul>
-					<li>
-						<a href="">首&nbsp;&nbsp;页</a>
-					</li>
-					<li>
-						<a href="">教师库</a>
-					</li>
-					<li>
-						<a href="">学生库</a>
-					</li>
-					<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
-					<li>
-						<a href="">家教论坛</a>
-					</li>
-					<li>
-						<a href="">个人中心</a>
-					</li>
+					<li><a href="index">首&nbsp;&nbsp;页</a></li>
+					<li><a href="toTeacher_list">教师库</a></li>
+					<li><a href="toRequirement_list">学生库</a></li>
+					<li><a href="">家教论坛</a></li>
+					<li><a href="toPersonal">个人中心</a></li>
 				</ul>
 			</div>
 		</div>

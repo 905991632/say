@@ -17,4 +17,13 @@ public class MyselfUtils {
 		}
 		return null;
 	}
+	
+	public static String canMakeOrder(HttpServletRequest request){
+		if(request.getSession().getAttribute("USER_ID")==null || request.getSession().getAttribute("USER_TYPE")==null){
+			
+			
+		}
+		
+		return "";
+	}
 }

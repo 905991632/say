@@ -68,4 +68,11 @@ public class RequirementController {
 		return "requirement_list";
 	}
 	
+	//前往发布订单需求页面
+	@RequestMapping(value="/toRequirement_info")
+	public String toRequirement_info(int id,HttpServletRequest request,ModelMap modelMap){
+		modelMap.addAttribute("requirement", requirementService.selectByPrimaryKey(id));
+		return "requirement_info";
+	}
+	
 }

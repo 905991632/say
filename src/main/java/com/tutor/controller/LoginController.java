@@ -39,60 +39,12 @@ public class LoginController {
 		return "chooseCity";
 	}
 	
-	
-	
-	
 	// 选择城市
 	@RequestMapping(value = "/chooseCity")
 	public String chooseCity(@ModelAttribute("province") String province ,@ModelAttribute("city") String city ,HttpServletRequest request, ModelMap model) {
 		request.getSession().setAttribute("USER_PROVINCE", province);
 		request.getSession().setAttribute("USER_CITY", city);
 		return "redirect:index";
-	}
-
-	// 前往首页
-	@RequestMapping(value = "/")
-	public String index1(HttpServletRequest request, ModelMap model) {
-		if (request.getSession().getAttribute("USER_PROVINCE") == null
-				&& request.getSession().getAttribute("USER_CITY") == null) {
-			return "chooseCity";
-		} 
-			String province = (String) request.getSession().getAttribute("USER_PROVINCE");
-			String city = (String) request.getSession().getAttribute("USER_CITY");
-			Teacher teacher = new Teacher();
-			teacher.setPermission(0);
-			teacher.setAddress(province + "," + city);
-			List<Teacher> teacherList = teacherService.getTeachersByCondition(teacher);
-			Requirement requirement = new Requirement();
-			requirement.setPermission(0);
-			requirement.setAddress(province + "," + city);
-			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
-			model.addAttribute("teacherList", teacherList);
-			model.addAttribute("requirementsList", requirementsList);
-			return "index";
-		
-	}
-
-	// 前往首页
-	@RequestMapping(value = "/index")
-	public String index2(HttpServletRequest request, ModelMap model) {
-		if (request.getSession().getAttribute("USER_PROVINCE") == null
-				&& request.getSession().getAttribute("USER_CITY") == null) {
-			return "chooseCity";
-		} 
-			String province = (String) request.getSession().getAttribute("USER_PROVINCE");
-			String city = (String) request.getSession().getAttribute("USER_CITY");
-			Teacher teacher = new Teacher();
-			teacher.setPermission(0);
-			teacher.setAddress(province + "," + city);
-			List<Teacher> teacherList = teacherService.getTeachersByCondition(teacher);
-			Requirement requirement = new Requirement();
-			requirement.setPermission(0);
-			requirement.setAddress(province + "," + city);
-			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
-			model.addAttribute("teacherList", teacherService.getTeachers(teacherList, 1).getDataList());
-			model.addAttribute("requirementsList", requirementsList);
-			return "index";
 	}
 
 	// 去分类导航
@@ -112,20 +64,6 @@ public class LoginController {
 		model.addAttribute("students", students);
 		return "index3";
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	// 跳转注册页面
 	@RequestMapping(value = "/toRegister")

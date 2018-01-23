@@ -16,8 +16,8 @@
   </head>
 	<body style="overflow-y: scroll;">
 	<script>
-	if('${requirement_msg}'!=""){
-	alert('${requirement_msg}');
+	if('${message}'!=""){
+	alert('${message}');
 	}
   	</script>
 		
@@ -41,22 +41,11 @@
 			<!-- 导航 -->
 			<div class="nav">
 				<ul>
-					<li>
-						<a href="">首&nbsp;&nbsp;页</a>
-					</li>
-					<li>
-						<a href="">教师库</a>
-					</li>
-					<li>
-						<a href="">学生库</a>
-					</li>
-					<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
-					<li>
-						<a href="">家教论坛</a>
-					</li>
-					<li>
-						<a href="">个人中心</a>
-					</li>
+					<li><a href="index">首&nbsp;&nbsp;页</a></li>
+					<li><a href="toTeacher_list">教师库</a></li>
+					<li><a href="toRequirement_list">学生库</a></li>
+					<li><a href="">家教论坛</a></li>
+					<li><a href="toPersonal">个人中心</a></li>
 				</ul>
 			</div>
 		</div>
@@ -64,7 +53,7 @@
 		<!-- 当前位置 -->
 		<div class="nowplace">
 			<div>&nbsp;当前位置:&nbsp;
-				<a href="">首页</a>
+				<a href="index">首页</a>
 				<span> > 教师中心</span>
 			</div>
 		</div>
@@ -91,7 +80,7 @@
 					<div class="left_div_img2"></div>
 					<ul>
 						<li>
-							<a href="">基本资料</a>
+							<a href="toTeacher_info">基本资料</a>
 						</li>
 						<li>
 							<a href="">修改密码</a>

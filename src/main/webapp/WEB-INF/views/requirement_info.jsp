@@ -5,7 +5,6 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -39,22 +38,11 @@
 			<!-- 导航 -->
 			<div class="nav">
 				<ul>
-					<li>
-						<a href="">首&nbsp;&nbsp;页</a>
-					</li>
-					<li>
-						<a href="">教师库</a>
-					</li>
-					<li>
-						<a href="">学生库</a>
-					</li>
-					<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
-					<li>
-						<a href="">家教论坛</a>
-					</li>
-					<li>
-						<a href="">个人中心</a>
-					</li>
+				<li><a href="index">首&nbsp;&nbsp;页</a></li>
+				<li><a href="toTeacher_list">教师库</a></li>
+				<li><a href="toRequirement_list">学生库</a></li>
+				<li><a href="">家教论坛</a></li>
+				<li><a href="toPersonal">个人中心</a></li>
 				</ul>
 			</div>
 		</div>
@@ -79,49 +67,56 @@
 						<tr>
 							<th>订单编号：</th>
 							<td style="width: 400px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-								
+								${requirement.id}
 							</td>
 						</tr>
 						<tr>
 							<th>辅导课程：</th>
 							<td>
-								
+								${requirement.course}
 							</td>
 						</tr>
 						<tr>
 							<th>性别要求：</th>
 							<td>
-								
+							<c:choose>
+								<c:when test="${requirement.sex=='男女'}">
+									不限
+								</c:when>
+								<c:otherwise>
+									${requirement.sex}
+								</c:otherwise>
+							</c:choose>
 							</td>
 						</tr>
 						<tr>
 							<th>辅导地区：</th>
 							<td>
-								
+								${requirement.area}
 							</td>
 						</tr>
 						<tr>
 							<th>薪资报酬：</th>
 							<td>
-								
+								${requirement.price}
 							</td>
 						</tr>
 						<tr>
 							<th>其他要求：</th>
 							<td>
-								
+								${requirement.detail}
 							</td>
 						</tr>
 						<tr>
 							<th>学生编号：</th>
 							<td>
-								
+								<a href="">${requirement.studentid}</a>
 							</td>
 						</tr>
 						<tr>
 							<th>创建时间：</th>
 							<td>
-							
+								${requirement.createtime.toLocaleString()}
 							</td>
 						</tr>
 						<tr>

@@ -1,11 +1,10 @@
 package com.tutor.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tutor.dto.MyselfUtils;
 import com.tutor.entity.Teacher;
 import com.tutor.service.TeacherService;
 
@@ -37,14 +37,44 @@ public class TeacherController {
 	// 前往老师个人中心的基本资料
 	@RequestMapping(value = "toTeacher_info")
 	public String toTeacher_info(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
+		modelMap.addAttribute("teacher", teacherService.selectByPrimaryKey((int)request.getSession().getAttribute("USER_ID")));
 		return "teacher_info";
 	}
 
 	// 修改个人信息
 	@RequestMapping(value = "teacher_info")
-	public String teacher_info(Teacher teacher, @RequestParam(value = "file", required = false) MultipartFile file,
+	public String teacher_info(Teacher teacher, @RequestParam(value = "file", required = false) MultipartFile[] file,
 			HttpServletRequest request, ModelMap modelMap) {
-		return "teacher_info";
+		for(int i = 0;i < file.length;i++){
+			if(!file[i].getOriginalFilename().equals("")){
+				String fileName=UUID.randomUUID() + file[i].getOriginalFilename().substring(file[i].getOriginalFilename().lastIndexOf("."));
+				String filePath=request.getSession().getServletContext().getRealPath("/")+"images/";
+				File targetFile = new File(filePath, fileName);
+				try {
+                    file[i].transferTo(targetFile); // 传送 失败就抛异常
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+				if(i==0){
+					teacher.setPhoto("images/"+fileName);
+				}else {
+					teacher.setIdcard("images/"+fileName);
+				}
+			}
+		}
+		teacher.setPermission(0);
+		System.out.println("******1="+request.getParameter("id"));
+		System.out.println("******2="+request.getParameter("price"));
+		System.out.println("******3="+request.getParameter("courses"));
+		System.out.println("******4="+request.getParameter("courses"));
+		System.out.println("******5="+teacher.getPhoto());
+		System.out.println("******6="+teacher.getIdcard());
+		teacherService.updateByPrimaryKeySelective(teacher);
+		modelMap.addAttribute("message", "修改信息成功");
+		return "teacher_index";
 	}
 	
 	// 前往教师个人中心我的预约页面
@@ -76,6 +106,13 @@ public class TeacherController {
 		List<Teacher> list = teacherService.getTeachersByCondition(teacher);
 		modelMap.addAttribute("teacherList", list);
 		return "teacher_list";
+	}
+	
+	// 前往老师订单页面
+	@RequestMapping(value = "toTeacher_detail")
+	public String toTeacher_detail(int id,HttpServletRequest request, ModelMap modelMap) {
+		modelMap.addAttribute("teacher", teacherService.selectByPrimaryKey(id));
+		return "teacher_detail";
 	}
 
 }

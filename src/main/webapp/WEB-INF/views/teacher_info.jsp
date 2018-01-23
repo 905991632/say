@@ -47,12 +47,11 @@
 		<!-- 导航 -->
 		<div class="nav">
 			<ul>
-				<li><a href="">首&nbsp;&nbsp;页</a></li>
-				<li><a href="">教师库</a></li>
-				<li><a href="">学生库</a></li>
-				<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
+				<li><a href="index">首&nbsp;&nbsp;页</a></li>
+				<li><a href="toTeacher_list">教师库</a></li>
+				<li><a href="toRequirement_list">学生库</a></li>
 				<li><a href="">家教论坛</a></li>
-				<li><a href="">个人中心</a></li>
+				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>
 	</div>
@@ -96,56 +95,66 @@
 			<div class="right_div_div1">基本资料</div>
 			<div class="right_div_div2">
 				<div class="right_div_div2_div2" id="right_bottom_record">
-					<img src="img/teacher.jpg" />
+					<img src="${teacher.photo}" />
 					<table class="table table-striped">
 						<tbody>
 							<tr>
 								<th>教师编号：</th>
-								<td>11111</td>
+								<td>${teacher.id}</td>
 							</tr>
 							<tr>
 								<th>教师姓名：</th>
-								<td>陈晓佳</td>
+								<td>${teacher.name}</td>
 							</tr>
 							<tr>
 								<th>教师性别：</th>
-								<td>男</td>
+								<td>${teacher.sex}</td>
 							</tr>
 							<tr>
 								<th>教师年龄：</th>
-								<td>22</td>
+								<td>${teacher.age}</td>
 							</tr>
 							<tr>
 								<th>联系方式：</th>
-								<td>22</td>
+								<td>${teacher.mobile}</td>
 							</tr>
 							<tr>
 								<th>辅导课程：</th>
-								<td>一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，一年级语文，一年级数学，一年级英语，，一年级英语，一年级数学，一年级英语，</td>
+								<td>${teacher.courses}</td>
 							</tr>
 							<tr>
 								<th>辅导地区：</th>
-								<td>22</td>
+								<td>${teacher.area}</td>
 							</tr>
 							<tr>
 								<th>期待薪酬：</th>
-								<td>22</td>
+								<td>${teacher.price}</td>
 							</tr>
 							<tr>
 								<th>登录时间：</th>
-								<td>2018-01-18 12:00:00</td>
+								<td>${teacher.logintime.toLocaleString()}</td>
 							</tr>
 							<tr>
 								<th>审核状态：</th>
-								<td>未通过</td>
+								<td>
+								<c:choose>
+									<c:when test="${teacher.permission==0}">
+										未通过
+									</c:when>
+									<c:otherwise>
+										已通过
+									</c:otherwise>
+								</c:choose>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
-					<img src="img/teacher.jpg" />
+					<img src="${teacher.photo}" />
 					<form action="teacher_info" class="form-horizontal" enctype="multipart/form-data" method="post">
+						<input class="hidden" name="id" value="${teacher.id}">
 						<div class="form-group">
     						<label class="col-sm-2 control-label">修改头像：</label>
     					<input type="file" id="inputfile" name="file">
@@ -158,29 +167,45 @@
 							<label class="col-sm-2 control-label">教师姓名：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="name"
-								name="name"	placeholder="请输入名字" required>
+								name="name"	value="${teacher.name}" required>
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师性别：</label>
-							<div class="radio-inline">
-								<label> <input type="radio" name="sex"
-									id="optionsRadios1" value="男" checked> 男
-								</label>
-							</div>
-							<div class="radio-inline">
-								<label> <input type="radio" name="sex"
-									id="optionsRadios2" value="女"> 女
-								</label>
-							</div>
+							<c:choose>
+									<c:when test="${teacher.sex=='男'}">
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios1" value="男" checked> 男
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios2" value="女"> 女
+										</label>
+									</div>
+								</c:when>
+									<c:otherwise>
+										<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios1" value="男" > 男
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios2" value="女" checked> 女
+										</label>
+									</div>
+									</c:otherwise>
+								</c:choose>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师年龄：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="age"
-								 name="age" placeholder="请输入年龄" required>
+								 name="age" value="${teacher.age}" required>
 							</div>
 						</div>
 						
@@ -188,7 +213,7 @@
 							<label class="col-sm-2 control-label">联系方式：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="mobile"
-								name="mobile" placeholder="请输入手机号码">
+								name="mobile" value="${teacher.mobile}">
 							</div>
 						</div>
 						
@@ -201,14 +226,24 @@
 							<input class="hidden" id="courses_value" name="courses"  />
 						</div>
 
+						<input type="text" name="address" value="${USER_PROVINCE},${USER_CITY}"/>
+						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导地区：</label>
 							<div class="col-sm-10">
-								<select id="area" multiple='multiple'>
-								</select>
+							<select id="area" multiple='multiple'>
+							</select>
 							</div>
 							<input class="hidden" id="area_value" name="area"  />
 						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">期待薪酬：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="price"
+								name="price" value="${teacher.price}">
+							</div>
+						</div>	
 							
 						 <input type="submit" class="btn btn-default" value="提交">
 					</form>

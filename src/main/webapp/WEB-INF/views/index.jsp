@@ -14,6 +14,7 @@
 <title>家教平台系统</title>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/index.js"></script>
 </head>
 
 <body style="overflow-y: scroll;">
@@ -128,9 +129,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=一年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=一年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=一年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -141,9 +142,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=二年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=二年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=二年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -154,9 +155,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=三年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=三年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=三年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -167,9 +168,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=四年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=四年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=四年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -180,9 +181,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=五年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=五年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=五年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -193,9 +194,9 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
+								<li><a href="toTeacher_list?course=六年级语文">语文</a></li>
+								<li><a href="toTeacher_list?course=六年级数学">数学</a></li>
+								<li><a href="toTeacher_list?course=六年级英语">英语</a></li>
 							</ul>
 						</div>
 					</div>
@@ -206,12 +207,12 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
+								<li><a href="toTeacher_list?course=初一语文">语文</a></li>
+								<li><a href="toTeacher_list?course=初一数学">数学</a></li>
+								<li><a href="toTeacher_list?course=初一英语">英语</a></li>
+								<li><a href="toTeacher_list?course=初一地理">地理</a></li>
+								<li><a href="toTeacher_list?course=初一政治">政治</a></li>
+								<li><a href="toTeacher_list?course=初一历史">历史</a></li>
 							</ul>
 						</div>
 					</div>
@@ -222,15 +223,15 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
-								<li><a href="javascript:void(0);">物理</a></li>
-								<li><a href="javascript:void(0);">化学</a></li>
-								<li><a href="javascript:void(0);">生物</a></li>
+								<li><a href="toTeacher_list?course=初二语文">语文</a></li>
+								<li><a href="toTeacher_list?course=初二数学">数学</a></li>
+								<li><a href="toTeacher_list?course=初二英语">英语</a></li>
+								<li><a href="toTeacher_list?course=初二地理">地理</a></li>
+								<li><a href="toTeacher_list?course=初二政治">政治</a></li>
+								<li><a href="toTeacher_list?course=初二历史">历史</a></li>
+								<li><a href="toTeacher_list?course=初二物理">物理</a></li>
+								<li><a href="toTeacher_list?course=初二化学">化学</a></li>
+								<li><a href="toTeacher_list?course=初二生物">生物</a></li>
 							</ul>
 						</div>
 					</div>
@@ -241,15 +242,15 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
-								<li><a href="javascript:void(0);">物理</a></li>
-								<li><a href="javascript:void(0);">化学</a></li>
-								<li><a href="javascript:void(0);">生物</a></li>
+								<li><a href="toTeacher_list?course=初三语文">语文</a></li>
+								<li><a href="toTeacher_list?course=初三数学">数学</a></li>
+								<li><a href="toTeacher_list?course=初三英语">英语</a></li>
+								<li><a href="toTeacher_list?course=初三地理">地理</a></li>
+								<li><a href="toTeacher_list?course=初三政治">政治</a></li>
+								<li><a href="toTeacher_list?course=初三历史">历史</a></li>
+								<li><a href="toTeacher_list?course=初三物理">物理</a></li>
+								<li><a href="toTeacher_list?course=初三化学">化学</a></li>
+								<li><a href="toTeacher_list?course=初三生物">生物</a></li>
 							</ul>
 						</div>
 					</div>
@@ -260,15 +261,15 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">生物</a></li>
-								<li><a href="javascript:void(0);">物理</a></li>
-								<li><a href="javascript:void(0);">化学</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
+								<li><a href="toTeacher_list?course=高一语文">语文</a></li>
+								<li><a href="toTeacher_list?course=高一数学">数学</a></li>
+								<li><a href="toTeacher_list?course=高一英语">英语</a></li>
+								<li><a href="toTeacher_list?course=高一生物">生物</a></li>
+								<li><a href="toTeacher_list?course=高一物理">物理</a></li>
+								<li><a href="toTeacher_list?course=高一化学">化学</a></li>
+								<li><a href="toTeacher_list?course=高一历史">历史</a></li>
+								<li><a href="toTeacher_list?course=高一地理">地理</a></li>
+								<li><a href="toTeacher_list?course=高一政治">政治</a></li>
 							</ul>
 						</div>
 					</div>
@@ -279,15 +280,15 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">生物</a></li>
-								<li><a href="javascript:void(0);">物理</a></li>
-								<li><a href="javascript:void(0);">化学</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
+								<li><a href="toTeacher_list?course=高二语文">语文</a></li>
+								<li><a href="toTeacher_list?course=高二数学">数学</a></li>
+								<li><a href="toTeacher_list?course=高二英语">英语</a></li>
+								<li><a href="toTeacher_list?course=高二生物">生物</a></li>
+								<li><a href="toTeacher_list?course=高二物理">物理</a></li>
+								<li><a href="toTeacher_list?course=高二化学">化学</a></li>
+								<li><a href="toTeacher_list?course=高二历史">历史</a></li>
+								<li><a href="toTeacher_list?course=高二地理">地理</a></li>
+								<li><a href="toTeacher_list?course=高二政治">政治</a></li>
 							</ul>
 						</div>
 					</div>
@@ -298,15 +299,15 @@
 					<div class="fore1">
 						<div class="fore_list">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">语文</a></li>
-								<li><a href="javascript:void(0);">数学</a></li>
-								<li><a href="javascript:void(0);">英语</a></li>
-								<li><a href="javascript:void(0);">生物</a></li>
-								<li><a href="javascript:void(0);">物理</a></li>
-								<li><a href="javascript:void(0);">化学</a></li>
-								<li><a href="javascript:void(0);">历史</a></li>
-								<li><a href="javascript:void(0);">地理</a></li>
-								<li><a href="javascript:void(0);">政治</a></li>
+								<li><a href="toTeacher_list?course=高三语文">语文</a></li>
+								<li><a href="toTeacher_list?course=高三数学">数学</a></li>
+								<li><a href="toTeacher_list?course=高三英语">英语</a></li>
+								<li><a href="toTeacher_list?course=高三生物">生物</a></li>
+								<li><a href="toTeacher_list?course=高三物理">物理</a></li>
+								<li><a href="toTeacher_list?course=高三化学">化学</a></li>
+								<li><a href="toTeacher_list?course=高三历史">历史</a></li>
+								<li><a href="toTeacher_list?course=高三地理">地理</a></li>
+								<li><a href="toTeacher_list?course=高三政治">政治</a></li>
 							</ul>
 						</div>
 					</div>
@@ -326,182 +327,86 @@
 				<li>4</li>
 			</ul>
 			<div id="banner_list">
-				<a><img src="img/1.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> <a><img
-					src="img/2.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> <a><img
-					src="img/3.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> <a><img
-					src="img/4.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a>
+				<a><img src="img/1.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> 
+				<a><img src="img/2.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> 
+				<a><img src="img/3.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a> 
+				<a><img src="img/4.jpg" alt="欢迎来到家教平台" title="欢迎来到家教平台" /></a>
 			</div>
 		</div>
 	</div>
 
 	<div class="content_div_div1">
-		<span>教师信息</span> <a href="" target="_blank">+更多</a>
+		<span>教师信息</span> <a href="toTeacher_list" target="_blank">+更多</a>
 	</div>
 
-	<!-- 显示教师信息 (height要去除)-->
 	<div class="content_div_div2">
 		<c:forEach items="${teacherList}" var="item">
-		<section>
-		<div>
-			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
-		</div>
-		<div>
-			<img class="content_div_div2_img" src='<c:out value="${item.photo}"></c:out>' />
-			<div class="content_div_div2_div">
-				<div>
-					教师编号：<span><c:out value="${item.id }"></c:out></span>
-				</div>
-				<div>
-					教师姓名：<span><c:out value="${item.name }"></c:out></span>
-				</div>
-				<div>
-					教师性别：<span><c:out value="${item.sex }"></c:out></span>
-				</div>
-				<div>
-					教师年龄：<span><c:out value="${item.age }"></c:out></span>
+			<section>
+			<div>
+				<a href="toTeacher_detail?id=${item.id}" target="_blank"><img class="opcityaa" src="img/touming.png" /></a>
+			</div>
+			<div>
+				<img class="content_div_div2_img"
+					src='<c:out value="${item.photo}"></c:out>' />
+				<div class="content_div_div2_div">
+					<div>
+						教师编号：<span><c:out value="${item.id }"></c:out></span>
+					</div>
+					<div>
+						教师姓名：<span><c:out value="${item.name }"></c:out></span>
+					</div>
+					<div>
+						教师性别：<span><c:out value="${item.sex }"></c:out></span>
+					</div>
+					<div>
+						教师年龄：<span><c:out value="${item.age }"></c:out></span>
+					</div>
 				</div>
 			</div>
-		</div>
-		</section>
+			</section>
 		</c:forEach>
 	</div>
 
 	<div class="content_div_div1">
-		<span>家教信息</span> <a href="" target="_blank">+更多</a>
+		<span>家教信息</span> <a href="toRequirement_list" target="_blank">+更多</a>
 	</div>
 
 	<!-- 显示家教信息 (height要去除)-->
 	<div class="content_div_div2">
-	<c:forEach items="${requirementsList}" var="item">
-		<section>
-		<div>
-			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
-		</div>
-		<div>
-			<img class="content_div_div2_img" src="images/photo/student.jpg" />
-			<div class="content_div_div2_div">
-				<div>
-					编号：<span><c:out value="${item.id }"></c:out></span>
-				</div>
-				<div>
-					课程：<span><c:out value="${item.course }"></c:out></span>
-				</div>
-				
-				<c:choose>
-					<c:when test="${item.sex=='男女'}">
-						<div>
-							性别要求：<span><c:out value="不限"></c:out></span>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div>
-							性别要求：<span><c:out value="${item.sex }"></c:out></span>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<div>
-					地址：<span><c:out value="${item.area }"></c:out></span>
+		<c:forEach items="${requirementsList}" var="item">
+			<section>
+			<div>
+				<a href="toRequirement_info?id=${item.id}" target="_blank"><img class="opcityaa" src="img/touming.png" /></a>
+			</div>
+			<div>
+				<img class="content_div_div2_img" src="images/photo/student.jpg" />
+				<div class="content_div_div2_div">
+					<div>
+						编号：<span><c:out value="${item.id }"></c:out></span>
+					</div>
+					<div>
+						课程：<span><c:out value="${item.course }"></c:out></span>
+					</div>
+
+					<c:choose>
+						<c:when test="${item.sex=='男女'}">
+							<div>
+								性别要求：<span><c:out value="不限"></c:out></span>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>
+								性别要求：<span><c:out value="${item.sex }"></c:out></span>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<div>
+						地址：<span><c:out value="${item.area }"></c:out></span>
+					</div>
 				</div>
 			</div>
-		</div>
-		</section>
-	</c:forEach>
+			</section>
+		</c:forEach>
 	</div>
 </body>
-
-<script type="text/javascript">
-	var t = n = 0,
-		count;
-
-	$(document).ready(function() {
-
-		count = $("#banner_list a").length;
-
-		$("#banner_list a:not(:first-child)").hide();
-
-		$("#banner_info").html($("#banner_list a:first-child").find("img").attr('alt'));
-
-		$("#banner_info").click(function() {
-			window.open($("#banner_list a:first-child").attr('href'), "_blank")
-		});
-
-		$("#banner li").click(function() {
-
-			var i = $(this).text() - 1; //获取Li元素内的值，即1，2，3，4
-
-			n = i;
-
-			if (i >= count) return;
-
-			$("#banner_info").html($("#banner_list a").eq(i).find("img").attr('alt'));
-
-			$("#banner_info").unbind().click(function() {
-				window.open($("#banner_list a").eq(i).attr('href'), "_blank")
-			})
-
-			$("#banner_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
-
-			document.getElementById("banner").style.background = "";
-
-			$(this).toggleClass("on");
-
-			$(this).siblings().removeAttr("class");
-
-		});
-
-		t = setInterval("showAuto()", 4000);
-
-		$("#banner").hover(function() {
-			clearInterval(t)
-		}, function() {
-			t = setInterval("showAuto()", 4000);
-		});
-
-	})
-
-
-	function showAuto() {
-		n = n >= (count - 1) ? 0 : ++n;
-
-		$("#banner li").eq(n).trigger('click');
-
-	}
-</script>
-
-<script type="text/javascript">
-    	//banner左侧内容栏
-		$(function(){
-		    var thisTime;
-		    //鼠标离开左侧内容栏
-		    $('.cat_wrap .cat_list .float').mouseleave(function(even){
-		        thisTime = setTimeout(thisMouseOut,1);
-		    });
-		    //鼠标点击左侧内容栏   滑动出弹层
-		    $('.cat_wrap .cat_list .float').mouseenter(function(){
-		        $(this).addClass("active").siblings().removeClass("active");
-		        clearTimeout(thisTime);
-		        var thisUB = $('.cat_wrap .cat_list .float').index($(this));
-		        if($.trim($('.cat_subcont .cat_sublist').eq(thisUB).html()) != ""){
-		            $('.cat_subcont').addClass('active');
-		            $('.cat_sublist').hide();
-		            $('.cat_sublist').eq(thisUB).show();
-		        }else{
-		            $('.cat_subcont').removeClass('active');
-		        }
-		    });
-		    //函数——执行鼠标离开左侧内容栏的动作
-		    function thisMouseOut(){
-		        $('.cat_subcont').removeClass('active');
-		        $('.cat_wrap .cat_list .float').removeClass('active');
-		    }
-		    $('.cat_subcont').mouseenter(function(){
-		        clearTimeout(thisTime);
-		        $('.cat_subcont').addClass('active');
-		    });
-		    $('.cat_subcont').mouseleave(function(){
-		        $('.cat_subcont').removeClass('active');
-		        $('.cat_wrap .cat_list .float').removeClass('active');
-		    });
-		});     
-    </script>
 </html>

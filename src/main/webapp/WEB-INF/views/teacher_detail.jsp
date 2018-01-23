@@ -39,12 +39,11 @@
 		<!-- 导航 -->
 		<div class="nav">
 			<ul>
-				<li><a href="">首&nbsp;&nbsp;页</a></li>
-				<li><a href="">教师库</a></li>
-				<li><a href="">学生库</a></li>
-				<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
+				<li><a href="index">首&nbsp;&nbsp;页</a></li>
+				<li><a href="toTeacher_list">教师库</a></li>
+				<li><a href="toRequirement_list">学生库</a></li>
 				<li><a href="">家教论坛</a></li>
-				<li><a href="">个人中心</a></li>
+				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>
 	</div>
@@ -62,7 +61,7 @@
 		<div class="teacher_info">
 			<div class="teacher_info_div">
 				<div class="teacher_info_div_left">
-					<img src="img/teacher.jpg" />
+					<img src="${teacher.photo}" />
 					<div>
 						<a href="">预约教师</a>
 					</div>
@@ -73,41 +72,35 @@
 							<tbody>
 								<tr>
 									<th>教师编号：</th>
-									<td>
-										11111
-									</td>
+									<td>${teacher.id}</td>
 								</tr>
 								<tr>
 									<th>教师姓名：</th>
-									<td>陈晓佳</td>
+									<td>${teacher.name}</td>
 								</tr>
 								<tr>
 									<th>教师性别：</th>
-									<td>男</td>
+									<td>${teacher.sex}</td>
 								</tr>
 								<tr>
 									<th>教师年龄：</th>
-									<td>22</td>
+									<td>${teacher.age}</td>
 								</tr>
 								<tr>
 									<th>辅导课程：</th>
-									<td>
-										一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学一年级数学
-									</td>
+									<td>${teacher.courses}</td>
 								</tr>
 								<tr>
 									<th>辅导地区：</th>
-									<td>
-										从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区从化区
-									</td>
+									<td>${teacher.area}</td>
 								</tr>
 								<tr>
 									<th>期望工资：</th>
-									<td>111111111111</td>
+									<td>${teacher.price}</td>
 								</tr>
 								<tr>
 									<th>登录时间：</th>
-									<td>2018-01-18 12:00:00</td>
+									<td>${teacher.logintime.toLocaleString()}</td>
 								</tr>
 							</tbody>
 						</table>
