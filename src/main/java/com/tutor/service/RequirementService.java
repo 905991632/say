@@ -2,6 +2,7 @@ package com.tutor.service;
 
 import java.util.List;
 
+import com.tutor.dto.Pager;
 import com.tutor.entity.Requirement;
 
 public interface RequirementService {
@@ -13,4 +14,9 @@ public interface RequirementService {
 	int updateByPrimaryKeySelective(Requirement requirement);
 	
 	Requirement selectByPrimaryKey(int id);
+	
+	Pager<Requirement> getRequirements(List<Requirement> list, int pageNum);
+	
+	List<String> getPhotos(List<Requirement> list);
+	
 }

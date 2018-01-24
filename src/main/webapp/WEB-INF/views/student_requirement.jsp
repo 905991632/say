@@ -11,8 +11,9 @@
   <head>
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="css/bootstrap.css">
 		<script src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="js/student_requirement.js"></script>
 		<script type="text/javascript" src="js/area.js"></script>
@@ -101,8 +102,9 @@
 				<div class="right_div_div1">发布家教信息</div>
 			
 				<div class="right_div_div2">
-					<form action="" class="form-horizontal" method="post" onsubmit="return check();">
-						
+					<form action="student_requirement" class="form-horizontal" method="post" onsubmit="return check();">
+						<input type="text" name="studentid" value="${USER_ID}" class="hidden"/>
+						<input type="text" name="permission" value="0" class="hidden" />
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导科目：</label>
 							<div class="col-sm-10">
@@ -112,7 +114,7 @@
 							</div>
 						</div>
 						
-						<input name="address" value="${USER_PROVINCE},${USER_CITY}" style="display: none;"/>
+						<input class="hidden" name="address" value="${USER_PROVINCE},${USER_CITY}"/>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导地区：</label>
@@ -139,7 +141,7 @@
 							<label class="col-sm-2 control-label">薪酬待遇：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="price"
-								name="price" required="required" maxlength="100"/>
+								name="price" required maxlength="100"/>
 							</div>
 						</div>
 						

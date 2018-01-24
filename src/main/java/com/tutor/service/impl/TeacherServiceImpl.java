@@ -1,13 +1,12 @@
 package com.tutor.service.impl;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.tutor.dao.LoginMapper;
 import com.tutor.dao.TeacherMapper;
 import com.tutor.dto.Pager;
-import com.tutor.dto.TimeUtil;
+import com.tutor.entity.Login;
 import com.tutor.entity.Teacher;
 import com.tutor.entity.TeacherExample;
 import com.tutor.entity.TeacherExample.Criteria;
@@ -21,6 +20,8 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Autowired
 	TeacherMapper teacherMapper;
+	@Autowired
+	LoginMapper loginMapper;
 	
 	//添加教师
 	@Override
@@ -102,11 +103,23 @@ public class TeacherServiceImpl implements TeacherService {
 		return teacherMapper.selectByExample(example);
 	}
 
-	
+	//把list分页，返回当前页码的数据
 	@Override
 	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum) {
 		Pager<Teacher> pager = new Pager<Teacher>(pageNum,9,list);
 		return pager;
+	}
+
+	//通过id把密码修改为password的值
+	@Override
+	public int alterPasswordById(int id,String oldPassword,String newPassword) {
+		Login login = loginMapper.selectByPrimaryKey(teacherMapper.selectByPrimaryKey(id).getLoginid());
+		if(!login.getPassword().equals(oldPassword)){
+			return 2;
+		}
+		login.setPassword(newPassword);
+		loginMapper.updateByPrimaryKey(login);
+		return 1;
 	}
 	
 	

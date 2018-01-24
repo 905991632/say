@@ -17,6 +17,6 @@ public interface StudentService {
 	
 	int updateByPrimaryKeySelective(Student student);
 	
-	
+	int alterPasswordById(int userId,String oldPassword,String newPassword);
 	
 }

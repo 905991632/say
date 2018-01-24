@@ -11,8 +11,9 @@
 <head>
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
-<link href="css/student.css" rel="stylesheet" type="text/css" />
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/teacher.js"></script>
 </head>

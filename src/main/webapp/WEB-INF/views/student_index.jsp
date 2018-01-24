@@ -16,8 +16,8 @@
   </head>
 	<body style="overflow-y: scroll;">
 	<script>
-	if('${requirement_msg}'!=""){
-	alert('${requirement_msg}');
+	if('${message}'!=""){
+	alert('${message}');
 	}
   	</script>
 		
@@ -83,10 +83,10 @@
 					<div class="left_div_img2"></div>
 					<ul>
 						<li>
-							<a href="">基本资料</a>
+							<a href="toStudent_info">基本资料</a>
 						</li>
 						<li>
-							<a href="">修改密码</a>
+							<a href="toStudent_alterPassword">修改密码</a>
 						</li>
 					</ul>
 				</div>

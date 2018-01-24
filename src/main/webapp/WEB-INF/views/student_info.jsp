@@ -11,13 +11,17 @@
 <head>
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/alterInfo.js"></script>
 <script src="js/area.js"></script>
-<script src="js/select.js"></script>
+<script src="js/student_info.js"></script>
 </head>
+<script>
+ 	var USER_PROVINCE = "${USER_PROVINCE}";
+	var USER_CITY = "${USER_CITY}" 
+</script> 
 <body style="overflow-y: scroll;" onload="myfunction()">
 	<div class="theTop">
 		<div class="theTop_div1">
@@ -79,76 +83,92 @@
 			<div class="right_div_div1">基本资料</div>
 			<div class="right_div_div2">
 				<div class="right_div_div2_div2" id="right_bottom_record">
-					<img src="img/student.jpg" />
+					<img src="${student.photo}" />
 					<table class="table table-striped">
 						<tbody>
 							<tr>
 								<th>学生编号：</th>
-								<td>11111</td>
+								<td>${student.id}</td>
 							</tr>
 							<tr>
 								<th>学生姓名：</th>
-								<td>陈晓佳</td>
+								<td>${student.name}</td>
 							</tr>
 							<tr>
 								<th>学生性别：</th>
-								<td>男</td>
+								<td>${student.sex}</td>
 							</tr>
 							<tr>
 								<th>学生年龄：</th>
-								<td>22</td>
+								<td>${student.age}</td>
 							</tr>
 							<tr>
 								<th>联系方式：</th>
-								<td>22</td>
+								<td>${student.mobile}</td>
 							</tr>
 							<tr>
 								<th>家庭住址：</th>
-								<td>22</td>
+								<td>${student.address},${student.area}</td>
 							</tr>
 							<tr>
 								<th>登录时间：</th>
-								<td>2018-01-18 12:00:00</td>
+								<td>${student.logintime.toLocaleString()}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
-					<img src="img/student.jpg" />
-					<form action="" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<img src="${student.photo}" />
+					<form action="student_info" class="form-horizontal" enctype="multipart/form-data" method="post" >
 						<div class="form-group">
     						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile" name="photo">
+    					<input type="file" id="inputfile" name="file">
   						</div>
-  						
+  						<input type="text" class="hidden" name="id" value="${student.id}" />
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生姓名：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="name"
-								name="name"	placeholder="请输入名字" required>
+								name="name"	value="${student.name}" required>
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生性别：</label>
-							<div class="radio-inline">
-								<label> <input type="radio" name="sex"
-									id="optionsRadios1" value="男" checked> 男
-								</label>
-							</div>
-							<div class="radio-inline">
-								<label> <input type="radio" name="sex"
-									id="optionsRadios2" value="女"> 女
-								</label>
-							</div>
+							<c:choose>
+									<c:when test="${student.sex=='男'}">
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios1" value="男" checked> 男
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios2" value="女"> 女
+										</label>
+									</div>
+								</c:when>
+									<c:otherwise>
+										<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios1" value="男" > 男
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label> <input type="radio" name="sex"
+											id="optionsRadios2" value="女" checked> 女
+										</label>
+									</div>
+									</c:otherwise>
+								</c:choose>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生年龄：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="age"
-								 name="age" placeholder="请输入年龄" required>
+								 name="age" value="${student.age}" required>
 							</div>
 						</div>
 						
@@ -156,26 +176,20 @@
 							<label class="col-sm-2 control-label">联系方式：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="mobile"
-								name="mobile" placeholder="请输入手机号码">
+								name="mobile" value="${student.mobile}" required>
 							</div>
 						</div>
 						
+						<input type="text" class="hidden" name="address" value="${USER_PROVINCE},${USER_CITY}" >
 						<div class="form-group">
 							<label class="col-sm-2 control-label">家庭住址：</label>
 							<div class="col-sm-10">
-							<select class="form-control" name="province" id="province">
-								<option value="请选择">请选择</option>
-							</select>
-							<select class="form-control" name="city" id="city">
-								<option value="请选择">请选择</option>
-							</select>
-							<select class="form-control" name="area" id="area">
-								<option value="请选择">请选择</option>
+							<select class="form-control" name="area" id="area" required>
+								<option value="${student.area}">${student.area}</option>
 							</select>
 							</div>
 						</div>
-						
-						 <button type="submit" class="btn btn-default">提交</button>
+						 <input type="submit" class="btn btn-default" value="提交">
 					</form>
 				</div>
 

@@ -373,13 +373,13 @@
 
 	<!-- 显示家教信息 (height要去除)-->
 	<div class="content_div_div2">
-		<c:forEach items="${requirementsList}" var="item">
+		<c:forEach items="${requirementsList}" var="item" varStatus="status">
 			<section>
 			<div>
 				<a href="toRequirement_info?id=${item.id}" target="_blank"><img class="opcityaa" src="img/touming.png" /></a>
 			</div>
 			<div>
-				<img class="content_div_div2_img" src="images/photo/student.jpg" />
+				<img class="content_div_div2_img" src="${photoList.get(status.index)}" />
 				<div class="content_div_div2_div">
 					<div>
 						编号：<span><c:out value="${item.id }"></c:out></span>

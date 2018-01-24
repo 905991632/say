@@ -220,18 +220,18 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导课程：</label>
 							<div class="col-sm-10">
-								<select  id="courses" multiple='multiple'>
+								<select  id="courses" multiple='multiple' required>
 								</select>
 							</div>
 							<input class="hidden" id="courses_value" name="courses"  />
 						</div>
 
-						<input type="text" name="address" value="${USER_PROVINCE},${USER_CITY}"/>
+						<input class="hidden" type="text" name="address" value="${USER_PROVINCE},${USER_CITY}"/>
 						
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导地区：</label>
 							<div class="col-sm-10">
-							<select id="area" multiple='multiple'>
+							<select id="area" multiple='multiple' required>
 							</select>
 							</div>
 							<input class="hidden" id="area_value" name="area"  />

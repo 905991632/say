@@ -83,7 +83,7 @@
 							<a href="toTeacher_info">基本资料</a>
 						</li>
 						<li>
-							<a href="">修改密码</a>
+							<a href="toTeacher_alterPassword">修改密码</a>
 						</li>
 					</ul>
 				</div>

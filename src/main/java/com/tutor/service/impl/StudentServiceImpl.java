@@ -3,7 +3,10 @@ package com.tutor.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tutor.dao.LoginMapper;
 import com.tutor.dao.StudentMapper;
+import com.tutor.entity.Login;
 import com.tutor.entity.Student;
 import com.tutor.entity.StudentExample;
 import com.tutor.entity.StudentExample.Criteria;
@@ -17,6 +20,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	StudentMapper studentMapper;
+	@Autowired
+	LoginMapper loginMapper;
 	
 	/*
 	 *	添加学生
@@ -92,6 +97,18 @@ public class StudentServiceImpl implements StudentService {
 		example.setOrderByClause("loginTime desc");
 		List<Student> students = studentMapper.selectByExample(example);
 		return students;
+	}
+
+	//修改密码
+	@Override
+	public int alterPasswordById(int userId, String oldPassword, String newPassword) {
+		Login login = loginMapper.selectByPrimaryKey(studentMapper.selectByPrimaryKey(userId).getLoginid());
+		if(!login.getPassword().equals(oldPassword)){
+			return 2;
+		}
+		login.setPassword(newPassword);
+		loginMapper.updateByPrimaryKey(login);
+		return 1;
 	}
 
 	

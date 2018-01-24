@@ -66,13 +66,10 @@ public class TeacherController {
 			}
 		}
 		teacher.setPermission(0);
-		System.out.println("******1="+request.getParameter("id"));
-		System.out.println("******2="+request.getParameter("price"));
-		System.out.println("******3="+request.getParameter("courses"));
-		System.out.println("******4="+request.getParameter("courses"));
-		System.out.println("******5="+teacher.getPhoto());
-		System.out.println("******6="+teacher.getIdcard());
-		teacherService.updateByPrimaryKeySelective(teacher);
+		if(teacherService.updateByPrimaryKeySelective(teacher)!=1){
+			modelMap.addAttribute("message", "修改信息失败");
+			return "teacher_index";
+		}
 		modelMap.addAttribute("message", "修改信息成功");
 		return "teacher_index";
 	}
@@ -86,8 +83,7 @@ public class TeacherController {
 	// 前往教师列表页面
 	@RequestMapping(value = "toTeacher_list")
 	public String toTeacher_list(HttpServletRequest request, ModelMap modelMap) {
-		if (request.getSession().getAttribute("USER_PROVINCE") == null
-				&& request.getSession().getAttribute("USER_CITY") == null) {
+		if (MyselfUtils.isChooseCity(request)!=null) {
 			return "chooseCity";
 		}
 		Teacher teacher = new Teacher();
@@ -114,5 +110,27 @@ public class TeacherController {
 		modelMap.addAttribute("teacher", teacherService.selectByPrimaryKey(id));
 		return "teacher_detail";
 	}
+	
+	// 前往老师修改密码页面
+	@RequestMapping(value = "toTeacher_alterPassword")
+	public String toTeacher_alterPassword(HttpServletRequest request, ModelMap modelMap) {
+		return "teacher_alterPassword";
+	}	
 
+	//修改密码
+	@RequestMapping(value = "teacher_alterPassword")
+	public String teacher_alterPassword(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!= null){
+			return "Login";
+		}
+		String msg = "密码修改成功";
+		int userId = (int)request.getSession().getAttribute("USER_ID");
+		String oldPassword = request.getParameter("old_password");
+		String newPassword = request.getParameter("new_password");
+		if(teacherService.alterPasswordById(userId,oldPassword, newPassword)!=1){
+			msg = "密码修改失败";
+		}
+		modelMap.addAttribute("message", msg);
+		return "teacher_index";
+	}	
 }
