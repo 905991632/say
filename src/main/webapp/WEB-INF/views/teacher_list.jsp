@@ -185,19 +185,19 @@ var USER_CITY = "${USER_CITY}"
 			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
 		</div>
 		<div>
-			<img class="content_div_div2_img" src='<c:out value="${item.photo}"></c:out>' />
+			<img class="content_div_div2_img" src="${item.photo}"/>
 			<div class="content_div_div2_div">
 				<div>
-					教师编号：<span><c:out value="${item.id }"></c:out></span>
+					教师编号：<span>${item.id }</span>
 				</div>
 				<div>
-					教师姓名：<span><c:out value="${item.name }"></c:out></span>
+					教师姓名：<span>${item.name }</span>
 				</div>
 				<div>
-					教师性别：<span><c:out value="${item.sex }"></c:out></span>
+					教师性别：<span>${item.sex }</span>
 				</div>
 				<div>
-					教师年龄：<span><c:out value="${item.age }"></c:out></span>
+					教师年龄：<span>${item.age }</span>
 				</div>
 			</div>
 		</div>

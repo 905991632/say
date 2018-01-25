@@ -178,35 +178,35 @@ var USER_CITY = "${USER_CITY}"
 		</div>
 
 <div class="content_div_div2">
-	<c:forEach items="${requirementsList}" var="item">
+	<c:forEach items="${requirementsList}" var="item" varStatus="status">
 		<section>
 		<div>
 			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
 		</div>
 		<div>
-			<img class="content_div_div2_img" src="images/photo/student.jpg" />
+			<img class="content_div_div2_img" src="${requirementPhoto.get(status.index)}" />
 			<div class="content_div_div2_div">
 				<div>
-					编号：<span><c:out value="${item.id }"></c:out></span>
+					编号：<span>${item.id}</span>
 				</div>
 				<div>
-					课程：<span><c:out value="${item.course }"></c:out></span>
+					课程：<span>${item.course}</span>
 				</div>
 				
 				<c:choose>
 					<c:when test="${item.sex=='男女'}">
 						<div>
-							性别要求：<span><c:out value="不限"></c:out></span>
+							性别要求：<span>不限</span>
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div>
-							性别要求：<span><c:out value="${item.sex }"></c:out></span>
+							性别要求：<span>${item.sex}</span>
 						</div>
 					</c:otherwise>
 				</c:choose>
 				<div>
-					地址：<span><c:out value="${item.area }"></c:out></span>
+					地址：<span>${item.area}</span>
 				</div>
 			</div>
 		</div>

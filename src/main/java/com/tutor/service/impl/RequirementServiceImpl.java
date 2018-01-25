@@ -2,15 +2,21 @@ package com.tutor.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tutor.dao.ApplyMapper;
 import com.tutor.dao.RequirementMapper;
 import com.tutor.dao.StudentMapper;
-import com.tutor.dao.TeacherMapper;
 import com.tutor.dto.Pager;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.RequirementExample;
 import com.tutor.entity.RequirementExample.Criteria;
+import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 
 /*
@@ -24,6 +30,9 @@ public class RequirementServiceImpl implements RequirementService {
 
 	@Autowired
 	StudentMapper studentMapper;
+	
+	@Autowired
+	ApplyService applyService;
 	
 	/*
 	 * 添加订单需求 返回1
@@ -94,6 +103,26 @@ public class RequirementServiceImpl implements RequirementService {
 			list2.add(studentMapper.selectByPrimaryKey(list.get(i).getStudentid()).getPhoto());
 		}
 		return list2;
+	}
+
+	//检测是否能够申请订单，1为可以，2为已申请，3为不可申请(用户为学生)
+	@Override
+	public int testPermission(HttpServletRequest request ,int requireId) {
+		String userType = (String)request.getSession().getAttribute("USER_TYPE");
+		int userId = (int)request.getSession().getAttribute("USER_ID");
+		if(userType.equals("学生")){
+			return 3;
+		}
+		Apply apply = new Apply();
+		apply.setPermission(0);
+		apply.setRequireid(requireId);
+		apply.setType("订单");
+		apply.setTeacherid(userId);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		if(list.size()<1){
+			return 1;
+		}
+		return 2;
 	}
 	
 	

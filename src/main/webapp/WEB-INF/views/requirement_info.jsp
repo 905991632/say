@@ -10,13 +10,17 @@
   <head>
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
-		<link href="css/student.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<script src="js/jquery-1.8.3.min.js"></script>
+		<link href="css/student.css" rel="stylesheet" type="text/css" />
   </head>
 
 	<body style="overflow-y: scroll;">
-
+	<script>
+		if('${message}'!=""){
+		alert('${message}');
+		}
+  	</script>
 		<div class="theTop">
 			<div class="theTop_div1">
 				<a href="">亲,请登录</a>
@@ -61,7 +65,7 @@
 			<!-- 左板块 -->
 			<div class="requirement_info_div">
 				<div>
-				<form action="" method="post">
+				<form action="apply_add" method="post">
 				<table class="table table-striped">
 					<tbody>
 						<tr>
@@ -120,9 +124,21 @@
 							</td>
 						</tr>
 						<tr>
+						
+							<input type="text" name="requireid" value="${requirement.id}" class="hidden"/>
+							<input type="text" name="teacherid" value="${USER_ID}" class="hidden"/>
+							<input type="text" name="permission" value="0" class="hidden"/>
+							
+							<c:if test="${testPermission==1 }">
 							<td colspan="2" style="text-align: center;">
 								<input type="submit" value="订单申请" />
 							</td>
+							</c:if>
+							<c:if test="${testPermission==2 }">
+							<td colspan="2" style="text-align: center;">
+								<span>已申请</span>
+							</td>
+							</c:if>
 						</tr>
 					</tbody>
 				</table>

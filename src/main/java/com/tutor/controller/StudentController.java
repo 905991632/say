@@ -128,6 +128,13 @@ public class StudentController {
 		return "student_index";
 	}
 	
+	// 前往学生个人中心我的订单
+	@RequestMapping(value = "toStudent_myRequirement")
+	public String toStudent_myRequirement(HttpServletRequest request, ModelMap modelMap) {
+		return "student_alterPassword";
+	}
+	
+	
 	
 	
 }
