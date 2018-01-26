@@ -19,7 +19,9 @@
 <script type="text/javascript" src="js/student_myRequirement.js"></script>
 </head>
 <body style="overflow-y: scroll;">
-
+<script>
+var totalPage = "${unfinish_totalPage}";
+</script>
 	<div class="theTop">
 		<div class="theTop_div1">
 			<a href="">亲,请登录</a> <a href="">免费注册</a>
@@ -114,7 +116,7 @@
 						</c:forEach>
 						</tbody>
 					</table>
-					<div>
+					<div id="nav_insert">
 						<nav class="cbp-spmenu-right bbbb">
 						<ul class="pagination">
 							<c:choose>
@@ -126,10 +128,9 @@
 								</c:when>
 								<c:otherwise>
 									<li><a
-										href="">首页</a></li>
+										href="javascript:void(0);" onclick="click_pageNum(1);" >首页</a></li>
 									<li><a
-										href=""
-										aria-label="Previous"> <span aria-hidden="true">«</span>
+										href="javascript:void(0);" onclick="click_pageNum(${unfinish_pageNum-1});" aria-label="Previous"> <span aria-hidden="true">«</span>
 									</a></li>
 								</c:otherwise>
 							</c:choose>
@@ -146,7 +147,7 @@
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="">${k}</a>
+											href="javascript:void(0);" onclick="click_pageNum(${k});">${k}</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -160,11 +161,11 @@
 								</c:when>
 								<c:otherwise>
 									<li><a
-										href=""
+										href="javascript:void(0);" onclick="click_pageNum(${unfinish_pageNum+1});"
 										aria-label="Next"> <span aria-hidden="true">»</span>
 									</a></li>
 									<li><a
-										href="">尾页</a>
+										href="javascript:void(0);" onclick="click_pageNum(${unfinish_totalPage});">尾页</a>
 									</li>
 								</c:otherwise>
 							</c:choose>
