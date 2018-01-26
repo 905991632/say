@@ -23,28 +23,18 @@ function a(){
 
 
 
-function add_nav(){
-	
-}
-
-
-
-
 function add_nav(pageNum){
 	var nav_str='<nav class="cbp-spmenu-right bbbb">'
 				+'<ul class="pagination">';
 	if(pageNum==1 || totalPage==0){
 		nav_str+='<li class="disabled"><a>首页</a></li>'
-				+'<li class="disabled"><a aria-label="Previous"><span'
-				+'aria-hidden="true">«</span></a></li>';
+				+'<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>';
 	}else{
-		nav_str+='<li><a href="javascript:void(0);"' 
-				+' onclick="click_pageNum(1)">首页</a></li>'
-				+'<li><a href="javascript:void(0);" '
-				+'onclick="click_pageNum('+pageNum-1+')" aria-label="Previous">'
+		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum(1)">首页</a></li>'
+				+'<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum-1+')" aria-label="Previous">'
 				+'<span aria-hidden="true">«</span></a></li>';															 									
 	}
-	for(var k=1;k<totalPage;k++){
+	for(var k=1;k<=totalPage;k++){
 		if(k==pageNum-4 || k==pageNum+4){
 			nav_str+='<li><a>…</a></li>';	
 		}else if(k==pageNum){
@@ -83,9 +73,12 @@ function click_pageNum(pageNum){
 				+'</td><td>'+item.course+'</td><td>'+item.createtime.toLocaleString()
 				+'</td><td><a href="" class="label label-success">查看</a>'
 				+'<a href="" class="label label-danger">取消</a></td></tr>';
+				
+				$("#unfinish_tbody").text("");
 				$("#unfinish_tbody").append(tr_str);
 			});
 			var nav_str = add_nav(pageNum);
+			$("#nav_insert").text("");
 			$("#nav_insert").append(nav_str);
 		}
 	});
