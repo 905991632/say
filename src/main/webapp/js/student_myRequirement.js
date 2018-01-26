@@ -24,14 +24,15 @@ function a(){
 
 
 function add_nav(pageNum){
-	var nav_str='<nav class="cbp-spmenu-right bbbb">'
+	var nav_str;
+		nav_str='<nav class="cbp-spmenu-right bbbb">'
 				+'<ul class="pagination">';
 	if(pageNum==1 || totalPage==0){
 		nav_str+='<li class="disabled"><a>首页</a></li>'
 				+'<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>';
 	}else{
-		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum(1)">首页</a></li>'
-				+'<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum-1+')" aria-label="Previous">'
+		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum(1);">首页</a></li>'
+				+'<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum-1+');" aria-label="Previous">'
 				+'<span aria-hidden="true">«</span></a></li>';															 									
 	}
 	for(var k=1;k<=totalPage;k++){
@@ -42,8 +43,8 @@ function add_nav(pageNum){
 		}else if(k<pageNum-4 || k>pageNum+4){
 			
 		}else{
-			nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum
-			+')">'+pageNum+'</a></li>';	
+			nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum('+k
+			+')">'+k+'</a></li>';	
 		}
 	}
 	if(pageNum==totalPage || totalPage==0){
@@ -55,6 +56,7 @@ function add_nav(pageNum){
 				+'</a></li><li><a href="javascript:void(0);" onclick="click_pageNum('+totalPage
 				+');">尾页</a>';
 	}
+	alert(nav_str)
 	return nav_str;
 }
 
