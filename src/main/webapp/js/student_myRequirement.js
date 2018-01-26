@@ -32,7 +32,7 @@ function add_nav(pageNum){
 				+'<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>';
 	}else{
 		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum(1);">首页</a></li>'
-				+'<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum-1+');" aria-label="Previous">'
+				+'<li><a href="javascript:void(0);" onclick="click_pageNum('+(pageNum-1)+');" aria-label="Previous">'
 				+'<span aria-hidden="true">«</span></a></li>';															 									
 	}
 	for(var k=1;k<=totalPage;k++){
@@ -51,12 +51,11 @@ function add_nav(pageNum){
 		nav_str+='<li class="disabled"><a aria-label="Next"> <spanaria-hidden="true">»</span>'
 				+'</a></li><li class="disabled"><a>尾页</a></li>';
 	}else{
-		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum('+pageNum+') '
+		nav_str+='<li><a href="javascript:void(0);" onclick="click_pageNum('+(pageNum+1)+')" '
 				+'aria-label="Next"> <span aria-hidden="true">»</span>'
 				+'</a></li><li><a href="javascript:void(0);" onclick="click_pageNum('+totalPage
 				+');">尾页</a>';
 	}
-	alert(nav_str)
 	return nav_str;
 }
 
@@ -72,7 +71,7 @@ function click_pageNum(pageNum){
 		success:function (data) {
 			$.each(data,function(i,item){
 				var tr_str = '<tr><td><a href="">'+item.id+'</a>'
-				+'</td><td>'+item.course+'</td><td>'+item.createtime.toLocaleString()
+				+'</td><td>'+item.course+'</td><td>'+item.createtime.toLocaleDateString()
 				+'</td><td><a href="" class="label label-success">查看</a>'
 				+'<a href="" class="label label-danger">取消</a></td></tr>';
 				
