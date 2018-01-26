@@ -17,6 +17,15 @@ $(document).ready(function(){
 	});
 });
 
+function a(){
+	alert(1);
+}
+
+
+
+
+
+
 function lookup_apply(e){
 	alert(1);
 	alert(e);

@@ -7,6 +7,8 @@ public class Apply {
 
     private Integer requireid;
 
+    private Integer studentid;
+
     private Integer teacherid;
 
     private Integer permission;
@@ -29,6 +31,14 @@ public class Apply {
 
     public void setRequireid(Integer requireid) {
         this.requireid = requireid;
+    }
+
+    public Integer getStudentid() {
+        return studentid;
+    }
+
+    public void setStudentid(Integer studentid) {
+        this.studentid = studentid;
     }
 
     public Integer getTeacherid() {

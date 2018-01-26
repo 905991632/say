@@ -13,4 +13,6 @@ public interface ApplyService {
 	int updateByPrimaryKeySelective(Apply apply);
 	
 	Apply selectByPrimaryKey(int id);
+	
+	
 }

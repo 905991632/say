@@ -2,17 +2,21 @@ package com.tutor.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.alibaba.fastjson.JSON;
 import com.tutor.dto.MyselfUtils;
+import com.tutor.dto.Pager;
+import com.tutor.dto.ResponseUtils;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
 import com.tutor.service.RequirementService;
@@ -131,8 +135,48 @@ public class StudentController {
 	// 前往学生个人中心我的订单
 	@RequestMapping(value = "toStudent_myRequirement")
 	public String toStudent_myRequirement(HttpServletRequest request, ModelMap modelMap) {
-		return "student_alterPassword";
+		if(MyselfUtils.isLogin(request)!= null){
+			return "Login";
+		}
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		
+		//未完成订单
+		Requirement requirement = new Requirement();
+		requirement.setStudentid(studentid);
+		requirement.setPermission(0);
+		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
+		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, 1);
+		
+		//已完成的订单
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setPermission(3);
+		List<Requirement> list2 = requirementService.getRequirementByApply(apply);
+		Pager<Requirement> Requirementspager2 = requirementService.getRequirements(list2, 1, 1);
+		
+		modelMap.addAttribute("unfinish", Requirementspager1.getDataList());
+		modelMap.addAttribute("unfinish_pageNum", 1);
+		modelMap.addAttribute("unfinish_totalPage", Requirementspager1.getTotalPage());
+		modelMap.addAttribute("finish", Requirementspager2.getDataList());
+		modelMap.addAttribute("finish_pageNum", 1);
+		modelMap.addAttribute("finish_totalPage", Requirementspager2.getTotalPage());
+		return "student_myRequirement";
 	}
+	
+	//student_myRequirement页面ajax请求完成订单数据
+	@RequestMapping(value = "/student_myRequirement_ajax_getUnfinish")
+    public void student_myRequirement_ajax_getUnfinish(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum")); 
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Requirement requirement = new Requirement();
+		requirement.setStudentid(studentid);
+		requirement.setPermission(0);
+		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
+		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, pageNum);
+		List<Requirement> dataList = Requirementspager1.getDataList();
+		String result = JSON.toJSONString(dataList);
+		ResponseUtils.renderJson(response,result);
+    }
 	
 	
 	

@@ -57,8 +57,8 @@ public class PageController {
 			requirement.setAddress(province + "," + city);
 			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
 			List<String> photoList = requirementService.getPhotos(requirementsList);
-			model.addAttribute("teacherList", teacherService.getTeachers(teacherList, 1).getDataList());
-			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1));
+			model.addAttribute("teacherList", teacherService.getTeachers(teacherList,1,9).getDataList());
+			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1,9).getDataList());
 			model.addAttribute("photoList", photoList);
 			return "index";
 	}
@@ -81,8 +81,8 @@ public class PageController {
 			requirement.setAddress(province + "," + city);
 			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
 			List<String> photoList = requirementService.getPhotos(requirementsList);
-			model.addAttribute("teacherList", teacherService.getTeachers(teacherList, 1).getDataList());
-			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1).getDataList());
+			model.addAttribute("teacherList", teacherService.getTeachers(teacherList,1,9).getDataList());
+			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1,9).getDataList());
 			model.addAttribute("photoList", photoList);
 			return "index";
 	}

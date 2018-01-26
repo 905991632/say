@@ -1,5 +1,7 @@
 package com.tutor.service.impl;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,12 +69,12 @@ public class RequirementServiceImpl implements RequirementService {
 		if (requirement.getArea() != null) {
 			criteria.andAreaEqualTo(requirement.getArea());
 		}
-		if (requirement.getPrice() != null) {
+		/*if (requirement.getPrice() != null) {
 			criteria.andPriceEqualTo(requirement.getPrice());
 		}
 		if (requirement.getDetail() != null) {
 			criteria.andDetailEqualTo(requirement.getDetail());
-		}
+		}*/
 		example.setOrderByClause("createTime desc");
 		return requirementMapper.selectByExample(example);
 	}
@@ -85,17 +87,20 @@ public class RequirementServiceImpl implements RequirementService {
 		return requirementMapper.updateByPrimaryKeySelective(requirement);
 	}
 
+	//通过id查询
 	@Override
 	public Requirement selectByPrimaryKey(int id) {
 		return requirementMapper.selectByPrimaryKey(id);
 	}
 
+	//分页
 	@Override
-	public Pager<Requirement> getRequirements(List<Requirement> list, int pageNum) {
-		Pager<Requirement> pager = new Pager<Requirement>(pageNum,9,list);
+	public Pager<Requirement> getRequirements(List<Requirement> list, int pageNum,int pageSize) {
+		Pager<Requirement> pager = new Pager<Requirement>(pageNum,pageSize,list);
 		return pager;
 	}
 
+	//返回列表内的头像
 	@Override
 	public List<String> getPhotos(List<Requirement> list) {
 		List<String> list2 = new ArrayList<String>();
@@ -124,6 +129,17 @@ public class RequirementServiceImpl implements RequirementService {
 		}
 		return 2;
 	}
+
+	@Override
+	public List<Requirement> getRequirementByApply(Apply apply) {
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		List<Requirement> list2 = new ArrayList<Requirement>();
+		for(int i=0;i<list.size();i++){
+			list2.add(requirementMapper.selectByPrimaryKey(list.get(i).getRequireid()));
+		}
+		return list2;
+	}
+
 	
 	
 

@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.tutor.entity.Apply">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="requireId" jdbcType="INTEGER" property="requireid" />
+    <result column="studentId" jdbcType="INTEGER" property="studentid" />
     <result column="teacherId" jdbcType="INTEGER" property="teacherid" />
     <result column="permission" jdbcType="INTEGER" property="permission" />
     <result column="type" jdbcType="VARCHAR" property="type" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, requireId, teacherId, permission, type, createTime
+    id, requireId, studentId, teacherId, permission, type, createTime
   </sql>
   <select id="selectByExample" parameterType="com.tutor.entity.ApplyExample" resultMap="BaseResultMap">
     select
@@ -101,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.tutor.entity.Apply">
-    insert into apply (id, requireId, teacherId, 
-      permission, type, createTime
-      )
-    values (#{id,jdbcType=INTEGER}, #{requireid,jdbcType=INTEGER}, #{teacherid,jdbcType=INTEGER}, 
-      #{permission,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}
-      )
+    insert into apply (id, requireId, studentId, 
+      teacherId, permission, type, 
+      createTime)
+    values (#{id,jdbcType=INTEGER}, #{requireid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, 
+      #{teacherid,jdbcType=INTEGER}, #{permission,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.tutor.entity.Apply">
     insert into apply
@@ -116,6 +117,9 @@
       </if>
       <if test="requireid != null">
         requireId,
+      </if>
+      <if test="studentid != null">
+        studentId,
       </if>
       <if test="teacherid != null">
         teacherId,
@@ -136,6 +140,9 @@
       </if>
       <if test="requireid != null">
         #{requireid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
       </if>
       <if test="teacherid != null">
         #{teacherid,jdbcType=INTEGER},
@@ -166,6 +173,9 @@
       <if test="record.requireid != null">
         requireId = #{record.requireid,jdbcType=INTEGER},
       </if>
+      <if test="record.studentid != null">
+        studentId = #{record.studentid,jdbcType=INTEGER},
+      </if>
       <if test="record.teacherid != null">
         teacherId = #{record.teacherid,jdbcType=INTEGER},
       </if>
@@ -187,6 +197,7 @@
     update apply
     set id = #{record.id,jdbcType=INTEGER},
       requireId = #{record.requireid,jdbcType=INTEGER},
+      studentId = #{record.studentid,jdbcType=INTEGER},
       teacherId = #{record.teacherid,jdbcType=INTEGER},
       permission = #{record.permission,jdbcType=INTEGER},
       type = #{record.type,jdbcType=VARCHAR},
@@ -200,6 +211,9 @@
     <set>
       <if test="requireid != null">
         requireId = #{requireid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        studentId = #{studentid,jdbcType=INTEGER},
       </if>
       <if test="teacherid != null">
         teacherId = #{teacherid,jdbcType=INTEGER},
@@ -219,6 +233,7 @@
   <update id="updateByPrimaryKey" parameterType="com.tutor.entity.Apply">
     update apply
     set requireId = #{requireid,jdbcType=INTEGER},
+      studentId = #{studentid,jdbcType=INTEGER},
       teacherId = #{teacherid,jdbcType=INTEGER},
       permission = #{permission,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},

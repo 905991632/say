@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.tutor.dto.LoadJson;
 import com.tutor.entity.Login;
-import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
 import com.tutor.entity.Teacher;
 import com.tutor.service.LoginService;
@@ -47,24 +46,6 @@ public class LoginController {
 		return "redirect:index";
 	}
 
-	// 去分类导航
-	@RequestMapping(value = "/toIndex3")
-	public String toIndex3(HttpServletRequest request, ModelMap model) {
-		Student student = new Student();
-		if (request.getParameter("name") != null) {
-			student.setName(request.getParameter("name"));
-		}
-		if (request.getParameter("sex") != null) {
-			student.setSex(request.getParameter("sex"));
-		}
-		if (request.getParameter("age") != null) {
-			student.setAge(Integer.parseInt(request.getParameter("age")));
-		}
-		List<Student> students = studentService.getStudentByCondition(student);
-		model.addAttribute("students", students);
-		return "index3";
-	}
-	
 	// 跳转注册页面
 	@RequestMapping(value = "/toRegister")
 	public String toRegister(HttpServletRequest request, ModelMap model) {

@@ -37,7 +37,7 @@ public class RequirementController {
 		String city = (String) request.getSession().getAttribute("USER_CITY");
 		requirement.setAddress(province+","+city);
 		List<Requirement> requirementsList1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> requirements = requirementService.getRequirements(requirementsList1, 1);
+		Pager<Requirement> requirements = requirementService.getRequirements(requirementsList1,1,9);
 		modelMap.addAttribute("requirementPhoto", requirementService.getPhotos(requirementsList1));
 		modelMap.addAttribute("requirementsList",requirements.getDataList());
 		return "requirement_list";

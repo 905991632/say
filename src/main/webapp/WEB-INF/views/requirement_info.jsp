@@ -126,8 +126,10 @@
 						<tr>
 						
 							<input type="text" name="requireid" value="${requirement.id}" class="hidden"/>
+							<input type="text" name="studentid" value="${requirement.studentid}" class="hidden"/>
 							<input type="text" name="teacherid" value="${USER_ID}" class="hidden"/>
 							<input type="text" name="permission" value="0" class="hidden"/>
+							<input type="text" name="type" value="订单" class="hidden"/>
 							
 							<c:if test="${testPermission==1 }">
 							<td colspan="2" style="text-align: center;">

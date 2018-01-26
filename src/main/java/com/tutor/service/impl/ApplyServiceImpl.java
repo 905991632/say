@@ -42,6 +42,9 @@ public class ApplyServiceImpl implements ApplyService {
 		if(apply.getRequireid()!=null){
 			criteria.andRequireidEqualTo(apply.getRequireid());
 		}
+		if(apply.getStudentid()!=null){
+			criteria.andRequireidEqualTo(apply.getStudentid());
+		}
 		if(apply.getTeacherid()!=null){
 			criteria.andTeacheridEqualTo(apply.getTeacherid());
 		}

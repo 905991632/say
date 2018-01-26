@@ -225,6 +225,66 @@ public class ApplyExample {
             return (Criteria) this;
         }
 
+        public Criteria andStudentidIsNull() {
+            addCriterion("studentId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidIsNotNull() {
+            addCriterion("studentId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidEqualTo(Integer value) {
+            addCriterion("studentId =", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidNotEqualTo(Integer value) {
+            addCriterion("studentId <>", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidGreaterThan(Integer value) {
+            addCriterion("studentId >", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("studentId >=", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidLessThan(Integer value) {
+            addCriterion("studentId <", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidLessThanOrEqualTo(Integer value) {
+            addCriterion("studentId <=", value, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidIn(List<Integer> values) {
+            addCriterion("studentId in", values, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidNotIn(List<Integer> values) {
+            addCriterion("studentId not in", values, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidBetween(Integer value1, Integer value2) {
+            addCriterion("studentId between", value1, value2, "studentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentidNotBetween(Integer value1, Integer value2) {
+            addCriterion("studentId not between", value1, value2, "studentid");
+            return (Criteria) this;
+        }
+
         public Criteria andTeacheridIsNull() {
             addCriterion("teacherId is null");
             return (Criteria) this;

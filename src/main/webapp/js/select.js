@@ -51,7 +51,7 @@ city.on("change",function(){
 function isChooseCity(){
 	var province = $("#province").val();
 	var city = $("#city").val();
-	if(provicne=="请选择" || city=="请选择"){
+	if(province=="请选择" || city=="请选择"){
 		return false;
 	}else{
 		return true;

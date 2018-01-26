@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/student_myRequirement.js"></script>
 </head>
 <body style="overflow-y: scroll;">
@@ -93,26 +94,86 @@
 								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
+						<tbody style="text-align: center;" id="unfinish_tbody">
+						<c:forEach items="${unfinish}" var="item">
 							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
-								<td><a onclick="lookup_apply(115);"
+								<td>
+									<a href="">${item.id}</a>
+								</td>
+								<td>
+									${item.course}
+								</td>
+								<td>
+									${item.createtime.toLocaleString()}
+								</td>
+								<td><a onclick="lookup_apply(${item.id});"
 									class="label label-success">查看</a> <a
-									onclick="delete_requirement(115);" class="label label-danger">取消</a>
+									onclick="delete_requirement(${item.id});" class="label label-danger">取消</a>
 								</td>
 							</tr>
-							<tr>
-								<td><a href="">456</a></td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td><a href="" class="label label-success">查看</a> <a
-									href="" class="label label-danger">取消</a></td>
-							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
+					<div>
+						<nav class="cbp-spmenu-right bbbb">
+						<ul class="pagination">
+							<c:choose>
+								<c:when test="${unfinish_pageNum==1||unfinish_totalPage==0}">
+									<li class="disabled"><a>首页</a></li>
+									<li class="disabled"><a aria-label="Previous"> <span
+											aria-hidden="true">«</span>
+									</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a
+										href="">首页</a></li>
+									<li><a
+										href=""
+										aria-label="Previous"> <span aria-hidden="true">«</span>
+									</a></li>
+								</c:otherwise>
+							</c:choose>
+							<c:forEach var="k" begin="1" end="${unfinish_totalPage}">
+								<c:choose>
+									<c:when test="${k==(unfinish_pageNum-4) || k == (unfinish_pageNum + 4)}">
+										<li><a>…</a></li>
+									</c:when>
+									<c:when test="${k==unfinish_pageNum}">
+										<li class="active"><a>${k}<span class="sr-only"></span></a></li>
+									</c:when>
+									<c:when test="${k < unfinish_pageNum - 4 || k > unfinish_pageNum + 4}">
+
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="">${k}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${unfinish_pageNum == unfinish_totalPage || unfinish_totalPage == 0}">
+									<li class="disabled"><a aria-label="Next"> <span
+											aria-hidden="true">»</span>
+									</a></li>
+									<li class="disabled"><a>尾页</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a
+										href=""
+										aria-label="Next"> <span aria-hidden="true">»</span>
+									</a></li>
+									<li><a
+										href="">尾页</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+						</nav>
+					</div>
 				</div>
+
+
 
 				<div class="right_div_div2_div2" id="div_finished">
 					<table class="table table-striped">
@@ -124,18 +185,72 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;">
+						<c:forEach items="${finish}" var="item">
 							<tr>
-								<td>123</td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
+								<td>${item.id}</td>
+								<td>${item.course}</td>
+								<td>${item.createtime.toLocaleString()}</td>
 							</tr>
-							<tr>
-								<td>456</td>
-								<td>Pune</td>
-								<td>411027</td>
-							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
+					<div>
+						<nav class="cbp-spmenu-right bbbb">
+						<ul class="pagination">
+							<c:choose>
+								<c:when test="${finish_pageNum==1||finish_totalPage==0}">
+									<li class="disabled"><a>首页</a></li>
+									<li class="disabled"><a aria-label="Previous"> <span
+											aria-hidden="true">«</span>
+									</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a onclick="">首页</a></li>
+									<li><a
+										href=""
+										aria-label="Previous"> <span aria-hidden="true">«</span>
+									</a></li>
+								</c:otherwise>
+							</c:choose>
+							<c:forEach var="k" begin="1" end="${finish_totalPage}">
+								<c:choose>
+									<c:when test="${k==(finish_pageNum-4) || k == (finish_pageNum + 4)}">
+										<li><a>…</a></li>
+									</c:when>
+									<c:when test="${k==finish_pageNum}">
+										<li class="active"><a>${k}<span class="sr-only"></span></a></li>
+									</c:when>
+									<c:when test="${k < finish_pageNum - 4 || k > finish_pageNum + 4}">
+
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="">${k}</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${finish_pageNum == finish_totalPage || finish_totalPage == 0}">
+									<li class="disabled"><a aria-label="Next"> <span
+											aria-hidden="true">»</span>
+									</a></li>
+									<li class="disabled"><a>尾页</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a
+										href=""
+										aria-label="Next"> <span aria-hidden="true">»</span>
+									</a></li>
+									<li><a
+										href="">尾页</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</ul>
+						</nav>
+					</div>
+					
 				</div>
 
 				<div class="right_div_div2_div2">

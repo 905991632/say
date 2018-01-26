@@ -105,8 +105,8 @@ public class TeacherServiceImpl implements TeacherService {
 
 	//把list分页，返回当前页码的数据
 	@Override
-	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum) {
-		Pager<Teacher> pager = new Pager<Teacher>(pageNum,9,list);
+	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum,int pageSize) {
+		Pager<Teacher> pager = new Pager<Teacher>(pageNum,pageSize,list);
 		return pager;
 	}
 
