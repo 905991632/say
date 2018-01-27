@@ -226,6 +226,35 @@ public class StudentController {
 		ResponseUtils.renderJson(response,result);
 	}
 	
+	//student_myRequirement页面ajax拒绝申请操作
+	@RequestMapping(value = "/student_myRequirement_ajax_reject")
+	public void student_myRequirement_ajax_reject(HttpServletRequest request, HttpServletResponse response) {
+		int applyid = Integer.parseInt(request.getParameter("applyid"));
+		Apply apply = new Apply();
+		apply.setId(applyid);
+		apply.setPermission(2);
+		int result = applyService.updateByPrimaryKeySelective(apply);
+		String result1 = JSON.toJSONString(result);
+		ResponseUtils.renderJson(response,result1);
+	}
+	
+	//student_myRequirement页面ajax接受申请操作
+	@RequestMapping(value = "/student_myRequirement_ajax_accept")
+	public void student_myRequirement_ajax_accept(HttpServletRequest request, HttpServletResponse response) {
+		int applyid = Integer.parseInt(request.getParameter("applyid"));
+		int result = applyService.acceptApply(applyid);
+		String result1 = JSON.toJSONString(result);
+		ResponseUtils.renderJson(response,result1);
+	}	
+	
+	//student_myRequirement页面ajax取消家教信息操作
+	@RequestMapping(value = "/student_myRequirement_ajax_cancel")
+	public void student_myRequirement_ajax_cancel(HttpServletRequest request, HttpServletResponse response) {
+		int requireid = Integer.parseInt(request.getParameter("requireid"));
+		int result = requirementService.cancelRequirement(requireid);
+		String result1 = JSON.toJSONString(result);
+		ResponseUtils.renderJson(response,result1);
+	}		
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.tutor.service.impl;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import com.tutor.dao.ApplyMapper;
 import com.tutor.entity.Apply;
 import com.tutor.entity.ApplyExample;
 import com.tutor.entity.ApplyExample.Criteria;
+import com.tutor.entity.Requirement;
 import com.tutor.service.ApplyService;
+import com.tutor.service.RequirementService;
 
 /*
  * 订单申请模块
@@ -19,6 +23,9 @@ public class ApplyServiceImpl implements ApplyService {
 
 	@Autowired
 	ApplyMapper applyMapper;
+	@Autowired
+	RequirementService requirementService;
+	
 	
 	/*
 	 * 	添加订单申请
@@ -75,6 +82,32 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public Apply selectByPrimaryKey(int id) {
 		return applyMapper.selectByPrimaryKey(id);
+	}
+
+	//接受订单申请
+	@Override
+	public int acceptApply(int id) {
+		//1、把requirement的permission改为1
+		Apply apply = this.selectByPrimaryKey(id);
+		int requireid = apply.getRequireid();
+		Requirement requirement = new Requirement();
+		requirement.setId(requireid);
+		requirement.setPermission(1);
+		if(requirementService.updateByPrimaryKeySelective(requirement)!=1){
+			return 0;
+		}
+		//2、把所有的Apply.requireid为requireid的permission都设置为2
+		Apply apply1 = new Apply();
+		apply1.setRequireid(requireid);
+		List<Apply> list = this.getAppliesByCondition(apply1);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setPermission(2);
+			this.updateByPrimaryKeySelective(list.get(i));
+		}
+		//3、把apply.id为id的permission设置为1
+		apply.setPermission(1);
+		this.updateByPrimaryKeySelective(apply);
+		return 1;
 	}
 
 	

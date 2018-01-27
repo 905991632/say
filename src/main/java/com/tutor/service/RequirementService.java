@@ -26,4 +26,6 @@ public interface RequirementService {
 	
 	List<Requirement> getRequirementByApply(Apply apply);
 	
+	int cancelRequirement(int id);
+	
 }

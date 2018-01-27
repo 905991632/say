@@ -36,6 +36,7 @@ public class RequirementServiceImpl implements RequirementService {
 	@Autowired
 	ApplyService applyService;
 	
+	
 	/*
 	 * 添加订单需求 返回1
 	 */
@@ -138,6 +139,25 @@ public class RequirementServiceImpl implements RequirementService {
 			list2.add(requirementMapper.selectByPrimaryKey(list.get(i).getRequireid()));
 		}
 		return list2;
+	}
+
+	//取消家教信息
+	@Override
+	public int cancelRequirement(int id) {
+		//1、将requirement.permission设为1
+		Requirement requirement = new Requirement();
+		requirement.setId(id);
+		requirement.setPermission(1);
+		this.updateByPrimaryKeySelective(requirement);
+		//2、将所有apply.reuqireid=id的permission设为2
+		Apply apply = new Apply();
+		apply.setRequireid(id);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setPermission(2);
+			applyService.updateByPrimaryKeySelective(list.get(i));
+		}
+		return 1;
 	}
 
 	

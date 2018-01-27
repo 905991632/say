@@ -93,6 +93,7 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="unfinish_tbody">
+						<c:if test="${unfinish.size()>0}">
 						<c:forEach items="${unfinish}" var="item">
 							<tr>
 								<td>
@@ -104,16 +105,18 @@
 								<td>
 									${item.createtime.toLocaleString()}
 								</td>
-								<td><a onclick="lookup_apply(${item.id});"
-									class="label label-success">查看</a> <a
-									onclick="delete_requirement(${item.id});" class="label label-danger">取消</a>
+								<td><a href="javascript:void(0);" onclick="lookup_apply(${item.id});"
+									class="label label-success">查看</a> <a href="javascript:void(0);" 
+									onclick="cancel_requirement(${item.id});" class="label label-danger">取消</a>
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</tbody>
 					</table>
 					
 					<div id="unfinish_nav_insert">
+					<c:if test="${unfinish.size()>0}">
 						<nav class="cbp-spmenu-right bbbb">
 						<ul class="pagination">
 							<c:choose>
@@ -168,6 +171,7 @@
 							</c:choose>
 						</ul>
 						</nav>
+						</c:if>
 					</div>
 				</div>
 
@@ -183,6 +187,7 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="finish_tbody">
+						<c:if test="${finish.size()>0}">
 						<c:forEach items="${finish}" var="item">
 							<tr>
 								<td>${item.id}</td>
@@ -190,9 +195,11 @@
 								<td>${item.createtime.toLocaleString()}</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 						</tbody>
 					</table>
 					<div id="finish_nav_insert">
+						<c:if test="${finish.size()>0}">
 						<nav class="cbp-spmenu-right bbbb">
 						<ul class="pagination">
 							<c:choose>
@@ -247,6 +254,7 @@
 							</c:choose>
 						</ul>
 						</nav>
+						</c:if>
 					</div>
 					
 				</div>
