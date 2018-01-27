@@ -2,6 +2,7 @@ package com.tutor.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,10 @@ import com.tutor.dto.MyselfUtils;
 import com.tutor.dto.Pager;
 import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Apply;
+import com.tutor.entity.MyObject;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
+import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StudentService;
 
@@ -29,6 +32,8 @@ public class StudentController {
 	StudentService studentService;
 	@Autowired
 	RequirementService requirementService;
+	@Autowired
+	ApplyService applyService;
 	
 	//前往发布订单需求页面
 	@RequestMapping(value="/toStudent_requirement")
@@ -163,7 +168,7 @@ public class StudentController {
 		return "student_myRequirement";
 	}
 	
-	//student_myRequirement页面ajax请求完成订单数据
+	//student_myRequirement页面ajax请求未完成订单数据
 	@RequestMapping(value = "/student_myRequirement_ajax_getUnfinish")
     public void student_myRequirement_ajax_getUnfinish(HttpServletRequest request, HttpServletResponse response) {
 		int pageNum = Integer.parseInt(request.getParameter("pageNum")); 
@@ -172,12 +177,54 @@ public class StudentController {
 		requirement.setStudentid(studentid);
 		requirement.setPermission(0);
 		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, pageNum);
+		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, pageNum,1 );
 		List<Requirement> dataList = Requirementspager1.getDataList();
-		String result = JSON.toJSONString(dataList);
+		int totalPage = Requirementspager1.getTotalPage();
+		MyObject<Requirement> myObject = new MyObject<Requirement>();
+		myObject.setList(dataList);
+		myObject.setTotalPage(totalPage);
+		String result = JSON.toJSONString(myObject);
 		ResponseUtils.renderJson(response,result);
     }
 	
+	//student_myRequirement页面ajax请求完成订单数据
+	@RequestMapping(value = "/student_myRequirement_ajax_getFinish")
+    public void student_myRequirement_ajax_getFinish(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum")); 
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setPermission(3);
+		List<Requirement> list2 = requirementService.getRequirementByApply(apply);
+		Pager<Requirement> Requirementspager = requirementService.getRequirements(list2, pageNum,1);
+		List<Requirement> dataList = Requirementspager.getDataList();
+		int totalPage = Requirementspager.getTotalPage();
+		MyObject<Requirement> myObject = new MyObject<Requirement>();
+		myObject.setList(dataList);
+		myObject.setTotalPage(totalPage);
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+    }	
+	
+	//student_myRequirement页面ajax请求申请情况
+	@RequestMapping(value = "/student_myRequirement_ajax_getApply")
+	public void student_myRequirement_ajax_getApply(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum")); 
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		int requireid = Integer.parseInt(request.getParameter("requireid"));
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setRequireid(requireid);
+		apply.setPermission(0);
+		apply.setType("订单");
+		List<Apply> applies = applyService.getAppliesByCondition(apply);
+		Pager<Apply> pager = new Pager<Apply>(pageNum, 1, applies);
+		MyObject<Apply> myObject = new MyObject<Apply>();
+		myObject.setList(pager.getDataList());
+		myObject.setTotalPage(pager.getTotalPage());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}
 	
 	
 	

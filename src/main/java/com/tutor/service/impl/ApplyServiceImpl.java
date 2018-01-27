@@ -36,14 +36,14 @@ public class ApplyServiceImpl implements ApplyService {
 	public List<Apply> getAppliesByCondition(Apply apply) {
 		ApplyExample example = new ApplyExample();
 		Criteria criteria = example.createCriteria();
-		if(apply.getId()!=null){
+/*		if(apply.getId()!=null){
 			criteria.andIdEqualTo(apply.getId());
-		}
+		}*/
 		if(apply.getRequireid()!=null){
 			criteria.andRequireidEqualTo(apply.getRequireid());
 		}
 		if(apply.getStudentid()!=null){
-			criteria.andRequireidEqualTo(apply.getStudentid());
+			criteria.andStudentidEqualTo(apply.getStudentid());
 		}
 		if(apply.getTeacherid()!=null){
 			criteria.andTeacheridEqualTo(apply.getTeacherid());
@@ -77,5 +77,9 @@ public class ApplyServiceImpl implements ApplyService {
 		return applyMapper.selectByPrimaryKey(id);
 	}
 
+	
+	
+	
+	
 	
 }

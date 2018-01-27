@@ -1,15 +1,14 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" >
 <title>家教平台系统</title>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -19,9 +18,6 @@
 <script type="text/javascript" src="js/student_myRequirement.js"></script>
 </head>
 <body style="overflow-y: scroll;">
-<script>
-var totalPage = "${unfinish_totalPage}";
-</script>
 	<div class="theTop">
 		<div class="theTop_div1">
 			<a href="">亲,请登录</a> <a href="">免费注册</a>
@@ -116,7 +112,8 @@ var totalPage = "${unfinish_totalPage}";
 						</c:forEach>
 						</tbody>
 					</table>
-					<div id="nav_insert">
+					
+					<div id="unfinish_nav_insert">
 						<nav class="cbp-spmenu-right bbbb">
 						<ul class="pagination">
 							<c:choose>
@@ -185,7 +182,7 @@ var totalPage = "${unfinish_totalPage}";
 								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
+						<tbody style="text-align: center;" id="finish_tbody">
 						<c:forEach items="${finish}" var="item">
 							<tr>
 								<td>${item.id}</td>
@@ -195,7 +192,7 @@ var totalPage = "${unfinish_totalPage}";
 						</c:forEach>
 						</tbody>
 					</table>
-					<div>
+					<div id="finish_nav_insert">
 						<nav class="cbp-spmenu-right bbbb">
 						<ul class="pagination">
 							<c:choose>
@@ -206,9 +203,9 @@ var totalPage = "${unfinish_totalPage}";
 									</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a onclick="">首页</a></li>
+									<li><a href="javascript:void(0);" onclick="click_pageNum1(1);">首页</a></li>
 									<li><a
-										href=""
+										href="javascript:void(0);" onclick="click_pageNum1(${finish_pageNum-1});"
 										aria-label="Previous"> <span aria-hidden="true">«</span>
 									</a></li>
 								</c:otherwise>
@@ -226,7 +223,7 @@ var totalPage = "${unfinish_totalPage}";
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="">${k}</a>
+											href="javascript:void(0);" onclick="click_pageNum1(${k});">${k}</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -240,11 +237,11 @@ var totalPage = "${unfinish_totalPage}";
 								</c:when>
 								<c:otherwise>
 									<li><a
-										href=""
-										aria-label="Next"> <span aria-hidden="true">»</span>
+										href="javascript:void(0);" onclick="click_pageNum1(${finish_pageNum+1});"
+										 aria-label="Next"> <span aria-hidden="true" >»</span>
 									</a></li>
 									<li><a
-										href="">尾页</a>
+										href="javascript:void(0);" onclick="click_pageNum1(${finish_totalPage});">尾页</a>
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -254,7 +251,7 @@ var totalPage = "${unfinish_totalPage}";
 					
 				</div>
 
-				<div class="right_div_div2_div2">
+				<div class="right_div_div2_div2" id="div_apply">
 					<div class="right_div_div2_div1">
 						<a href="javascript:void(0);" id="display_apply"
 							name="display_apply">申请情况</a>
@@ -267,27 +264,20 @@ var totalPage = "${unfinish_totalPage}";
 								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td><a href="">123</a></td>
-								<td>2018-01-19 10：34：30</td>
-								<td><a href="" class="label label-success">接受</a> <a
-									href="" class="label label-danger">拒绝</a></td>
-							</tr>
-							<tr>
-								<td><a href="">456</a></td>
-								<td>411027</td>
-								<td><a href="" class="label label-success">接受</a> <a
-									href="" class="label label-danger">拒绝</a></td>
-							</tr>
+						<tbody style="text-align: center;" id="display_tbody">
+							
 						</tbody>
 					</table>
+					<div id="display_nav_insert">
+					
+					</div>
+					
 				</div>
 
 			</div>
 		</div>
 	</div>
-	</div>
+	
 </body>
 
 

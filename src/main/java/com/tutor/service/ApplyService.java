@@ -14,5 +14,4 @@ public interface ApplyService {
 	
 	Apply selectByPrimaryKey(int id);
 	
-	
 }
