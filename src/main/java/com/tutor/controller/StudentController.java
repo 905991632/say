@@ -2,7 +2,6 @@ package com.tutor.controller;
 
 import java.io.File;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
@@ -14,16 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.fastjson.JSON;
+import com.tutor.dto.MyObject;
+import com.tutor.dto.MyTeacher;
 import com.tutor.dto.MyselfUtils;
 import com.tutor.dto.Pager;
 import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Apply;
-import com.tutor.entity.MyObject;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
+import com.tutor.entity.Teaappraisal;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StudentService;
+import com.tutor.service.TeaAppraisalService;
+import com.tutor.service.TeacherService;
 
 @Controller
 public class StudentController {
@@ -34,6 +37,10 @@ public class StudentController {
 	RequirementService requirementService;
 	@Autowired
 	ApplyService applyService;
+	@Autowired
+	TeacherService teacherService;
+	@Autowired
+	TeaAppraisalService teaAppraisalService;
 	
 	//前往发布订单需求页面
 	@RequestMapping(value="/toStudent_requirement")
@@ -98,8 +105,29 @@ public class StudentController {
 
 	// 前往学生中心的我的老师页面
 	@RequestMapping(value = "toStudent_myTeacher")
-	public String toStudent_myTeacher(HttpServletRequest request, ModelMap modelMap) {
+	public String toStudent_myTeacher(int pageNum, HttpServletRequest request, ModelMap modelMap) {
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setPermission(1);
+		List<MyTeacher> myTeachers = studentService.getMyTeachersByApply(apply);
+		Pager<MyTeacher> pager =new Pager<MyTeacher>(pageNum,8,myTeachers);
+		modelMap.addAttribute("myTeachers", pager.getDataList());
+		modelMap.addAttribute("pageNum", pageNum);
+		modelMap.addAttribute("totalPage", pager.getTotalPage());
 		return "student_myTeacher";
+	}
+	
+	@RequestMapping(value = "appraisalTeacher")
+	public String appraisalTeacher(Teaappraisal teaappraisal ,HttpServletRequest request, ModelMap modelMap) {
+		int applyid = teaappraisal.getApplyid();
+		Teaappraisal teaappraisal2 = teaAppraisalService.getTeaappraisalByApplyid(applyid);
+		int id = teaappraisal2.getId();
+		teaappraisal.setId(id);
+		teaappraisal.setPermission(1);
+		teaappraisal.setCreatetime(new Date());
+		teaAppraisalService.toAppraisal(teaappraisal);
+		return "redirect:toStudent_myTeacher?pageNum=1";
 	}
 	
 	// 前往学生中心我的评价页面
@@ -111,12 +139,18 @@ public class StudentController {
 	// 前往学生中心我的预约页面
 	@RequestMapping(value = "toStudent_myOrder")
 	public String toStudent_myOrder(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!= null){
+			return "Login";
+		}
 		return "student_myOrder";
 	}
 
 	// 前往学生修改密码页面
 	@RequestMapping(value = "toStudent_alterPassword")
 	public String toTeacher_alterPassword(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!= null){
+			return "Login";
+		}
 		return "student_alterPassword";
 	}
 	
@@ -150,14 +184,15 @@ public class StudentController {
 		requirement.setStudentid(studentid);
 		requirement.setPermission(0);
 		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, 1);
+		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, 8);
 		
 		//已完成的订单
 		Apply apply = new Apply();
 		apply.setStudentid(studentid);
 		apply.setPermission(3);
-		List<Requirement> list2 = requirementService.getRequirementByApply(apply);
-		Pager<Requirement> Requirementspager2 = requirementService.getRequirements(list2, 1, 1);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		List<Requirement> list2 = requirementService.getRequirementByApply(list);
+		Pager<Requirement> Requirementspager2 = requirementService.getRequirements(list2, 1, 8);
 		
 		modelMap.addAttribute("unfinish", Requirementspager1.getDataList());
 		modelMap.addAttribute("unfinish_pageNum", 1);
@@ -177,7 +212,7 @@ public class StudentController {
 		requirement.setStudentid(studentid);
 		requirement.setPermission(0);
 		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, pageNum,1 );
+		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, pageNum,8 );
 		List<Requirement> dataList = Requirementspager1.getDataList();
 		int totalPage = Requirementspager1.getTotalPage();
 		MyObject<Requirement> myObject = new MyObject<Requirement>();
@@ -195,8 +230,9 @@ public class StudentController {
 		Apply apply = new Apply();
 		apply.setStudentid(studentid);
 		apply.setPermission(3);
-		List<Requirement> list2 = requirementService.getRequirementByApply(apply);
-		Pager<Requirement> Requirementspager = requirementService.getRequirements(list2, pageNum,1);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		List<Requirement> list2 = requirementService.getRequirementByApply(list);
+		Pager<Requirement> Requirementspager = requirementService.getRequirements(list2, pageNum,8);
 		List<Requirement> dataList = Requirementspager.getDataList();
 		int totalPage = Requirementspager.getTotalPage();
 		MyObject<Requirement> myObject = new MyObject<Requirement>();
@@ -218,7 +254,7 @@ public class StudentController {
 		apply.setPermission(0);
 		apply.setType("订单");
 		List<Apply> applies = applyService.getAppliesByCondition(apply);
-		Pager<Apply> pager = new Pager<Apply>(pageNum, 1, applies);
+		Pager<Apply> pager = new Pager<Apply>(pageNum, 8, applies);
 		MyObject<Apply> myObject = new MyObject<Apply>();
 		myObject.setList(pager.getDataList());
 		myObject.setTotalPage(pager.getTotalPage());
@@ -255,6 +291,16 @@ public class StudentController {
 		String result1 = JSON.toJSONString(result);
 		ResponseUtils.renderJson(response,result1);
 	}		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

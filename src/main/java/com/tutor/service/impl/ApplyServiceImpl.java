@@ -1,19 +1,22 @@
 package com.tutor.service.impl;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.tutor.dao.ApplyMapper;
 import com.tutor.entity.Apply;
 import com.tutor.entity.ApplyExample;
 import com.tutor.entity.ApplyExample.Criteria;
 import com.tutor.entity.Requirement;
+import com.tutor.entity.Stuappraisal;
+import com.tutor.entity.Teaappraisal;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
+import com.tutor.service.StuAppraisalService;
+import com.tutor.service.TeaAppraisalService;
+
+
 
 /*
  * 订单申请模块
@@ -25,6 +28,10 @@ public class ApplyServiceImpl implements ApplyService {
 	ApplyMapper applyMapper;
 	@Autowired
 	RequirementService requirementService;
+	@Autowired
+	StuAppraisalService stuAppraisalService;
+	@Autowired
+	TeaAppraisalService teaAppraisalService;
 	
 	
 	/*
@@ -107,6 +114,15 @@ public class ApplyServiceImpl implements ApplyService {
 		//3、把apply.id为id的permission设置为1
 		apply.setPermission(1);
 		this.updateByPrimaryKeySelective(apply);
+		//4、 teaappraisal、stuapparisal添加订单评价
+		Teaappraisal teaappraisal = new Teaappraisal();
+		Stuappraisal stuappraisal = new Stuappraisal();
+		teaappraisal.setApplyid(id);
+		teaappraisal.setPermission(0);
+		stuappraisal.setApplyid(id);
+		stuappraisal.setPermission(0);
+		teaAppraisalService.addStuAppraisal(teaappraisal);
+		stuAppraisalService.addStuAppraisal(stuappraisal);
 		return 1;
 	}
 

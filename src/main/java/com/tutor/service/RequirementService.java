@@ -24,7 +24,7 @@ public interface RequirementService {
 	
 	int testPermission(HttpServletRequest request ,int requireId);
 	
-	List<Requirement> getRequirementByApply(Apply apply);
+	List<Requirement> getRequirementByApply(List<Apply> list);
 	
 	int cancelRequirement(int id);
 	

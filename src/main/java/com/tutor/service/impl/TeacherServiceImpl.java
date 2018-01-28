@@ -1,15 +1,18 @@
 package com.tutor.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tutor.dao.LoginMapper;
 import com.tutor.dao.TeacherMapper;
 import com.tutor.dto.Pager;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Login;
 import com.tutor.entity.Teacher;
 import com.tutor.entity.TeacherExample;
 import com.tutor.entity.TeacherExample.Criteria;
+import com.tutor.service.ApplyService;
 import com.tutor.service.TeacherService;
 
 /*
@@ -22,7 +25,8 @@ public class TeacherServiceImpl implements TeacherService {
 	TeacherMapper teacherMapper;
 	@Autowired
 	LoginMapper loginMapper;
-	
+	@Autowired
+	ApplyService applyService;
 	//添加教师
 	@Override
 	public int addTeacher(Teacher teacher) {
@@ -120,6 +124,16 @@ public class TeacherServiceImpl implements TeacherService {
 		login.setPassword(newPassword);
 		loginMapper.updateByPrimaryKey(login);
 		return 1;
+	}
+
+	//通过apply查询teacher
+	@Override
+	public List<Teacher> getTeachersByApply(List<Apply> list) {
+		List<Teacher> list2 = new ArrayList<Teacher>();
+		for(int i=0;i<list.size();i++){
+			list2.add(this.selectByPrimaryKey(list.get(i).getTeacherid()));
+		}
+		return list2;
 	}
 	
 	

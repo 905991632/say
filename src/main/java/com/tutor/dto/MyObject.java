@@ -1,4 +1,4 @@
-package com.tutor.entity;
+package com.tutor.dto;
 
 import java.util.List;
 

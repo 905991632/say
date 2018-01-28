@@ -68,12 +68,12 @@ function click_pageNum(pageNum){
 				$("#unfinish_tbody").text("");
 				$("#unfinish_nav_insert").text("");
 			}else{
+				$("#unfinish_tbody").text("");
 			$.each(list,function(i,item){
 				var tr_str = '<tr><td><a href="" >'+item.id+'</a>'
 				+'</td><td>'+item.course+'</td><td>'+ new Date(item.createtime).toLocaleString()
 				+'</td><td><a href="javascript:void(0);" onclick="lookup_apply('+item.id+')" class="label label-success">查看</a>'
 				+'<a href="javascript:void(0);" onclick="cancel_requirement('+item.id+')" class="label label-danger">取消</a></td></tr>';
-				$("#unfinish_tbody").text("");
 				$("#unfinish_tbody").append(tr_str);
 			});
 			var nav_str = add_nav(pageNum,totalPage);
@@ -140,11 +140,11 @@ function click_pageNum1(pageNum){
 				$("#finish_tbody").text("");
 				$("#finish_nav_insert").text("");
 			}else{
+				$("#finish_tbody").text("");
 			$.each(list,function(i,item){
 				var tr_str = '<tr><td><a href="">'+item.id+'</a>'
 				+'</td><td>'+item.course+'</td><td>'+new Date(item.createtime).toLocaleString()
 				+'</td></tr>';
-				$("#finish_tbody").text("");
 				$("#finish_tbody").append(tr_str);
 			});
 			var nav_str = add_nav1(pageNum,totalPage);
@@ -208,16 +208,15 @@ function click_pageNum1(pageNum){
 					$("#display_tbody").text("");
 					$("#display_nav_insert").text("");
 				}else{
+					$("#display_tbody").text("");
 				$.each(list,function(i,item){
 					var tr_str = '<tr><td><a href="">'+item.teacherid+'</a>'
 					+'</td><td>'+new Date(item.createtime).toLocaleString()+'</td>'
 					+'<td><a href="javascript:void(0);" onclick="accept_apply('+item.id+')" class="label label-success">接受</a> <a '
 					+'href="javascript:void(0);" onclick="reject_apply('+item.id+','+pageNum+','+requireid+')" '
 					+'class="label label-danger">拒绝</a></td></tr>';
-					$("#display_tbody").text("");
 					$("#display_tbody").append(tr_str);
-				}
-				);
+				});
 				var nav_str = add_nav2(pageNum,totalPage,requireid);
 				$("#display_nav_insert").text("");
 				$("#display_nav_insert").append(nav_str);

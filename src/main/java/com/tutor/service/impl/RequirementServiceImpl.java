@@ -131,9 +131,9 @@ public class RequirementServiceImpl implements RequirementService {
 		return 2;
 	}
 
+	//通过apply查询家教信息
 	@Override
-	public List<Requirement> getRequirementByApply(Apply apply) {
-		List<Apply> list = applyService.getAppliesByCondition(apply);
+	public List<Requirement> getRequirementByApply(List<Apply> list) {
 		List<Requirement> list2 = new ArrayList<Requirement>();
 		for(int i=0;i<list.size();i++){
 			list2.add(requirementMapper.selectByPrimaryKey(list.get(i).getRequireid()));

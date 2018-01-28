@@ -3,6 +3,7 @@ package com.tutor.service;
 import java.util.List;
 
 import com.tutor.dto.Pager;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Teacher;
 
 public interface TeacherService {
@@ -20,5 +21,7 @@ public interface TeacherService {
 	Pager<Teacher> getTeachers(List<Teacher> list,int pageNum,int pageSize);
 	
 	int alterPasswordById(int id,String oldPassword,String newPassword);
+	
+	List<Teacher> getTeachersByApply(List<Apply> list);
 	
 }

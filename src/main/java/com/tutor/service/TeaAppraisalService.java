@@ -1,6 +1,7 @@
 package com.tutor.service;
 
 import java.util.List;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Teaappraisal;;
 
 public interface TeaAppraisalService {
@@ -12,4 +13,10 @@ public interface TeaAppraisalService {
 	List<Teaappraisal> getStuappraisalsByCondition(Teaappraisal teaappraisal);
 	
 	Teaappraisal selectByPrimaryKey(int id);
+	
+	List<Teaappraisal> getTeaappraisalByApply(List<Apply> list);
+	
+	Teaappraisal getTeaappraisalByApplyid(int applyid);
+	
+	int toAppraisal(Teaappraisal teaappraisal);
 }

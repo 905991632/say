@@ -74,7 +74,7 @@
 							<a href="">我的预约</a>
 						</li>
 						<li>
-							<a href="">我的教师</a>
+							<a href="toStudent_myTeacher?pageNum=1">我的教师</a>
 						</li>
 						<li>
 							<a href="">我的评价</a>

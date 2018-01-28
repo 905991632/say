@@ -1,16 +1,26 @@
 package com.tutor.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tutor.dao.LoginMapper;
 import com.tutor.dao.StudentMapper;
+import com.tutor.dto.MyTeacher;
+import com.tutor.entity.Apply;
 import com.tutor.entity.Login;
+import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
 import com.tutor.entity.StudentExample;
+import com.tutor.entity.Teaappraisal;
+import com.tutor.entity.Teacher;
 import com.tutor.entity.StudentExample.Criteria;
+import com.tutor.service.ApplyService;
+import com.tutor.service.RequirementService;
 import com.tutor.service.StudentService;
+import com.tutor.service.TeaAppraisalService;
+import com.tutor.service.TeacherService;
 
 /*
  * 学生个人信息模块
@@ -22,7 +32,14 @@ public class StudentServiceImpl implements StudentService {
 	StudentMapper studentMapper;
 	@Autowired
 	LoginMapper loginMapper;
-	
+	@Autowired
+	ApplyService applyService;
+	@Autowired
+	TeacherService teacherService;
+	@Autowired
+	TeaAppraisalService teaAppraisalService;
+	@Autowired
+	RequirementService requirementService;
 	/*
 	 *	添加学生
 	 * 	return 成功返回1
@@ -109,6 +126,21 @@ public class StudentServiceImpl implements StudentService {
 		login.setPassword(newPassword);
 		loginMapper.updateByPrimaryKey(login);
 		return 1;
+	}
+
+	//通过apply获取我的学生
+	@Override
+	public List<MyTeacher> getMyTeachersByApply(Apply apply) {
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		List<Requirement> requirementList = requirementService.getRequirementByApply(list);
+		List<Teacher> teacherList = teacherService.getTeachersByApply(list);
+		List<Teaappraisal> teaappraisalList = teaAppraisalService.getTeaappraisalByApply(list);
+		List<MyTeacher> myTeachers = new ArrayList<MyTeacher>();
+		for(int i = 0;i<teacherList.size();i++){
+			MyTeacher myTeacher = new MyTeacher(teacherList.get(i), requirementList.get(i), teaappraisalList.get(i),list.get(i));
+			myTeachers.add(myTeacher);
+		}
+		return myTeachers;
 	}
 
 	
