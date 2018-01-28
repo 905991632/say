@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/teacher.js"></script>
+<script type="text/javascript" src="js/student_appraisal.js"></script>
 </head>
 <body style="overflow-y: scroll;">
 	<div class="theTop">
@@ -89,35 +89,18 @@
 							<tr>
 								<th style="text-align: center;">教师编号</th>
 								<th style="text-align: center;">评价内容</th>
-								<th
-									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
-								<th
-									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+								<th style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
+								<th style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									Tanmay</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-								</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
-							</tr>
-							<tr>
-								<td>Uma</td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td>560001</td>
-							</tr>
+						<tbody style="text-align: center;" id="appraisalMe">
+							
 						</tbody>
 					</table>
+					<div id="appraisalMe_nav">
+					
+					</div>
+					
 				</div>
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
@@ -132,29 +115,11 @@
 									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-							</tr>
-							<tr>
-								<td>Uma</td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td>560001</td>
-							</tr>
+						<tbody style="text-align: center;" id="myAppraisal">
 						</tbody>
 					</table>
+					<div id="myAppraisal_nav">
+					</div>
 				</div>
 
 			</div>

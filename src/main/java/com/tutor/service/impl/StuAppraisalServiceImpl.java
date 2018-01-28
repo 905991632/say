@@ -55,6 +55,12 @@ public class StuAppraisalServiceImpl implements StuAppraisalService {
 		if(stuappraisal.getApplyid()!=null){
 			criteria.andApplyidEqualTo(stuappraisal.getApplyid());
 		}
+		if(stuappraisal.getStudentid()!=null){
+			criteria.andStudentidEqualTo(stuappraisal.getStudentid());
+		}
+		if(stuappraisal.getTeacherid()!=null){
+			criteria.andTeacheridEqualTo(stuappraisal.getTeacherid());
+		}
 /*		if(stuappraisal.getContent()!=null){
 			criteria.andContentEqualTo(stuappraisal.getContent());
 		}

@@ -49,11 +49,17 @@ public class TeaAppraisalServiceImpl implements TeaAppraisalService {
 	 * 	返回学生评论教师实体列表
 	 */
 	@Override
-	public List<Teaappraisal> getStuappraisalsByCondition(Teaappraisal teaappraisal) {
+	public List<Teaappraisal> getTeaappraisalsByCondition(Teaappraisal teaappraisal) {
 		TeaappraisalExample example = new TeaappraisalExample();
 		Criteria criteria = example.createCriteria();
 		if(teaappraisal.getApplyid()!=null){
 			criteria.andApplyidEqualTo(teaappraisal.getApplyid());
+		}
+		if(teaappraisal.getStudentid()!=null){
+			criteria.andStudentidEqualTo(teaappraisal.getStudentid());
+		}
+		if(teaappraisal.getTeacherid()!=null){
+			criteria.andTeacheridEqualTo(teaappraisal.getTeacherid());
 		}
 		/*if(teaappraisal.getContent()!=null){
 			criteria.andContentEqualTo(teaappraisal.getContent());

@@ -20,10 +20,12 @@ import com.tutor.dto.Pager;
 import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Requirement;
+import com.tutor.entity.Stuappraisal;
 import com.tutor.entity.Student;
 import com.tutor.entity.Teaappraisal;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
+import com.tutor.service.StuAppraisalService;
 import com.tutor.service.StudentService;
 import com.tutor.service.TeaAppraisalService;
 import com.tutor.service.TeacherService;
@@ -41,6 +43,8 @@ public class StudentController {
 	TeacherService teacherService;
 	@Autowired
 	TeaAppraisalService teaAppraisalService;
+	@Autowired
+	StuAppraisalService stuAppraisalService;
 	
 	//前往发布订单需求页面
 	@RequestMapping(value="/toStudent_requirement")
@@ -118,6 +122,7 @@ public class StudentController {
 		return "student_myTeacher";
 	}
 	
+	//评价老师
 	@RequestMapping(value = "appraisalTeacher")
 	public String appraisalTeacher(Teaappraisal teaappraisal ,HttpServletRequest request, ModelMap modelMap) {
 		int applyid = teaappraisal.getApplyid();
@@ -292,8 +297,39 @@ public class StudentController {
 		ResponseUtils.renderJson(response,result1);
 	}		
 	
+	//student_appraisal页面ajax请求评价我的
+	@RequestMapping(value = "/student_appraisal_ajax_appraisalMe")
+	public void student_appraisal_ajax_appraisalMe(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Stuappraisal stuappraisal = new Stuappraisal();
+		stuappraisal.setStudentid(studentid);
+		stuappraisal.setPermission(1);
+		List<Stuappraisal> list = stuAppraisalService.getStuappraisalsByCondition(stuappraisal);
+		Pager<Stuappraisal> pager = new Pager<Stuappraisal>(pageNum, 1, list);
+		MyObject<Stuappraisal> myObject = new MyObject<Stuappraisal>();
+		myObject.setTotalPage(pager.getTotalPage());
+		myObject.setList(pager.getDataList());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}
 	
-	
+	//student_appraisal页面ajax请求我的评价
+	@RequestMapping(value = "/student_appraisal_ajax_myAppraisal")
+	public void student_appraisal_ajax_myAppraisal(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Teaappraisal teaappraisal = new Teaappraisal();
+		teaappraisal.setStudentid(studentid);
+		teaappraisal.setPermission(1);
+		List<Teaappraisal> list = teaAppraisalService.getTeaappraisalsByCondition(teaappraisal);
+		Pager<Teaappraisal> pager = new Pager<Teaappraisal>(pageNum, 1, list);
+		MyObject<Teaappraisal> myObject = new MyObject<Teaappraisal>();
+		myObject.setTotalPage(pager.getTotalPage());
+		myObject.setList(pager.getDataList());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}
 	
 	
 	

@@ -77,7 +77,7 @@
 							<a href="toStudent_myTeacher?pageNum=1">我的教师</a>
 						</li>
 						<li>
-							<a href="">我的评价</a>
+							<a href="toStudent_appraisal">我的评价</a>
 						</li>
 					</ul>
 					<div class="left_div_img2"></div>

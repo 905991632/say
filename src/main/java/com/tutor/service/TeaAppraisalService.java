@@ -10,7 +10,7 @@ public interface TeaAppraisalService {
 	
 	int updateByPrimaryKeySelective(Teaappraisal teaappraisal);
 	
-	List<Teaappraisal> getStuappraisalsByCondition(Teaappraisal teaappraisal);
+	List<Teaappraisal> getTeaappraisalsByCondition(Teaappraisal teaappraisal);
 	
 	Teaappraisal selectByPrimaryKey(int id);
 	

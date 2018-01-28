@@ -119,8 +119,12 @@ public class ApplyServiceImpl implements ApplyService {
 		Stuappraisal stuappraisal = new Stuappraisal();
 		teaappraisal.setApplyid(id);
 		teaappraisal.setPermission(0);
+		teaappraisal.setStudentid(apply.getStudentid());
+		teaappraisal.setTeacherid(apply.getTeacherid());
 		stuappraisal.setApplyid(id);
 		stuappraisal.setPermission(0);
+		stuappraisal.setStudentid(apply.getStudentid());
+		stuappraisal.setTeacherid(apply.getTeacherid());
 		teaAppraisalService.addStuAppraisal(teaappraisal);
 		stuAppraisalService.addStuAppraisal(stuappraisal);
 		return 1;

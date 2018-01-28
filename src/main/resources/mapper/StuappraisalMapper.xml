@@ -4,6 +4,8 @@
   <resultMap id="BaseResultMap" type="com.tutor.entity.Stuappraisal">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="applyId" jdbcType="INTEGER" property="applyid" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="score" jdbcType="INTEGER" property="score" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, applyId, content, score, createTime, permission
+    id, applyId, studentid, teacherid, content, score, createTime, permission
   </sql>
   <select id="selectByExample" parameterType="com.tutor.entity.StuappraisalExample" resultMap="BaseResultMap">
     select
@@ -101,12 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.tutor.entity.Stuappraisal">
-    insert into stuappraisal (id, applyId, content, 
-      score, createTime, permission
-      )
-    values (#{id,jdbcType=INTEGER}, #{applyid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{score,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{permission,jdbcType=INTEGER}
-      )
+    insert into stuappraisal (id, applyId, studentid, 
+      teacherid, content, score, 
+      createTime, permission)
+    values (#{id,jdbcType=INTEGER}, #{applyid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, 
+      #{teacherid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{permission,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.tutor.entity.Stuappraisal">
     insert into stuappraisal
@@ -116,6 +118,12 @@
       </if>
       <if test="applyid != null">
         applyId,
+      </if>
+      <if test="studentid != null">
+        studentid,
+      </if>
+      <if test="teacherid != null">
+        teacherid,
       </if>
       <if test="content != null">
         content,
@@ -136,6 +144,12 @@
       </if>
       <if test="applyid != null">
         #{applyid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="teacherid != null">
+        #{teacherid,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
@@ -166,6 +180,12 @@
       <if test="record.applyid != null">
         applyId = #{record.applyid,jdbcType=INTEGER},
       </if>
+      <if test="record.studentid != null">
+        studentid = #{record.studentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherid != null">
+        teacherid = #{record.teacherid,jdbcType=INTEGER},
+      </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
@@ -187,6 +207,8 @@
     update stuappraisal
     set id = #{record.id,jdbcType=INTEGER},
       applyId = #{record.applyid,jdbcType=INTEGER},
+      studentid = #{record.studentid,jdbcType=INTEGER},
+      teacherid = #{record.teacherid,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
       score = #{record.score,jdbcType=INTEGER},
       createTime = #{record.createtime,jdbcType=TIMESTAMP},
@@ -200,6 +222,12 @@
     <set>
       <if test="applyid != null">
         applyId = #{applyid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null">
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="teacherid != null">
+        teacherid = #{teacherid,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
@@ -219,6 +247,8 @@
   <update id="updateByPrimaryKey" parameterType="com.tutor.entity.Stuappraisal">
     update stuappraisal
     set applyId = #{applyid,jdbcType=INTEGER},
+      studentid = #{studentid,jdbcType=INTEGER},
+      teacherid = #{teacherid,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       score = #{score,jdbcType=INTEGER},
       createTime = #{createtime,jdbcType=TIMESTAMP},
