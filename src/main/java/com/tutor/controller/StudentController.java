@@ -306,7 +306,7 @@ public class StudentController {
 		stuappraisal.setStudentid(studentid);
 		stuappraisal.setPermission(1);
 		List<Stuappraisal> list = stuAppraisalService.getStuappraisalsByCondition(stuappraisal);
-		Pager<Stuappraisal> pager = new Pager<Stuappraisal>(pageNum, 1, list);
+		Pager<Stuappraisal> pager = new Pager<Stuappraisal>(pageNum, 8, list);
 		MyObject<Stuappraisal> myObject = new MyObject<Stuappraisal>();
 		myObject.setTotalPage(pager.getTotalPage());
 		myObject.setList(pager.getDataList());
@@ -323,7 +323,7 @@ public class StudentController {
 		teaappraisal.setStudentid(studentid);
 		teaappraisal.setPermission(1);
 		List<Teaappraisal> list = teaAppraisalService.getTeaappraisalsByCondition(teaappraisal);
-		Pager<Teaappraisal> pager = new Pager<Teaappraisal>(pageNum, 1, list);
+		Pager<Teaappraisal> pager = new Pager<Teaappraisal>(pageNum, 8, list);
 		MyObject<Teaappraisal> myObject = new MyObject<Teaappraisal>();
 		myObject.setTotalPage(pager.getTotalPage());
 		myObject.setList(pager.getDataList());

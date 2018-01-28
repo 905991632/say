@@ -1,17 +1,15 @@
 package com.tutor.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.tutor.dto.MyselfUtils;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Teacher;
+import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.TeacherService;
 
@@ -20,10 +18,10 @@ public class PageController {
 
 	@Autowired
 	TeacherService teacherService;
-	
 	@Autowired
 	RequirementService requirementService;
-	
+	@Autowired
+	ApplyService applyService;
 	
 	//前往个人中心
 	@RequestMapping(value="toPersonal")
@@ -86,5 +84,9 @@ public class PageController {
 			model.addAttribute("photoList", photoList);
 			return "index";
 	}
+	
+
+	
+	
 	
 }

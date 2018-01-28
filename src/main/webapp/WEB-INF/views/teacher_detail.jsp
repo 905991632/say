@@ -20,7 +20,11 @@
 
 
 <body style="overflow-y: scroll;">
-
+<script>
+	if('${message}'!=""){
+	alert('${message}');
+	}
+</script>
 	<div class="theTop">
 		<div class="theTop_div1">
 			<a href="">亲,请登录</a> <a href="">免费注册</a>
@@ -63,9 +67,16 @@
 			<div class="teacher_info_div">
 				<div class="teacher_info_div_left">
 					<img src="${teacher.photo}" />
-					<div>
-						<a href="">预约教师</a>
-					</div>
+					<c:choose>
+						<c:when test="${USER_TYPE=='教师' }">
+						
+						</c:when>
+						<c:otherwise>
+							<div>
+								<a href="toMakeOrder?teacherid=${teacher.id}">预约教师</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="teacher_info_div_right">
 					<div class="teacher_info_div_right_top">

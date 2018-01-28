@@ -88,7 +88,7 @@
 							<tr>
 								<th style="text-align: center;">订单号</th>
 								<th style="text-align: center;">辅导科目</th>
-								<th style="text-align: center;">预约教师</th>
+								<th style="text-align: center;">教师编号</th>
 								<th style="text-align: center;">时间</th>
 								<th style="text-align: center;">操作</th>
 							</tr>
@@ -122,7 +122,6 @@
 							<tr>
 								<th style="text-align: center;">订单号</th>
 								<th style="text-align: center;">辅导科目</th>
-								<th style="text-align: center;">预约教师</th>
 								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
@@ -130,13 +129,11 @@
 							<tr>
 								<td>123</td>
 								<td>Bangalore</td>
-								<td>Bangalore</td>
 								<td>2018-01-19 10：34：30</td>
 							</tr>
 							<tr>
 								<td>456</td>
 								<td>Pune</td>
-								<td>Bangalore</td>
 								<td>411027</td>
 							</tr>
 						</tbody>

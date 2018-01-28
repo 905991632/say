@@ -1,6 +1,7 @@
 package com.tutor.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tutor.dto.MyselfUtils;
+import com.tutor.entity.Apply;
+import com.tutor.entity.Requirement;
 import com.tutor.entity.Teacher;
+import com.tutor.service.ApplyService;
+import com.tutor.service.RequirementService;
 import com.tutor.service.TeacherService;
 
 @Controller
@@ -21,6 +26,10 @@ public class TeacherController {
 
 	@Autowired
 	TeacherService teacherService;
+	@Autowired
+	RequirementService requirementService;
+	@Autowired
+	ApplyService applyService;
 	
 	// 前往老师订单页面
 	@RequestMapping(value = "toTeacher_myRequirement")
@@ -107,6 +116,9 @@ public class TeacherController {
 	// 前往老师订单页面
 	@RequestMapping(value = "toTeacher_detail")
 	public String toTeacher_detail(int id,HttpServletRequest request, ModelMap modelMap) {
+		if(request.getParameter("message")!=null){
+			modelMap.addAttribute("message","预约成功，请等待接受");
+		}
 		modelMap.addAttribute("teacher", teacherService.selectByPrimaryKey(id));
 		return "teacher_detail";
 	}
@@ -132,5 +144,41 @@ public class TeacherController {
 		}
 		modelMap.addAttribute("message", msg);
 		return "teacher_index";
-	}	
+	}
+	
+	//前往预约教师页面
+	@RequestMapping(value = "/toMakeOrder")
+	public String toMakeOrder(HttpServletRequest request, ModelMap model) {
+		if(((String)request.getSession().getAttribute("USER_TYPE")).equals("教师")){
+			return "Login";
+		}
+		int teacherid = Integer.parseInt(request.getParameter("teacherid")); 
+		model.addAttribute("teacherid", teacherid);
+		return "makeOrder";
+	}
+	
+	//预约教师
+	@RequestMapping(value = "/makeOrder")
+	public String makeOrder(Requirement requirement , HttpServletRequest request, ModelMap model) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
+		int teacherid = Integer.parseInt(request.getParameter("teacherid")); 
+		int studentid =(int)request.getSession().getAttribute("USER_ID"); 
+		requirement.setCreatetime(new Date());
+		int result = requirementService.addRequire(requirement);
+		int requireid = requirement.getId();
+		Apply apply = new Apply();
+		apply.setRequireid(requireid);
+		apply.setPermission(0);
+		apply.setStudentid(studentid);
+		apply.setTeacherid(teacherid);
+		apply.setType("预约");
+		apply.setCreatetime(new Date());
+		applyService.addApply(apply);
+		model.addAttribute("message", "预约成功，请等待接受");
+		return "redirect:toTeacher_detail?id="+teacherid;
+	}
+	
+	
 }
