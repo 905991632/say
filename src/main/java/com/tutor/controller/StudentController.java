@@ -90,14 +90,14 @@ public class StudentController {
 		}
 		if(!file.getOriginalFilename().equals("")){
 			String fileName=UUID.randomUUID() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			String filePath=request.getSession().getServletContext().getRealPath("/")+"images/";
+			String filePath=request.getSession().getServletContext().getRealPath("/")+"images/student/photo/";
 			File targetFile = new File(filePath, fileName);
 			try {
                 file.transferTo(targetFile); // 传送 失败就抛异常
             } catch (Exception e) {
                 e.printStackTrace();
             }
-			student.setPhoto("images/"+fileName);
+			student.setPhoto("images/student/photo/"+fileName);
 		}
 		if(studentService.updateByPrimaryKeySelective(student)!=1){
 			modelMap.addAttribute("message", "修改信息失败");
@@ -182,29 +182,6 @@ public class StudentController {
 		if(MyselfUtils.isLogin(request)!= null){
 			return "Login";
 		}
-		int studentid = (int)request.getSession().getAttribute("USER_ID");
-		
-		//未完成订单
-		Requirement requirement = new Requirement();
-		requirement.setStudentid(studentid);
-		requirement.setPermission(0);
-		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, 1, 8);
-		
-		//已完成的订单
-		Apply apply = new Apply();
-		apply.setStudentid(studentid);
-		apply.setPermission(3);
-		List<Apply> list = applyService.getAppliesByCondition(apply);
-		List<Requirement> list2 = requirementService.getRequirementByApply(list);
-		Pager<Requirement> Requirementspager2 = requirementService.getRequirements(list2, 1, 8);
-		
-		modelMap.addAttribute("unfinish", Requirementspager1.getDataList());
-		modelMap.addAttribute("unfinish_pageNum", 1);
-		modelMap.addAttribute("unfinish_totalPage", Requirementspager1.getTotalPage());
-		modelMap.addAttribute("finish", Requirementspager2.getDataList());
-		modelMap.addAttribute("finish_pageNum", 1);
-		modelMap.addAttribute("finish_totalPage", Requirementspager2.getTotalPage());
 		return "student_myRequirement";
 	}
 	
@@ -331,12 +308,51 @@ public class StudentController {
 		ResponseUtils.renderJson(response,result);
 	}
 	
+	//student_myOrder页面ajax请求预约中
+	@RequestMapping(value = "/student_myOrder_ajax_order")
+	public void student_myOrder_ajax_order(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setType("预约");
+		apply.setPermission(0);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		Pager<Apply> pager = new Pager<Apply>(pageNum, 8, list);
+		MyObject<Apply> myObject = new MyObject<Apply>();
+		myObject.setList(pager.getDataList());
+		myObject.setTotalPage(pager.getTotalPage());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}	
 	
+	//student_myOrder页面ajax请求未通过
+	@RequestMapping(value = "/student_myOrder_ajax_reject")
+	public void student_myOrder_ajax_reject(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		int studentid = (int)request.getSession().getAttribute("USER_ID");
+		Apply apply = new Apply();
+		apply.setStudentid(studentid);
+		apply.setType("预约");
+		apply.setPermission(2);
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		Pager<Apply> pager = new Pager<Apply>(pageNum, 8, list);
+		MyObject<Apply> myObject = new MyObject<Apply>();
+		myObject.setList(pager.getDataList());
+		myObject.setTotalPage(pager.getTotalPage());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}
 	
-	
-	
-	
-	
+	//student_myOrder页面ajax取消预约
+	@RequestMapping(value = "/student_myOrder_ajax_cancel")
+	public void student_myOrder_ajax_cancel(int id,HttpServletRequest request, HttpServletResponse response) {
+		Apply apply = new Apply();
+		apply.setId(id);
+		apply.setPermission(2);
+		int result = applyService.updateByPrimaryKeySelective(apply);
+		ResponseUtils.renderJson(response,JSON.toJSONString(result));
+	}
 	
 	
 }

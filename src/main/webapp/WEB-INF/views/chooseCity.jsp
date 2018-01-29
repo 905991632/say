@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>家教平台系统</title>
 
 <link href="css/chooseCity.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/area.js"></script>
 <script src="js/select.js"></script>
 </head>

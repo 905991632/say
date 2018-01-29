@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/teacher.js"></script>
   </head>
 	<body style="overflow-y: scroll;">

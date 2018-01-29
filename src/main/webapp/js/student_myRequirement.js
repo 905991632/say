@@ -2,7 +2,9 @@ $(document).ready(function(){
 	$("#bottom_unfinished").css("border-bottom","2px solid #ff8000");
 	$("#div_finished").css("display","none");
 	$("#div_apply").css("display","none");
+	click_pageNum(1);
 	$("#bottom_unfinished").click(function(){
+		click_pageNum(1);
 		$("#bottom_unfinished").css("border-bottom","2px solid #ff8000");
 		$("#bottom_finished").css("border-bottom","");
 		$("#div_unfinished").css("display","");
@@ -10,6 +12,7 @@ $(document).ready(function(){
 		$("#div_apply").css("display","none");
 	});
 	$("#bottom_finished").click(function(){
+		click_pageNum1(1);
 		$("#bottom_finished").css("border-bottom","2px solid #ff8000");
 		$("#bottom_unfinished").css("border-bottom","");
 		$("#div_finished").css("display","");
@@ -40,7 +43,7 @@ function accept_apply(applyid){
 	}
 }
 
-//查看的点击按钮事件
+//取消的点击按钮事件
 function cancel_requirement(requireid){
 	var r=confirm("一但取消家教信息将无法恢复，确定取消？")
 	if (r==true){
@@ -70,7 +73,7 @@ function click_pageNum(pageNum){
 			}else{
 				$("#unfinish_tbody").text("");
 			$.each(list,function(i,item){
-				var tr_str = '<tr><td><a href="" >'+item.id+'</a>'
+				var tr_str = '<tr><td><a href="toRequirement_info?id='+item.id+'" target="_blank">'+item.id+'</a>'
 				+'</td><td>'+item.course+'</td><td>'+ new Date(item.createtime).toLocaleString()
 				+'</td><td><a href="javascript:void(0);" onclick="lookup_apply('+item.id+')" class="label label-success">查看</a>'
 				+'<a href="javascript:void(0);" onclick="cancel_requirement('+item.id+')" class="label label-danger">取消</a></td></tr>';
@@ -85,6 +88,9 @@ function click_pageNum(pageNum){
 }
 
 function add_nav(pageNum,totalPage){
+	if(pageNum>totalPage){
+		pageNum=pageNum-1;
+	}
 	var nav_str;
 		nav_str='<nav class="cbp-spmenu-right bbbb">'
 				+'<ul class="pagination">';
@@ -142,7 +148,7 @@ function click_pageNum1(pageNum){
 			}else{
 				$("#finish_tbody").text("");
 			$.each(list,function(i,item){
-				var tr_str = '<tr><td><a href="">'+item.id+'</a>'
+				var tr_str = '<tr><td><a href="toRequirement_info?id='+item.id+'" target="_blank">'+item.id+'</a>'
 				+'</td><td>'+item.course+'</td><td>'+new Date(item.createtime).toLocaleString()
 				+'</td></tr>';
 				$("#finish_tbody").append(tr_str);
@@ -155,6 +161,9 @@ function click_pageNum1(pageNum){
 	});}
 	
 	function add_nav1(pageNum,totalPage){
+		if(pageNum>totalPage){
+			pageNum=pageNum-1;
+		}
 		var nav_str;
 			nav_str='<nav class="cbp-spmenu-right bbbb">'
 					+'<ul class="pagination">';
@@ -210,7 +219,7 @@ function click_pageNum1(pageNum){
 				}else{
 					$("#display_tbody").text("");
 				$.each(list,function(i,item){
-					var tr_str = '<tr><td><a href="">'+item.teacherid+'</a>'
+					var tr_str = '<tr><td><a href="toTeacher_detail?id='+item.teacherid+'" target="_blank">'+item.teacherid+'</a>'
 					+'</td><td>'+new Date(item.createtime).toLocaleString()+'</td>'
 					+'<td><a href="javascript:void(0);" onclick="accept_apply('+item.id+')" class="label label-success">接受</a> <a '
 					+'href="javascript:void(0);" onclick="reject_apply('+item.id+','+pageNum+','+requireid+')" '
@@ -224,6 +233,9 @@ function click_pageNum1(pageNum){
 		});}	
 	
 	function add_nav2(pageNum,totalPage,requireid){
+		if(pageNum>totalPage){
+			pageNum=pageNum-1;
+		}
 		var nav_str;
 			nav_str='<nav class="cbp-spmenu-right bbbb">'
 					+'<ul class="pagination">';

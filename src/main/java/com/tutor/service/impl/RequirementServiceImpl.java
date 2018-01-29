@@ -1,25 +1,23 @@
 package com.tutor.service.impl;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.tutor.dao.ApplyMapper;
 import com.tutor.dao.RequirementMapper;
 import com.tutor.dao.StudentMapper;
 import com.tutor.dto.Pager;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.RequirementExample;
+import com.tutor.entity.Stuappraisal;
+import com.tutor.entity.Teaappraisal;
 import com.tutor.entity.RequirementExample.Criteria;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
+import com.tutor.service.StuAppraisalService;
+import com.tutor.service.TeaAppraisalService;
 
 /*
  *  订单需求模块
@@ -29,13 +27,14 @@ public class RequirementServiceImpl implements RequirementService {
 
 	@Autowired
 	RequirementMapper requirementMapper;
-
 	@Autowired
 	StudentMapper studentMapper;
-	
 	@Autowired
 	ApplyService applyService;
-	
+	@Autowired
+	StuAppraisalService stuAppraisalService;
+	@Autowired
+	TeaAppraisalService teaAppraisalService;
 	
 	/*
 	 * 添加订单需求 返回1
@@ -125,7 +124,13 @@ public class RequirementServiceImpl implements RequirementService {
 		apply.setType("订单");
 		apply.setTeacherid(userId);
 		List<Apply> list = applyService.getAppliesByCondition(apply);
-		if(list.size()<1){
+		Apply apply1 = new Apply();
+		apply1.setPermission(0);
+		apply1.setRequireid(requireId);
+		apply1.setType("预约");
+		apply1.setTeacherid(userId);
+		List<Apply> list1 = applyService.getAppliesByCondition(apply1);
+		if(list.size()<1 && list1.size()<1){
 			return 1;
 		}
 		return 2;
@@ -158,6 +163,49 @@ public class RequirementServiceImpl implements RequirementService {
 			applyService.updateByPrimaryKeySelective(list.get(i));
 		}
 		return 1;
+	}
+
+	@Override
+	public int acceptRequirement(int teacherid,int requireid) {
+		Apply apply = new Apply();
+		apply.setRequireid(requireid);
+		apply.setTeacherid(teacherid);
+		apply.setPermission(0);
+		apply.setType("预约");
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		int applyid = list.get(0).getId();
+		apply.setId(applyid);
+		apply.setPermission(1);
+		int result = applyService.updateByPrimaryKeySelective(apply);
+		apply = list.get(0);
+		Teaappraisal teaappraisal = new Teaappraisal();
+		Stuappraisal stuappraisal = new Stuappraisal();
+		teaappraisal.setApplyid(applyid);
+		teaappraisal.setPermission(0);
+		teaappraisal.setStudentid(apply.getStudentid());
+		teaappraisal.setTeacherid(apply.getTeacherid());
+		stuappraisal.setApplyid(applyid);
+		stuappraisal.setPermission(0);
+		stuappraisal.setStudentid(apply.getStudentid());
+		stuappraisal.setTeacherid(apply.getTeacherid());
+		teaAppraisalService.addStuAppraisal(teaappraisal);
+		stuAppraisalService.addStuAppraisal(stuappraisal);
+		
+		return result;
+	}
+
+	@Override
+	public int rejectRequirement(int teacherid, int requireid) {
+		Apply apply = new Apply();
+		apply.setRequireid(requireid);
+		apply.setTeacherid(teacherid);
+		apply.setPermission(0);
+		apply.setType("预约");
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		apply.setId(list.get(0).getId());
+		apply.setPermission(2);
+		int result = applyService.updateByPrimaryKeySelective(apply);
+		return result;
 	}
 
 	

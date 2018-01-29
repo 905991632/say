@@ -14,7 +14,8 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/teacher_myOrder.js"></script>
 </head>
 <body style="overflow-y: scroll;">
 
@@ -89,31 +90,15 @@
 								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
-								<td>
-									<a href="" class="label label-success">接受</a>
-									<a href="" class="label label-danger">拒绝</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="">456</a></td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td>
-									<a href="" class="label label-success">接受</a>
-									<a href="" class="label label-danger">拒绝</a>
-								</td>
-							</tr>
+						<tbody style="text-align: center;" id="order_tbody">
+							
+
 						</tbody>
 					</table>
+					<div id="order_nav">
+					
+					</div>
 				</div>
-
-				
-
 
 			</div>
 		</div>

@@ -28,4 +28,8 @@ public interface RequirementService {
 	
 	int cancelRequirement(int id);
 	
+	int acceptRequirement(int teacherid,int requireid);
+	
+	int rejectRequirement(int teacherid,int requireid);
+	
 }

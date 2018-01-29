@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -13,8 +13,8 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="js/student_myRequirement.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/student_myOrder.js"></script>
 </head>
 <body style="overflow-y: scroll;">
 
@@ -82,38 +82,24 @@
 						name="bottom_record">预约中</a> <a href="javascript:void(0);"
 						id="bottom_finished" name="bottom_appraisal">未通过</a>
 				</div>
+				
 				<div class="right_div_div2_div2" id="div_unfinished">
 					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th style="text-align: center;">订单号</th>
-								<th style="text-align: center;">辅导科目</th>
 								<th style="text-align: center;">教师编号</th>
 								<th style="text-align: center;">时间</th>
 								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
-								<td> 
-									<a onclick="delete_requirement(115);" class="label label-danger">取消</a>
-								</td>
-							</tr>
-							<tr>
-								<td><a href="">456</a></td>
-								<td>Pune</td>
-								<td>Bangalore</td>
-								<td>411027</td>
-								<td>
-									<a onclick="delete_requirement(115);" class="label label-danger">取消</a>
-								</td>
-							</tr>
+						<tbody style="text-align: center;" id="order_tbody">
+						
 						</tbody>
 					</table>
+					<div id="order_nav">
+					
+					</div>
 				</div>
 
 				<div class="right_div_div2_div2" id="div_finished">
@@ -121,23 +107,15 @@
 						<thead>
 							<tr>
 								<th style="text-align: center;">订单号</th>
-								<th style="text-align: center;">辅导科目</th>
 								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td>123</td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
-							</tr>
-							<tr>
-								<td>456</td>
-								<td>Pune</td>
-								<td>411027</td>
-							</tr>
+						<tbody style="text-align: center;" id="reject_tbody">
+						
 						</tbody>
 					</table>
+					<div id="reject_nav">
+					</div>
 				</div>
 			</div>
 		</div>

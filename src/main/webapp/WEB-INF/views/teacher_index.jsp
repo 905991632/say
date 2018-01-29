@@ -12,7 +12,7 @@
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
-		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
   </head>
 	<body style="overflow-y: scroll;">
 	<script>
@@ -65,10 +65,10 @@
 					<div class="left_div_img1"></div>
 					<ul>
 						<li>
-							<a href="">我的订单</a>
+							<a href="toTeacher_myRequirement">我的订单</a>
 						</li>
 						<li>
-							<a href="">我的预约</a>
+							<a href="toTeacher_myOrder">我的预约</a>
 						</li>
 						<li>
 							<a href="">我的学生</a>

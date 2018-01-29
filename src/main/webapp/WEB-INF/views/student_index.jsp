@@ -12,7 +12,7 @@
     <base href="<%=basePath%>">
     <title>家教平台系统</title>
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
-		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
   </head>
 	<body style="overflow-y: scroll;">
 	<script>
@@ -53,7 +53,7 @@
 		<!-- 当前位置 -->
 		<div class="nowplace">
 			<div>&nbsp;当前位置:&nbsp;
-				<a href="">首页</a>
+				<a href="index">首页</a>
 				<span> > 学生中心</span>
 			</div>
 		</div>
@@ -71,7 +71,7 @@
 							<a href="toStudent_myRequirement">我的订单</a>
 						</li>
 						<li>
-							<a href="">我的预约</a>
+							<a href="toStudent_myOrder">我的预约</a>
 						</li>
 						<li>
 							<a href="toStudent_myTeacher?pageNum=1">我的教师</a>

@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/teacher_myRequirement.js"></script>
 </head>
 <body style="overflow-y: scroll;">
@@ -50,7 +50,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师中心</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">教师中心</a>
 			<span> > 我的订单</span>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li><a href="">我的订单</a></li>
+					<li><a href="toTeacher_myRequirement">我的订单</a></li>
 					<li><a href="">我的预约</a></li>
 					<li><a href="">我的学生</a></li>
 					<li><a href="">我的评价</a></li>
@@ -94,21 +94,12 @@
 								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>2018-01-19 10：34：30</td>
-								<td><a href="" class="label label-danger">取消</a></td>
-							</tr>
-							<tr>
-								<td><a href="">456</a></td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td><a href="" class="label label-danger">取消</a></td>
-							</tr>
+						<tbody style="text-align: center;" id="check_tbody">
+						
 						</tbody>
 					</table>
+					<div id="check_nav">
+					</div>
 				</div>
 
 				<div class="right_div_div2_div2" id="bottom_2_div">
@@ -120,19 +111,12 @@
 								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td>123</td>
-								<td>Bangalore</td>
-								<td>2Bangalore</td>
-							</tr>
-							<tr>
-								<td>456</td>
-								<td>Pune</td>
-								<td>411027</td>
-							</tr>
+						<tbody style="text-align: center;" id="reject_tbody">
+						
 						</tbody>
 					</table>
+					<div id="reject_nav">
+					</div>
 				</div>
 
 
@@ -145,19 +129,11 @@
 								<th style="text-align: center;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td>123</td>
-								<td>Bangalore</td>
-								<td>2018-01-19</td>
-							</tr>
-							<tr>
-								<td>456</td>
-								<td>Pune</td>
-								<td>411027</td>
-							</tr>
+						<tbody style="text-align: center;" id="finish_tbody">
+						
 						</tbody>
 					</table>
+					<div id="finish_nav"></div>
 				</div>
 
 

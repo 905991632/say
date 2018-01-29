@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>家教平台系统</title>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/index.js"></script>
 </head>
 

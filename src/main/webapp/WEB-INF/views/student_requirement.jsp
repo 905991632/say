@@ -14,7 +14,7 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/student.css" rel="stylesheet" type="text/css" />
-		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="js/student_requirement.js"></script>
 		<script type="text/javascript" src="js/area.js"></script>
   </head>
@@ -56,9 +56,9 @@
 		<!-- 当前位置 -->
 		<div class="nowplace">
 			<div>&nbsp;当前位置:&nbsp;
-				<a href="">首页</a>
+				<a href="index">首页</a>
 				<span> > </span>
-				<a href="">学生中心</a>
+				<a href="toPersonal">学生中心</a>
 				<span> > 发布家教信息</span>
 			</div>
 		</div>
@@ -70,28 +70,28 @@
 					<div class="left_div_img1"></div>
 					<ul>
 						<li>
-							<a href="">发布家教信息</a>
+							<a href="toStudent_requirement">发布家教信息</a>
 						</li>
 						<li>
-							<a href="">我的订单</a>
+							<a href="toStudent_myRequirement">我的订单</a>
 						</li>
 						<li>
-							<a href="">我的预约</a>
+							<a href="toStudent_myOrder">我的预约</a>
 						</li>
 						<li>
-							<a href="">我的教师</a>
+							<a href="toStudent_myTeacher?pageNum=1">我的教师</a>
 						</li>
 						<li>
-							<a href="">我的评价</a>
+							<a href="toStudent_appraisal">我的评价</a>
 						</li>
 					</ul>
 					<div class="left_div_img2"></div>
 					<ul>
 						<li>
-							<a href="">基本资料</a>
+							<a href="toStudent_info">基本资料</a>
 						</li>
 						<li>
-							<a href="">修改密码</a>
+							<a href="toStudent_alterPassword">修改密码</a>
 						</li>
 					</ul>
 				</div>

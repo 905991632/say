@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>家教管理系统</title>
-	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   	<link rel="stylesheet" href="css/Login.css" type="text/css"/>
   </head>
   <%

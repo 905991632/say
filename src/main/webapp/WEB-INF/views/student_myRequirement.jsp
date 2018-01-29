@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/student_myRequirement.js"></script>
 </head>
@@ -49,7 +49,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">学生中心</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">学生中心</a>
 			<span> > 我的订单</span>
 		</div>
 	</div>
@@ -60,16 +60,16 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li><a href="">发布家教信息</a></li>
-					<li><a href="">我的订单</a></li>
-					<li><a href="">我的预约</a></li>
-					<li><a href="">我的教师</a></li>
-					<li><a href="">我的评价</a></li>
+					<li><a href="toStudent_requirement">发布家教信息</a></li>
+					<li><a href="toStudent_myRequirement">我的订单</a></li>
+					<li><a href="toStudent_myOrder">我的预约</a></li>
+					<li><a href="toStudent_myTeacher?pageNum=1">我的教师</a></li>
+					<li><a href="toStudent_appraisal">我的评价</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
 				<ul>
-					<li><a href="">基本资料</a></li>
-					<li><a href="">修改密码</a></li>
+					<li><a href="toStudent_info">基本资料</a></li>
+					<li><a href="toStudent_alterPassword">修改密码</a></li>
 				</ul>
 			</div>
 		</div>
@@ -93,85 +93,14 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="unfinish_tbody">
-						<c:if test="${unfinish.size()>0}">
-						<c:forEach items="${unfinish}" var="item">
-							<tr>
-								<td>
-									<a href="">${item.id}</a>
-								</td>
-								<td>
-									${item.course}
-								</td>
-								<td>
-									${item.createtime.toLocaleString()}
-								</td>
-								<td><a href="javascript:void(0);" onclick="lookup_apply(${item.id});"
-									class="label label-success">查看</a> <a href="javascript:void(0);" 
-									onclick="cancel_requirement(${item.id});" class="label label-danger">取消</a>
-								</td>
-							</tr>
-						</c:forEach>
-						</c:if>
+						
+
 						</tbody>
 					</table>
 					
 					<div id="unfinish_nav_insert">
-					<c:if test="${unfinish.size()>0}">
-						<nav class="cbp-spmenu-right bbbb">
-						<ul class="pagination">
-							<c:choose>
-								<c:when test="${unfinish_pageNum==1||unfinish_totalPage==0}">
-									<li class="disabled"><a>首页</a></li>
-									<li class="disabled"><a aria-label="Previous"> <span
-											aria-hidden="true">«</span>
-									</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum(1);" >首页</a></li>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum(${unfinish_pageNum-1});" aria-label="Previous"> <span aria-hidden="true">«</span>
-									</a></li>
-								</c:otherwise>
-							</c:choose>
-							<c:forEach var="k" begin="1" end="${unfinish_totalPage}">
-								<c:choose>
-									<c:when test="${k==(unfinish_pageNum-4) || k == (unfinish_pageNum + 4)}">
-										<li><a>…</a></li>
-									</c:when>
-									<c:when test="${k==unfinish_pageNum}">
-										<li class="active"><a>${k}<span class="sr-only"></span></a></li>
-									</c:when>
-									<c:when test="${k < unfinish_pageNum - 4 || k > unfinish_pageNum + 4}">
+					
 
-									</c:when>
-									<c:otherwise>
-										<li><a
-											href="javascript:void(0);" onclick="click_pageNum(${k});">${k}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:choose>
-								<c:when test="${unfinish_pageNum == unfinish_totalPage || unfinish_totalPage == 0}">
-									<li class="disabled"><a aria-label="Next"> <span
-											aria-hidden="true">»</span>
-									</a></li>
-									<li class="disabled"><a>尾页</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum(${unfinish_pageNum+1});"
-										aria-label="Next"> <span aria-hidden="true">»</span>
-									</a></li>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum(${unfinish_totalPage});">尾页</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-						</nav>
-						</c:if>
 					</div>
 				</div>
 
@@ -187,74 +116,12 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="finish_tbody">
-						<c:if test="${finish.size()>0}">
-						<c:forEach items="${finish}" var="item">
-							<tr>
-								<td>${item.id}</td>
-								<td>${item.course}</td>
-								<td>${item.createtime.toLocaleString()}</td>
-							</tr>
-						</c:forEach>
-						</c:if>
+						
+
 						</tbody>
 					</table>
 					<div id="finish_nav_insert">
-						<c:if test="${finish.size()>0}">
-						<nav class="cbp-spmenu-right bbbb">
-						<ul class="pagination">
-							<c:choose>
-								<c:when test="${finish_pageNum==1||finish_totalPage==0}">
-									<li class="disabled"><a>首页</a></li>
-									<li class="disabled"><a aria-label="Previous"> <span
-											aria-hidden="true">«</span>
-									</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="javascript:void(0);" onclick="click_pageNum1(1);">首页</a></li>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum1(${finish_pageNum-1});"
-										aria-label="Previous"> <span aria-hidden="true">«</span>
-									</a></li>
-								</c:otherwise>
-							</c:choose>
-							<c:forEach var="k" begin="1" end="${finish_totalPage}">
-								<c:choose>
-									<c:when test="${k==(finish_pageNum-4) || k == (finish_pageNum + 4)}">
-										<li><a>…</a></li>
-									</c:when>
-									<c:when test="${k==finish_pageNum}">
-										<li class="active"><a>${k}<span class="sr-only"></span></a></li>
-									</c:when>
-									<c:when test="${k < finish_pageNum - 4 || k > finish_pageNum + 4}">
-
-									</c:when>
-									<c:otherwise>
-										<li><a
-											href="javascript:void(0);" onclick="click_pageNum1(${k});">${k}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:choose>
-								<c:when test="${finish_pageNum == finish_totalPage || finish_totalPage == 0}">
-									<li class="disabled"><a aria-label="Next"> <span
-											aria-hidden="true">»</span>
-									</a></li>
-									<li class="disabled"><a>尾页</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum1(${finish_pageNum+1});"
-										 aria-label="Next"> <span aria-hidden="true" >»</span>
-									</a></li>
-									<li><a
-										href="javascript:void(0);" onclick="click_pageNum1(${finish_totalPage});">尾页</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-						</nav>
-						</c:if>
+					
 					</div>
 					
 				</div>

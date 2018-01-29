@@ -1,35 +1,29 @@
 $(document).ready(function(){
-	$("#bottom_record").css("border-bottom","2px solid #ff8000");
-	$("#right_bottom_appraisal").css("display","none");
-	click_pageNum(1);
-$("#bottom_record").click(
-	function(){
+	$("#bottom_unfinished").css("border-bottom","2px solid #ff8000");
+	$("#div_finished").css("display","none");
+	click_pageNum(1);                                          
+	$("#bottom_unfinished").click(function(){
 		click_pageNum(1);
-		$("#bottom_record").css("border-bottom","2px solid #ff8000");
-		$("#bottom_appraisal").css("border-bottom","");
-		
-		$("#right_bottom_record").css("display","block");
-		$("#right_bottom_appraisal").css("display","none");
-	}
-);
-
-$("#bottom_appraisal").click(
-	function(){
+		$("#bottom_unfinished").css("border-bottom","2px solid #ff8000");
+		$("#bottom_finished").css("border-bottom","");
+		$("#div_unfinished").css("display","");
+		$("#div_finished").css("display","none");
+	});
+	$("#bottom_finished").click(function(){
 		click_pageNum1(1);
-		$("#bottom_record").css("border-bottom","");
-		$("#bottom_appraisal").css("border-bottom","2px solid #ff8000");
-		
-		$("#right_bottom_record").css("display","none");
-		$("#right_bottom_appraisal").css("display","block");
-	}
-);
+		$("#bottom_finished").css("border-bottom","2px solid #ff8000");
+		$("#bottom_unfinished").css("border-bottom","");
+		$("#div_finished").css("display","");
+		$("#div_unfinished").css("display","none");
+	});
 });
 
-//评价我的 ajax请求
+
+//预约中ajax请求
 function click_pageNum(pageNum){
 	$.ajax({
 		type : "POST",
-		url: "student_appraisal_ajax_appraisalMe?pageNum=" + pageNum,
+		url: "student_myOrder_ajax_order?pageNum=" + pageNum,
 		contentType : "application/json;charset=utf-8",
 		dataType : "json",
 		error : function() {
@@ -39,20 +33,20 @@ function click_pageNum(pageNum){
 			var list = data.list;
 			var totalPage = data.totalPage;
 			if(list.length==0){
-				$("#appraisalMe").text("");
-				$("#appraisalMe_nav").text("");
+				$("#order_tbody").text("");
+				$("#order_nav").text("");
 			}else{
-				$("#appraisalMe").text("");
+				$("#order_tbody").text("");
 			$.each(list,function(i,item){
-				var tr_str = '<tr><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.teacherid
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.content
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.score
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+ new Date(item.createtime).toLocaleString()+'</td></tr>';
-				$("#appraisalMe").append(tr_str);
+				var tr_str = '<tr><td><a href="toRequirement_info?id='+item.requireid+'" target="_blank">'+item.requireid+'</a>'
+							+'</td><td><a href="toTeacher_detail?id='+item.teacherid+'" target="_blank">'+item.teacherid+'</a></td><td>'+ new Date(item.createtime).toLocaleString()
+							+'</td><td><a href="javascript:void(0);" onclick="lookup_apply('+pageNum+','+item.id+')" class="label label-danger">取消</a>'
+							+'</td></tr>';
+				$("#order_tbody").append(tr_str);
 			});
 			var nav_str = add_nav(pageNum,totalPage);
-			$("#appraisalMe_nav").text("");
-			$("#appraisalMe_nav").append(nav_str);
+			$("#order_nav").text("");
+			$("#order_nav").append(nav_str);
 			}
 		}
 	});
@@ -97,14 +91,12 @@ function add_nav(pageNum,totalPage){
 	return nav_str;
 }
 
-
-//我的评价ajax请求
+//未通过订单ajax请求
 function click_pageNum1(pageNum){
-	
 	$("#div_apply").css("display","none");
 	$.ajax({
 		type : "POST",
-		url: "student_appraisal_ajax_myAppraisal?pageNum=" + pageNum,
+		url: "student_myOrder_ajax_reject?pageNum=" + pageNum,
 		contentType : "application/json;charset=utf-8",
 		dataType : "json",
 		error : function() {
@@ -114,20 +106,18 @@ function click_pageNum1(pageNum){
 			var list = data.list;
 			var totalPage = data.totalPage;
 			if(list.length==0){
-				$("#myAppraisal").text("");
-				$("#myAppraisal_nav").text("");
+				$("#reject_tbody").text("");
+				$("#reject_nav").text("");
 			}else{
-				$("#myAppraisal").text("");
+				$("#reject_tbody").text("");
 			$.each(list,function(i,item){
-				var tr_str = '<tr><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.teacherid
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.content
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+item.score
-				+'</td><td style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">'+ new Date(item.createtime).toLocaleString()+'</td></tr>';
-				$("#myAppraisal").append(tr_str);
+				var tr_str = '<tr><td><a href="toRequirement_info?id='+item.requireid+'" target="_blank">'+item.requireid+'</a>'
+				+'</td><td>'+ new Date(item.createtime).toLocaleString()+'</td></tr>';
+				$("#reject_tbody").append(tr_str);
 			});
 			var nav_str = add_nav1(pageNum,totalPage);
-			$("#myAppraisal_nav").text("");
-			$("#myAppraisal_nav").append(nav_str);
+			$("#reject_nav").text("");
+			$("#reject_nav").append(nav_str);
 		}
 		}
 	});}
@@ -169,6 +159,25 @@ function click_pageNum1(pageNum){
 					+');">尾页</a>';
 		}
 		return nav_str;
-	}	
-	
+	}
+
+	//家教信息取消的ajax请求
+	function lookup_apply(pageNum,applyid){
+		$.ajax({
+			type : "POST",
+			url: "student_myOrder_ajax_cancel?id="+applyid,
+			contentType : "application/json;charset=utf-8",
+			dataType : "json",
+			error : function() {
+				alert("请求失败，请重试！");
+			},
+			success:function (data) {
+				if(data==1){
+					click_pageNum(pageNum);
+				}else{
+					alert("请求失败，请重试！");
+				}
+			}
+		});}
+
 
