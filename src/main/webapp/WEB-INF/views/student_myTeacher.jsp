@@ -195,7 +195,7 @@
 							<ul class="editInfos">
 								<input type="text" name="applyid" id="applyid" class="hidden" value=""/>
 								<li><label><font color="#ff0000">* </font>
-									评价内容：<input type="text" style="width:230px;" name="content" required class="ipt" />
+									评价内容：<input type="text" style="width:230px;" name="content" required class="ipt" maxlength="12"/>
 								</label></li>
 								<li><label><font color="#ff0000">* </font>
 									评价星级： <input type="radio" name="score" value="5" class="ipt" checked/>五星

@@ -49,7 +49,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">学生中心</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">学生中心</a>
 			<span> > 我的预约</span>
 		</div>
 	</div>
@@ -60,16 +60,16 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li><a href="">发布家教信息</a></li>
-					<li><a href="">我的订单</a></li>
-					<li><a href="">我的预约</a></li>
-					<li><a href="">我的教师</a></li>
-					<li><a href="">我的评价</a></li>
+					<li><a href="toStudent_requirement">发布家教信息</a></li>
+					<li><a href="toStudent_myRequirement">我的订单</a></li>
+					<li><a href="toStudent_myOrder">我的预约</a></li>
+					<li><a href="toStudent_myTeacher?pageNum=1">我的教师</a></li>
+					<li><a href="toStudent_appraisal">我的评价</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
 				<ul>
-					<li><a href="">基本资料</a></li>
-					<li><a href="">修改密码</a></li>
+					<li><a href="toStudent_info">基本资料</a></li>
+					<li><a href="toStudent_alterPassword">修改密码</a></li>
 				</ul>
 			</div>
 		</div>

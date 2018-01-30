@@ -15,12 +15,14 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/teacher.js"></script>
+<script src="js/student_detail.js"></script>
 </head>
 
 
 <body style="overflow-y: scroll;">
-
+<script>
+	var studentid = '${student.id}';
+</script>
 	<div class="theTop">
 		<div class="theTop_div1">
 			<a href="">亲,请登录</a> <a href="">免费注册</a>
@@ -71,24 +73,24 @@
 								<tr>
 									<th>学生编号：</th>
 									<td>
-										11111
+										${student.id}
 									</td>
 								</tr>
 								<tr>
 									<th>学生姓名：</th>
-									<td>陈晓佳</td>
+									<td>${student.name}</td>
 								</tr>
 								<tr>
 									<th>学生性别：</th>
-									<td>男</td>
+									<td>${student.sex}</td>
 								</tr>
 								<tr>
 									<th>学生年龄：</th>
-									<td>22</td>
+									<td>${student.age}</td>
 								</tr>
 								<tr>
 									<th>登录时间：</th>
-									<td>2018-01-18 12:00:00</td>
+									<td>${student.logintime.toLocaleString()}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -109,20 +111,15 @@
 										<th style="text-align: center;">时间</th>
 									</tr>
 								</thead>
-								<tbody style="text-align: center;">
-									<tr>
-										<td>Tanmay</td>
-										<td>Bangalore</td>
-										<td>560001</td>
-									</tr>
-									<tr>
-										<td>Uma</td>
-										<td>Pune</td>
-										<td>411027</td>
-									</tr>
+								<tbody style="text-align: center;" id="finish_tbody">
+								
 								</tbody>
 							</table>
+							<div id="finish_nav_insert">
+							
+							</div>
 						</div>
+						
 						<div class="teacher_info_div_right_bottom_appraisal"
 							id="right_bottom_appraisal" name="right_bottom_appraisal">
 							<table class="table table-bordered">
@@ -136,29 +133,13 @@
 											style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 									</tr>
 								</thead>
-								<tbody style="text-align: center;">
-									<tr>
-										<td
-											style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											Tanmay</td>
-										<td
-											style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-										</td>
-										<td
-											style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											560001</td>
-										<td
-											style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											560001</td>
-									</tr>
-									<tr>
-										<td>Uma</td>
-										<td>Pune</td>
-										<td>411027</td>
-										<td>560001</td>
-									</tr>
+								<tbody style="text-align: center;" id="appraisalMe">
+									
 								</tbody>
 							</table>
+							<div id="appraisalMe_nav">
+							
+							</div>
 						</div>
 
 					</div>

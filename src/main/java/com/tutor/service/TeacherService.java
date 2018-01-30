@@ -1,7 +1,7 @@
 package com.tutor.service;
 
 import java.util.List;
-
+import com.tutor.dto.MyTeacher;
 import com.tutor.dto.Pager;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Teacher;
@@ -23,5 +23,7 @@ public interface TeacherService {
 	int alterPasswordById(int id,String oldPassword,String newPassword);
 	
 	List<Teacher> getTeachersByApply(List<Apply> list);
+	
+	List<MyTeacher> getMyTeachersByApply(Apply apply);
 	
 }

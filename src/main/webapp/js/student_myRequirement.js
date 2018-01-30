@@ -148,8 +148,7 @@ function click_pageNum1(pageNum){
 			}else{
 				$("#finish_tbody").text("");
 			$.each(list,function(i,item){
-				var tr_str = '<tr><td><a href="toRequirement_info?id='+item.id+'" target="_blank">'+item.id+'</a>'
-				+'</td><td>'+item.course+'</td><td>'+new Date(item.createtime).toLocaleString()
+				var tr_str = '<tr><td>'+item.id+'</td><td>'+item.course+'</td><td>'+new Date(item.createtime).toLocaleString()
 				+'</td></tr>';
 				$("#finish_tbody").append(tr_str);
 			});

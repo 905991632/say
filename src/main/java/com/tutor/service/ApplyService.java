@@ -15,4 +15,6 @@ public interface ApplyService {
 	Apply selectByPrimaryKey(int id);
 	
 	int acceptApply(int id);
+	
+	int delete(int id);
 }

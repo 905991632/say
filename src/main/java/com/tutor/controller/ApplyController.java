@@ -22,8 +22,8 @@ public class ApplyController {
 	RequirementService requirementService;
 		
 	
-	@RequestMapping(value="apply_list")
-	public String apply_list(HttpServletRequest request,ModelMap modelMap){
+	@RequestMapping(value="apply_delete")
+	public String apply_list(int id,HttpServletRequest request,ModelMap modelMap){
 		return "";
 	}
 	

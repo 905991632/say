@@ -15,12 +15,13 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/teacher.js"></script>
+<script src="js/teacher_detail.js"></script>
 </head>
 
 
 <body style="overflow-y: scroll;">
 <script>
+	var teacherid = '${teacher.id}';
 	if('${message}'!=""){
 	alert('${message}');
 	}
@@ -56,7 +57,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师库</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toTeacher_list">教师库</a>
 			<span> > 教师信息</span>
 		</div>
 	</div>
@@ -133,19 +134,15 @@
 										<th style="text-align: center;">时间</th>
 									</tr>
 								</thead>
-								<tbody style="text-align: center;">
-									<tr>
-										<td>Tanmay</td>
-										<td>Bangalore</td>
-										<td>560001</td>
-									</tr>
-									<tr>
-										<td>Uma</td>
-										<td>Pune</td>
-										<td>411027</td>
-									</tr>
+								<tbody style="text-align: center;" id="finish_tbody">
+									
+
 								</tbody>
 							</table>
+							<div id="finish_nav">
+							
+							</div>
+							
 						</div>
 						<div class="teacher_info_div_right_bottom_appraisal"
 							id="right_bottom_appraisal" name="right_bottom_appraisal">
@@ -160,29 +157,14 @@
 											style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 									</tr>
 								</thead>
-								<tbody style="text-align: center;">
-									<tr>
-										<td
-											style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											Tanmay</td>
-										<td
-											style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-										</td>
-										<td
-											style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											560001</td>
-										<td
-											style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-											560001</td>
-									</tr>
-									<tr>
-										<td>Uma</td>
-										<td>Pune</td>
-										<td>411027</td>
-										<td>560001</td>
-									</tr>
+								<tbody style="text-align: center;" id="appraisalMe">
+									
+
 								</tbody>
 							</table>
+							<div id="appraisalMe_nav">
+							
+							</div>
 						</div>
 
 					</div>

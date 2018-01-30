@@ -6,13 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tutor.dao.LoginMapper;
 import com.tutor.dao.TeacherMapper;
+import com.tutor.dto.MyTeacher;
 import com.tutor.dto.Pager;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Login;
+import com.tutor.entity.Requirement;
+import com.tutor.entity.Teaappraisal;
 import com.tutor.entity.Teacher;
 import com.tutor.entity.TeacherExample;
 import com.tutor.entity.TeacherExample.Criteria;
 import com.tutor.service.ApplyService;
+import com.tutor.service.RequirementService;
+import com.tutor.service.StuAppraisalService;
+import com.tutor.service.StudentService;
+import com.tutor.service.TeaAppraisalService;
 import com.tutor.service.TeacherService;
 
 /*
@@ -27,6 +34,15 @@ public class TeacherServiceImpl implements TeacherService {
 	LoginMapper loginMapper;
 	@Autowired
 	ApplyService applyService;
+	@Autowired
+	RequirementService requirementService;
+	@Autowired
+	StudentService studentService;
+	@Autowired
+	StuAppraisalService stuAppraisalService;
+	@Autowired
+	TeaAppraisalService teaAppraisalService;
+	
 	//添加教师
 	@Override
 	public int addTeacher(Teacher teacher) {
@@ -136,6 +152,20 @@ public class TeacherServiceImpl implements TeacherService {
 		return list2;
 	}
 	
+	//通过apply获取我的老师
+	@Override
+	public List<MyTeacher> getMyTeachersByApply(Apply apply) {
+		List<Apply> list = applyService.getAppliesByCondition(apply);
+		List<Requirement> requirementList = requirementService.getRequirementByApply(list);
+		List<Teacher> teacherList = this.getTeachersByApply(list);
+		List<Teaappraisal> teaappraisalList = teaAppraisalService.getTeaappraisalByApply(list);
+		List<MyTeacher> myTeachers = new ArrayList<MyTeacher>();
+		for(int i = 0;i<teacherList.size();i++){
+			MyTeacher myTeacher = new MyTeacher(teacherList.get(i), requirementList.get(i), teaappraisalList.get(i),list.get(i));
+			myTeachers.add(myTeacher);
+		}
+		return myTeachers;
+	}
 	
 
 }

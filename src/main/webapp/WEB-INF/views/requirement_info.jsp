@@ -114,7 +114,7 @@
 						<tr>
 							<th>学生编号：</th>
 							<td>
-								<a href="">${requirement.studentid}</a>
+								<a href="toStudent_detail?id=${requirement.studentid}">${requirement.studentid}</a>
 							</td>
 						</tr>
 						<tr>

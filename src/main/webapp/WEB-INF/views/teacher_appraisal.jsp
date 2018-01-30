@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="js/teacher.js"></script>
+<script type="text/javascript" src="js/teacher_appraisal.js"></script>
   </head>
 	<body style="overflow-y: scroll;">
 	<div class="theTop">
@@ -50,7 +50,7 @@
 		<!-- 当前位置 -->
 		<div class="nowplace">
 			<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师中心</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">教师中心</a>
 			<span> > 我的评价</span>
 		</div>
 		</div>
@@ -62,25 +62,25 @@
 					<div class="left_div_img1"></div>
 					<ul>
 						<li>
-							<a href="">我的订单</a>
+							<a href="toTeacher_myRequirement">我的订单</a>
 						</li>
 						<li>
-							<a href="">我的预约</a>
+							<a href="toTeacher_myOrder">我的预约</a>
 						</li>
 						<li>
-							<a href="">我的学生</a>
+							<a href="toTeacher_myStudent?pageNum=1">我的学生</a>
 						</li>
 						<li>
-							<a href="">我的评价</a>
+							<a href="toTeacher_appraisal">我的评价</a>
 						</li>
 					</ul>
 					<div class="left_div_img2"></div>
 					<ul>
 						<li>
-							<a href="">基本资料</a>
+							<a href="toTeacher_info">基本资料</a>
 						</li>
 						<li>
-							<a href="">修改密码</a>
+							<a href="toTeacher_alterPassword">修改密码</a>
 						</li>
 					</ul>
 				</div>
@@ -107,29 +107,14 @@
 									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									Tanmay</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-								</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									560001</td>
-							</tr>
-							<tr>
-								<td>Uma</td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td>560001</td>
-							</tr>
+						<tbody style="text-align: center;" id="appraisalMe">
+							
+
 						</tbody>
 					</table>
+					<div id="appraisalMe_nav">
+					
+					</div>
 				</div>
 				
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
@@ -144,29 +129,14 @@
 									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 							</tr>
 						</thead>
-						<tbody style="text-align: center;">
-							<tr>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-								<td
-									style="width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">
-									11111</td>
-							</tr>
-							<tr>
-								<td>Uma</td>
-								<td>Pune</td>
-								<td>411027</td>
-								<td>560001</td>
-							</tr>
+						<tbody style="text-align: center;" id="myAppraisal">
+							
+
 						</tbody>
 					</table>
+					<div id="myAppraisal_nav">
+					
+					</div>
 				</div>
 			
 			</div>				

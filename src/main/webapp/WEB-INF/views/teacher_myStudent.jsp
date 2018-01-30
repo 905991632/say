@@ -13,6 +13,7 @@
 <title>家教平台系统</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
+<link href="css/student_myTeacher.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body style="overflow-y: scroll;">
@@ -48,7 +49,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > </span> <a href="">教师中心</a>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">教师中心</a>
 			<span> > 我的学生</span>
 		</div>
 	</div>
@@ -59,15 +60,15 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li><a href="">我的订单</a></li>
-					<li><a href="">我的预约</a></li>
-					<li><a href="">我的学生</a></li>
-					<li><a href="">我的评价</a></li>
+					<li><a href="toTeacher_myRequirement">我的订单</a></li>
+					<li><a href="toTeacher_myOrder">我的预约</a></li>
+					<li><a href="toTeacher_myStudent?pageNum=1">我的学生</a></li>
+					<li><a href="toTeacher_appraisal">我的评价</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
 				<ul>
-					<li><a href="">基本资料</a></li>
-					<li><a href="">修改密码</a></li>
+					<li><a href="toTeacher_info">基本资料</a></li>
+					<li><a href="toTeacher_alterPassword">修改密码</a></li>
 				</ul>
 			</div>
 		</div>
@@ -90,30 +91,146 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;">
-							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td><a href="" class="label label-danger">未评价</a></td>
-							</tr>
-							<tr>
-								<td><a href="">123</a></td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td>Bangalore</td>
-								<td><a href="" class="label label-danger">未评价</a></td>
-							</tr>
+							<c:forEach items="${myStudents}" var="item"> 
+								<td><a href="toStudent_detail?id=${item.id}" target="_blank">${item.id}</a></td>
+										<td>${item.name}</td>
+										<td>${item.mobile}</td>
+										<td><a href="toRequirement_info?id=${item.requireid}" target="_blank">${item.requireid}</a></td>
+										<td>${item.course}</td>
+										<td>
+											<c:choose>
+												<c:when test="${item.appraisalstatus==0}">
+													<a href="javascript:void(0);" onclick="toAppraisal(${item.applyid});" id="toAppraisal" class="label label-danger">未评价</a>
+												</c:when>
+												<c:otherwise>
+													<a class="label label-success">等待对方评价</a>
+												</c:otherwise>
+											</c:choose>
+										</td>
+							</c:forEach>
 						</tbody>
 					</table>
+					<div>
+						<c:if test="${myStudents.size()>0}">
+							<nav class="cbp-spmenu-right bbbb">
+								<ul class="pagination">
+									<c:choose>
+										<c:when test="${pageNum==1||totalPage==0}">
+											<li class="disabled"><a>首页</a></li>
+											<li class="disabled"><a aria-label="Previous"> <span
+													aria-hidden="true">«</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="javascript:void(0);" onclick="click_pageNum(1);" >首页</a></li>
+											<li><a
+												href="javascript:void(0);" onclick="click_pageNum(${unfinish_pageNum-1});" aria-label="Previous"> <span aria-hidden="true">«</span>
+											</a></li>
+										</c:otherwise>
+									</c:choose>
+									<c:forEach var="k" begin="1" end="${totalPage}">
+										<c:choose>
+											<c:when test="${k==(pageNum-4) || k == (pageNum + 4)}">
+												<li><a>…</a></li>
+											</c:when>
+											<c:when test="${k==pageNum}">
+												<li class="active"><a>${k}<span class="sr-only"></span></a></li>
+											</c:when>
+											<c:when test="${k < pageNum - 4 || k > pageNum + 4}">
+		
+											</c:when>
+											<c:otherwise>
+												<li><a
+													href="javascript:void(0);" onclick="click_pageNum(${k});">${k}</a>
+												</li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${pageNum == totalPage || totalPage == 0}">
+											<li class="disabled"><a aria-label="Next"> <span
+													aria-hidden="true">»</span>
+											</a></li>
+											<li class="disabled"><a>尾页</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="javascript:void(0);" onclick="click_pageNum(${pageNum+1});"
+												aria-label="Next"> <span aria-hidden="true">»</span>
+											</a></li>
+											<li><a
+												href="javascript:void(0);" onclick="click_pageNum(${totalPage});">尾页</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
+							</nav>
+						</c:if>
+					</div>
+					
+					<div id="dialogBg"></div>
+					<div id="dialog" class="animated">
+						<div class="dialogTop">
+							<a href="javascript:;" class="claseDialogBtn">关闭</a>
+						</div>
+						<form action="appraisalStudent" method="post" id="editForm">
+							<ul class="editInfos">
+								<input type="text" name="applyid" id="applyid" class="hidden" value=""/>
+								<li><label><font color="#ff0000">* </font>
+									评价内容：<input type="text" style="width:230px;" name="content" required class="ipt" maxlength="12"/>
+								</label></li>
+								<li><label><font color="#ff0000">* </font>
+									评价星级： <input type="radio" name="score" value="5" class="ipt" checked/>五星
+											<input type="radio" name="score" value="4" class="ipt" />四星
+											<input type="radio" name="score" value="3" class="ipt" />三星
+											<input type="radio" name="score" value="2" class="ipt" />二星
+											<input type="radio" name="score" value="1" class="ipt" />一星
+								</label></li>
+								
+								<li><input type="submit" value="确认提交" class="submitBtn" /></li>
+							</ul>
+						</form>
+					</div>
+					
+					
 				</div>
 			</div>
 
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+var w,h,className;
+function getSrceenWH(){
+	w = $(window).width();
+	h = $(window).height();
+	$('#dialogBg').width(w).height(h);
+}
 
+window.onresize = function(){  
+	getSrceenWH();
+}  
+$(window).resize();  
+
+$(function(){
+	getSrceenWH();
+
+	//关闭弹窗
+	$('.claseDialogBtn').click(function(){
+		$('#dialogBg').fadeOut(300,function(){
+			$('#dialog').addClass('bounceOutUp').fadeOut();
+		});
+	});
+});
+	//显示弹框
+function toAppraisal(applyid){
+	$('#applyid').val(applyid)
+	$('#dialogBg').fadeIn(300);
+	$('#dialog').removeAttr('class').addClass('animated bounceInDown').fadeIn();
+}
+
+
+</script>
 
 </html>

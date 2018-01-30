@@ -90,6 +90,12 @@ public class ApplyServiceImpl implements ApplyService {
 	public Apply selectByPrimaryKey(int id) {
 		return applyMapper.selectByPrimaryKey(id);
 	}
+	
+	//删除实体类
+	@Override
+	public int delete(int id) {
+		return applyMapper.deleteByPrimaryKey(id);
+	}
 
 	//接受订单申请
 	@Override

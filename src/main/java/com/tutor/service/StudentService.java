@@ -1,10 +1,8 @@
 package com.tutor.service;
 
 import java.util.List;
-
-import com.tutor.dto.MyTeacher;
+import com.tutor.dto.MyStudent;
 import com.tutor.entity.Apply;
-import com.tutor.entity.Stuappraisal;
 import com.tutor.entity.Student;
 
 
@@ -22,7 +20,7 @@ public interface StudentService {
 	
 	int alterPasswordById(int userId,String oldPassword,String newPassword);
 	
-	List<MyTeacher> getMyTeachersByApply(Apply apply);
+	List<Student> getStudentsByApply(List<Apply> applies);
 	
-	
+	List<MyStudent> getMyStudentsByApply(Apply apply);
 }

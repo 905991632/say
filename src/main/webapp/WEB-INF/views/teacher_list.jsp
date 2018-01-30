@@ -60,7 +60,7 @@ var USER_CITY = "${USER_CITY}"
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="">首页</a> <span> > 教师库 </span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > 教师库 </span>
 		</div>
 	</div>
 	<!-- 主内容 -->

@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.tutor.dao.LoginMapper;
 import com.tutor.dao.StudentMapper;
-import com.tutor.dto.MyTeacher;
+import com.tutor.dto.MyStudent;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Login;
 import com.tutor.entity.Requirement;
+import com.tutor.entity.Stuappraisal;
 import com.tutor.entity.Student;
 import com.tutor.entity.StudentExample;
-import com.tutor.entity.Teaappraisal;
-import com.tutor.entity.Teacher;
 import com.tutor.entity.StudentExample.Criteria;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
+import com.tutor.service.StuAppraisalService;
 import com.tutor.service.StudentService;
 import com.tutor.service.TeaAppraisalService;
 import com.tutor.service.TeacherService;
@@ -40,6 +39,10 @@ public class StudentServiceImpl implements StudentService {
 	TeaAppraisalService teaAppraisalService;
 	@Autowired
 	RequirementService requirementService;
+	@Autowired
+	StuAppraisalService stuAppraisalService;
+	
+	
 	/*
 	 *	添加学生
 	 * 	return 成功返回1
@@ -128,21 +131,31 @@ public class StudentServiceImpl implements StudentService {
 		return 1;
 	}
 
+	@Override
+	public List<Student> getStudentsByApply(List<Apply> applies) {
+		List<Student> list = new ArrayList<Student>();
+		for(int i=0;i<applies.size();i++){
+			list.add(this.selectByPrimaryKey(applies.get(i).getStudentid()));
+		}
+		return list;
+	}
+
 	//通过apply获取我的学生
 	@Override
-	public List<MyTeacher> getMyTeachersByApply(Apply apply) {
+	public List<MyStudent> getMyStudentsByApply(Apply apply) {
 		List<Apply> list = applyService.getAppliesByCondition(apply);
 		List<Requirement> requirementList = requirementService.getRequirementByApply(list);
-		List<Teacher> teacherList = teacherService.getTeachersByApply(list);
-		List<Teaappraisal> teaappraisalList = teaAppraisalService.getTeaappraisalByApply(list);
-		List<MyTeacher> myTeachers = new ArrayList<MyTeacher>();
-		for(int i = 0;i<teacherList.size();i++){
-			MyTeacher myTeacher = new MyTeacher(teacherList.get(i), requirementList.get(i), teaappraisalList.get(i),list.get(i));
-			myTeachers.add(myTeacher);
+		List<Student> studentList = this.getStudentsByApply(list);
+		List<Stuappraisal> stuappraisalList = stuAppraisalService.getStuappraisalByApply(list);
+		List<MyStudent> myStudents = new ArrayList<MyStudent>();
+		for(int i = 0;i<studentList.size();i++){
+			MyStudent mStudent = new MyStudent(studentList.get(i), requirementList.get(i), stuappraisalList.get(i), list.get(i));
+			myStudents.add(mStudent);
 		}
-		return myTeachers;
+		return myStudents;
 	}
 	
+
 	
 	
 
