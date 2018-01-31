@@ -2,12 +2,20 @@ package com.tutor.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.alibaba.fastjson.JSON;
+import com.tutor.dto.MyObject;
 import com.tutor.dto.MyselfUtils;
+import com.tutor.dto.Pager;
+import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Requirement;
+import com.tutor.entity.Teaappraisal;
 import com.tutor.entity.Teacher;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
@@ -85,6 +93,32 @@ public class PageController {
 			return "index";
 	}
 	
+	@RequestMapping(value = "/toTest")
+	public String toTest(HttpServletRequest request, ModelMap model) {
+		return "test";
+	}
+	
+	@RequestMapping(value = "/tagSelect_test")
+	public void tagSelect_test(HttpServletRequest request, HttpServletResponse response) {
+		if(request.getParameter("pageNum")!=null){
+			System.out.println("*******1="+request.getParameter("pageNum"));
+		}
+		if(request.getParameter("mode")!=null){
+			System.out.println("*******2="+request.getParameter("mode"));
+		}
+		if(request.getParameter("stage")!=null){
+			System.out.println("*******2="+request.getParameter("stage"));
+		}
+		if(request.getParameter("sector")!=null){
+			System.out.println("*******2="+request.getParameter("sector"));
+		}
+		if(request.getParameter("board")!=null){
+			System.out.println("*******2="+request.getParameter("board"));
+		}
+		String result = JSON.toJSONString("1");
+		ResponseUtils.renderJson(response,result);
+		
+	}
 
 	
 	
