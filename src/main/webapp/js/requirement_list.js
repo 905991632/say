@@ -72,7 +72,7 @@ function getQueryString(_url,_name){
 
 function addEle(ele,value){
     var optionStr="";
-    optionStr='<a href="javascript:void(0);" rel="'+value+'" name="area" class="sx_child">'+value+'</a>';
+    optionStr="<a href='javascript:void(0);' rel='"+value+"' name='area' class='sx_child'>"+value+"</a>";
     /*optionStr='<a href="javascript:void(0);" rel="'+value+'" name="area" class="sx_child"/>'+value;*/
     ele.append(optionStr);
 }
@@ -80,7 +80,7 @@ function addEle(ele,value){
 function delUrlPar(_url,_name){
 	var n = _url.substr(1);
 	var r = "";
-	var a = "?";
+	var a = "";
 	if(_url!="?"){
 		if(n.indexOf("&")!=-1) {
 		r = n.split("&");
@@ -103,9 +103,9 @@ function delUrlPar(_url,_name){
 	}
 }
 
-	//教师列表ajax请求
+	//订单列表ajax请求
 	function click_pageNum(pageNum){
-		var url = "teacher_list_ajax_teacherList"+URL+"&pageNum="+pageNum;
+		var url = "requirement_list_ajax_requirementList"+URL+"&pageNum="+pageNum;
 		$.ajax({
 			type : "POST",
 			url: url,
@@ -123,9 +123,13 @@ function delUrlPar(_url,_name){
 				}else{
 					$("#list_tbody").text("");
 				$.each(list,function(i,item){
-					var tr_str = '<section><div><a href="toTeacher_detail?id='+item.id+'"  target="_blank"><img class="opcityaa" src="img/touming.png" /></a></div>'
-								+'<div><img class="content_div_div2_img" src="'+item.photo+'"/><div class="content_div_div2_div"><div>教师编号：<span>'+item.id+'</span>'
-								+'</div><div>教师姓名：<span>'+item.name+'</span></div><div>教师性别：<span>'+item.sex+'</span></div><div>教师年龄：<span>'+item.age+'</span>'
+					var sex = item.sex;
+					if(item.sex=="男女"){
+						sex = "不限";
+					}
+					var tr_str = '<section><div><a href="toRequirement_info?id='+item.id+'"  target="_blank"><img class="opcityaa" src="img/touming.png" /></a></div>'
+								+'<div><img class="content_div_div2_img" src="'+item.photo+'"/><div class="content_div_div2_div"><div>订单编号：<span>'+item.id+'</span>'
+								+'</div><div>课程：<span>'+item.course+'</span></div><div>性别要求：<span>'+sex+'</span></div><div>辅导地址：<span>'+item.area+'</span>'
 								+'</div></div></div></section>';
 					$("#list_tbody").append(tr_str);
 				});

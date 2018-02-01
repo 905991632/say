@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -20,7 +20,22 @@
 <body style="overflow-y: scroll;">
 	<div class="theTop">
 		<div class="theTop_div1">
-			<a href="">亲,请登录</a> <a href="">免费注册</a>
+			<c:choose>
+				<c:when test="${USER_ID!=null}">
+					欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${USER_ID!=null}">欢迎进入家教系统，<a
+								href="toLogin">退出</a>
+						</c:when>
+						<c:otherwise>
+							<a href="toLogin">亲,请登录</a>
+							<a href="toRegister">免费注册</a>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="theTop_div2">全国投诉专线：12345678901</div>
 	</div>
@@ -31,7 +46,7 @@
 		<div class="top1">
 			<img src="img/logo.png" />
 			<div>
-				<span>中山</span>
+				<a href="toChooseCity">${USER_CITY }</a>
 			</div>
 		</div>
 		<!-- 导航 -->
@@ -49,8 +64,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">学生中心</a>
-			<span> > 我的评价</span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a
+				href="toPersonal">学生中心</a> <span> > 我的评价</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -89,18 +104,18 @@
 							<tr>
 								<th style="text-align: center;">教师编号</th>
 								<th style="text-align: center;">评价内容</th>
-								<th style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
-								<th style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
+								<th
+									style="text-align: center;width: 100px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">星级</th>
+								<th
+									style="text-align: center;width: 180px;table-layout:fixed; word-break: break-all; word-wrap: break-word;">时间</th>
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="appraisalMe">
-							
+
 						</tbody>
 					</table>
-					<div id="appraisalMe_nav">
-					
-					</div>
-					
+					<div id="appraisalMe_nav"></div>
+
 				</div>
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
@@ -118,9 +133,7 @@
 						<tbody style="text-align: center;" id="myAppraisal">
 						</tbody>
 					</table>
-					<div id="myAppraisal_nav">
-					
-					</div>
+					<div id="myAppraisal_nav"></div>
 				</div>
 
 			</div>

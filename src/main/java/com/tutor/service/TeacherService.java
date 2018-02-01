@@ -18,7 +18,7 @@ public interface TeacherService {
 	
 	List<Teacher> getTeachersByCondition(Teacher teacher);
 	
-	Pager<Teacher> getTeachers(List<Teacher> list,int pageNum,int pageSize);
+//	Pager<Teacher> getTeachers(List<Teacher> list,int pageNum,int pageSize);
 	
 	int alterPasswordById(int id,String oldPassword,String newPassword);
 	

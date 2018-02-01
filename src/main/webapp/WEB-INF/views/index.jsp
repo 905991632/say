@@ -21,7 +21,15 @@
 	<!-- 顶部 -->
 	<div class="theTop">
 		<div class="theTop_div1">
-			<a href="">亲,请登录</a> <a href="">免费注册</a>
+			<c:choose>
+				<c:when test="${USER_ID!=null}">
+					欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<c:choose><c:when test="${USER_ID!=null}">欢迎进入家教系统，<a href="toLogin">退出</a></c:when><c:otherwise><a href="toLogin">亲,请登录</a> <a href="toRegister">免费注册</a></c:otherwise></c:choose>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 		<div class="theTop_div2">全国投诉专线：12345678901</div>
 	</div>
@@ -379,7 +387,7 @@
 				<a href="toRequirement_info?id=${item.id}" target="_blank"><img class="opcityaa" src="img/touming.png" /></a>
 			</div>
 			<div>
-				<img class="content_div_div2_img" src="${photoList.get(status.index)}" />
+				<img class="content_div_div2_img" src="${item.photo}" />
 				<div class="content_div_div2_div">
 					<div>
 						编号：<span><c:out value="${item.id }"></c:out></span>

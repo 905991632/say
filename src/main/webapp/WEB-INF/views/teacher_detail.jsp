@@ -20,15 +20,22 @@
 
 
 <body style="overflow-y: scroll;">
-<script>
-	var teacherid = '${teacher.id}';
-	if('${message}'!=""){
-	alert('${message}');
-	}
-</script>
+	<script>
+		var teacherid = '${teacher.id}';
+		if ('${message}' != "") {
+			alert('${message}');
+		}
+	</script>
 	<div class="theTop">
 		<div class="theTop_div1">
-			<a href="">亲,请登录</a> <a href="">免费注册</a>
+			<c:choose>
+				<c:when test="${USER_ID!=null}">欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<a href="toLogin">亲,请登录</a>
+					<a href="toRegister">免费注册</a>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="theTop_div2">全国投诉专线：12345678901</div>
 	</div>
@@ -39,7 +46,7 @@
 		<div class="top1">
 			<img src="img/logo.png" />
 			<div>
-				<span>中山</span>
+				<a href="toChooseCity">${USER_CITY }</a>
 			</div>
 		</div>
 		<!-- 导航 -->
@@ -57,8 +64,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toTeacher_list">教师库</a>
-			<span> > 教师信息</span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a
+				href="toTeacher_list">教师库</a> <span> > 教师信息</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -70,7 +77,7 @@
 					<img src="${teacher.photo}" />
 					<c:choose>
 						<c:when test="${USER_TYPE=='教师' }">
-						
+
 						</c:when>
 						<c:otherwise>
 							<div>
@@ -120,8 +127,9 @@
 					</div>
 					<div class="teacher_info_div_right_bottom">
 						<div class="teacher_info_div_right_bottom_div1">
-							<a href="javascript:void(0);" id="bottom_record" name="bottom_record">家教记录</a> 
-							<a href="javascript:void(0);" id="bottom_appraisal" name="bottom_appraisal">学生评价</a>
+							<a href="javascript:void(0);" id="bottom_record"
+								name="bottom_record">家教记录</a> <a href="javascript:void(0);"
+								id="bottom_appraisal" name="bottom_appraisal">学生评价</a>
 						</div>
 
 						<div class="teacher_info_div_right_bottom_record"
@@ -135,14 +143,12 @@
 									</tr>
 								</thead>
 								<tbody style="text-align: center;" id="finish_tbody">
-									
+
 
 								</tbody>
 							</table>
-							<div id="finish_nav">
-							
-							</div>
-							
+							<div id="finish_nav"></div>
+
 						</div>
 						<div class="teacher_info_div_right_bottom_appraisal"
 							id="right_bottom_appraisal" name="right_bottom_appraisal">
@@ -158,13 +164,11 @@
 									</tr>
 								</thead>
 								<tbody style="text-align: center;" id="appraisalMe">
-									
+
 
 								</tbody>
 							</table>
-							<div id="appraisalMe_nav">
-							
-							</div>
+							<div id="appraisalMe_nav"></div>
 						</div>
 
 					</div>

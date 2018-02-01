@@ -24,8 +24,14 @@
   	</script>
 		<div class="theTop">
 			<div class="theTop_div1">
-				<a href="">亲,请登录</a>
-				<a href="">免费注册</a>
+				<c:choose>
+				<c:when test="${USER_ID!=null}">
+					欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<c:choose><c:when test="${USER_ID!=null}">欢迎进入家教系统，<a href="toLogin">退出</a></c:when><c:otherwise><a href="toLogin">亲,请登录</a> <a href="toRegister">免费注册</a></c:otherwise></c:choose>
+				</c:otherwise>
+			</c:choose>
 			</div>
 			<div class="theTop_div2">
 				全国投诉专线：12345678901</div>
@@ -37,7 +43,7 @@
 			<div class="top1">
 				<img src="img/logo.png" />
 				<div>
-					<span>中山</span>
+					<a href="toChooseCity">${USER_CITY }</a>
 				</div>
 			</div>
 			<!-- 导航 -->
@@ -55,9 +61,9 @@
 		<!-- 当前位置 -->
 		<div class="nowplace">
 			<div>&nbsp;当前位置:&nbsp;
-				<a href="">首页</a>
+				<a href="index">首页</a>
 				<span> > </span>
-				<a href="">教师库</a>
+				<a href="toTeacher_list">教师库</a>
 				<span> > 预约教师</span>
 			</div>
 		</div>

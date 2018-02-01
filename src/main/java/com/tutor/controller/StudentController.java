@@ -204,7 +204,7 @@ public class StudentController {
 		requirement.setStudentid(studentid);
 		requirement.setPermission(0);
 		List<Requirement> list1 = requirementService.getRequirementsByCondition(requirement);
-		Pager<Requirement> Requirementspager1 = requirementService.getRequirements(list1, pageNum,8 );
+		Pager<Requirement> Requirementspager1 = new Pager<Requirement>(pageNum, 8, list1);
 		List<Requirement> dataList = Requirementspager1.getDataList();
 		int totalPage = Requirementspager1.getTotalPage();
 		MyObject<Requirement> myObject = new MyObject<Requirement>();
@@ -224,7 +224,7 @@ public class StudentController {
 		apply.setPermission(3);
 		List<Apply> list = applyService.getAppliesByCondition(apply);
 		List<Requirement> list2 = requirementService.getRequirementByApply(list);
-		Pager<Requirement> Requirementspager = requirementService.getRequirements(list2, pageNum,8);
+		Pager<Requirement> Requirementspager = new Pager<Requirement>(pageNum, 8, list2);
 		List<Requirement> dataList = Requirementspager.getDataList();
 		int totalPage = Requirementspager.getTotalPage();
 		MyObject<Requirement> myObject = new MyObject<Requirement>();
@@ -374,7 +374,7 @@ public class StudentController {
 		apply.setPermission(3);
 		List<Apply> list = applyService.getAppliesByCondition(apply);
 		List<Requirement> list2 = requirementService.getRequirementByApply(list);
-		Pager<Requirement> Requirementspager = requirementService.getRequirements(list2, pageNum,8);
+		Pager<Requirement> Requirementspager = new Pager<Requirement>(pageNum, 8, list2);
 		List<Requirement> dataList = Requirementspager.getDataList();
 		int totalPage = Requirementspager.getTotalPage();
 		MyObject<Requirement> myObject = new MyObject<Requirement>();

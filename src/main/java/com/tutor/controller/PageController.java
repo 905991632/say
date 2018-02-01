@@ -1,5 +1,6 @@
 package com.tutor.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSON;
 import com.tutor.dto.MyObject;
 import com.tutor.dto.MyselfUtils;
+import com.tutor.dto.NewRequirement;
 import com.tutor.dto.Pager;
 import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Requirement;
+import com.tutor.entity.Student;
 import com.tutor.entity.Teaappraisal;
 import com.tutor.entity.Teacher;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
+import com.tutor.service.StudentService;
 import com.tutor.service.TeacherService;
 
 @Controller
@@ -30,6 +34,8 @@ public class PageController {
 	RequirementService requirementService;
 	@Autowired
 	ApplyService applyService;
+	@Autowired
+	StudentService studentService;
 	
 	//前往个人中心
 	@RequestMapping(value="toPersonal")
@@ -62,10 +68,16 @@ public class PageController {
 			requirement.setPermission(0);
 			requirement.setAddress(province + "," + city);
 			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
-			List<String> photoList = requirementService.getPhotos(requirementsList);
-			model.addAttribute("teacherList", teacherService.getTeachers(teacherList,1,9).getDataList());
-			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1,9).getDataList());
-			model.addAttribute("photoList", photoList);
+			List<Student> list2 = studentService.getStudentsByRequirements(requirementsList);
+			List<NewRequirement> list3 = new ArrayList<NewRequirement>();
+			for(int i=0;i<requirementsList.size();i++){
+				NewRequirement newRequirement = new NewRequirement(list2.get(i), requirementsList.get(i));
+				list3.add(newRequirement);
+			}
+			Pager<Teacher> pager1 = new Pager<Teacher>(1, 9, teacherList);
+			Pager<NewRequirement> pager2 = new Pager<NewRequirement>(1, 9, list3);
+			model.addAttribute("teacherList", pager1.getDataList());
+			model.addAttribute("requirementsList", pager2.getDataList());
 			return "index";
 	}
 
@@ -76,50 +88,29 @@ public class PageController {
 				&& request.getSession().getAttribute("USER_CITY") == null) {
 			return "chooseCity";
 		} 
-			String province = (String) request.getSession().getAttribute("USER_PROVINCE");
-			String city = (String) request.getSession().getAttribute("USER_CITY");
-			Teacher teacher = new Teacher();
-			teacher.setPermission(0);
-			teacher.setAddress(province + "," + city);
-			List<Teacher> teacherList = teacherService.getTeachersByCondition(teacher);
-			Requirement requirement = new Requirement();
-			requirement.setPermission(0);
-			requirement.setAddress(province + "," + city);
-			List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
-			List<String> photoList = requirementService.getPhotos(requirementsList);
-			model.addAttribute("teacherList", teacherService.getTeachers(teacherList,1,9).getDataList());
-			model.addAttribute("requirementsList", requirementService.getRequirements(requirementsList, 1,9).getDataList());
-			model.addAttribute("photoList", photoList);
-			return "index";
+		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
+		String city = (String) request.getSession().getAttribute("USER_CITY");
+		Teacher teacher = new Teacher();
+		teacher.setPermission(0);
+		teacher.setAddress(province + "," + city);
+		List<Teacher> teacherList = teacherService.getTeachersByCondition(teacher);
+		Requirement requirement = new Requirement();
+		requirement.setPermission(0);
+		requirement.setAddress(province + "," + city);
+		List<Requirement> requirementsList = requirementService.getRequirementsByCondition(requirement);
+		List<Student> list2 = studentService.getStudentsByRequirements(requirementsList);
+		List<NewRequirement> list3 = new ArrayList<NewRequirement>();
+		for(int i=0;i<requirementsList.size();i++){
+			NewRequirement newRequirement = new NewRequirement(list2.get(i), requirementsList.get(i));
+			list3.add(newRequirement);
+		}
+		Pager<Teacher> pager1 = new Pager<Teacher>(1, 9, teacherList);
+		Pager<NewRequirement> pager2 = new Pager<NewRequirement>(1, 9, list3);
+		model.addAttribute("teacherList", pager1.getDataList());
+		model.addAttribute("requirementsList", pager2.getDataList());
+		return "index";
 	}
 	
-	@RequestMapping(value = "/toTest")
-	public String toTest(HttpServletRequest request, ModelMap model) {
-		return "test";
-	}
-	
-	@RequestMapping(value = "/tagSelect_test")
-	public void tagSelect_test(HttpServletRequest request, HttpServletResponse response) {
-		if(request.getParameter("pageNum")!=null){
-			System.out.println("*******1="+request.getParameter("pageNum"));
-		}
-		if(request.getParameter("mode")!=null){
-			System.out.println("*******2="+request.getParameter("mode"));
-		}
-		if(request.getParameter("stage")!=null){
-			System.out.println("*******2="+request.getParameter("stage"));
-		}
-		if(request.getParameter("sector")!=null){
-			System.out.println("*******2="+request.getParameter("sector"));
-		}
-		if(request.getParameter("board")!=null){
-			System.out.println("*******2="+request.getParameter("board"));
-		}
-		String result = JSON.toJSONString("1");
-		ResponseUtils.renderJson(response,result);
-		
-	}
-
 	
 	
 	

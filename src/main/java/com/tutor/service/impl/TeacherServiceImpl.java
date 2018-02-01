@@ -88,12 +88,12 @@ public class TeacherServiceImpl implements TeacherService {
 		if(teacher.getPermission()!=null){
 			criteria.andPermissionEqualTo(teacher.getPermission());
 		}
-		if(teacher.getPhoto()!=null){
-			criteria.andPhotoEqualTo(teacher.getPhoto());
-		}
-		if(teacher.getIdcard()!=null){
-			criteria.andIdcardEqualTo(teacher.getIdcard());
-		}
+//		if(teacher.getPhoto()!=null){
+//			criteria.andPhotoEqualTo(teacher.getPhoto());
+//		}
+//		if(teacher.getIdcard()!=null){
+//			criteria.andIdcardEqualTo(teacher.getIdcard());
+//		}
 		if(teacher.getName()!=null){
 			criteria.andNameEqualTo(teacher.getName());
 		}
@@ -115,20 +115,20 @@ public class TeacherServiceImpl implements TeacherService {
 		if(teacher.getArea()!=null){
 			criteria.andAreaLike("%"+teacher.getArea()+"%");
 		}
-		if(teacher.getLoginid()!=null){
-			criteria.andLoginidEqualTo(teacher.getLoginid());
-		}
+//		if(teacher.getLoginid()!=null){
+//			criteria.andLoginidEqualTo(teacher.getLoginid());
+//		}
 		example.setOrderByClause("loginTime desc");
 		
 		return teacherMapper.selectByExample(example);
 	}
 
-	//把list分页，返回当前页码的数据
-	@Override
-	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum,int pageSize) {
-		Pager<Teacher> pager = new Pager<Teacher>(pageNum,pageSize,list);
-		return pager;
-	}
+//	//把list分页，返回当前页码的数据
+//	@Override
+//	public Pager<Teacher> getTeachers(List<Teacher> list, int pageNum,int pageSize) {
+//		Pager<Teacher> pager = new Pager<Teacher>(pageNum,pageSize,list);
+//		return pager;
+//	}
 
 	//通过id把密码修改为password的值
 	@Override

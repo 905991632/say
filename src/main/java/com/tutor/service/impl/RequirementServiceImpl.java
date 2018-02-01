@@ -93,26 +93,12 @@ public class RequirementServiceImpl implements RequirementService {
 		return requirementMapper.selectByPrimaryKey(id);
 	}
 
-	//分页
-	@Override
-	public Pager<Requirement> getRequirements(List<Requirement> list, int pageNum,int pageSize) {
-		Pager<Requirement> pager = new Pager<Requirement>(pageNum,pageSize,list);
-		return pager;
-	}
-
-	//返回列表内的头像
-	@Override
-	public List<String> getPhotos(List<Requirement> list) {
-		List<String> list2 = new ArrayList<String>();
-		for(int i=0;i<list.size();i++){
-			list2.add(studentMapper.selectByPrimaryKey(list.get(i).getStudentid()).getPhoto());
-		}
-		return list2;
-	}
-
 	//检测是否能够申请订单，1为可以，2为已申请，3为不可申请(用户为学生)
 	@Override
 	public int testPermission(HttpServletRequest request ,int requireId) {
+		if(request.getSession().getAttribute("USER_TYPE")==null || request.getSession().getAttribute("USER_ID")==null){
+			return 4;
+		}
 		String userType = (String)request.getSession().getAttribute("USER_TYPE");
 		int userId = (int)request.getSession().getAttribute("USER_ID");
 		if(userType.equals("学生")){
@@ -165,6 +151,7 @@ public class RequirementServiceImpl implements RequirementService {
 		return 1;
 	}
 
+	//接受预约
 	@Override
 	public int acceptRequirement(int teacherid,int requireid) {
 		Apply apply = new Apply();
@@ -194,6 +181,7 @@ public class RequirementServiceImpl implements RequirementService {
 		return result;
 	}
 
+	//拒绝预约
 	@Override
 	public int rejectRequirement(int teacherid, int requireid) {
 		Apply apply = new Apply();

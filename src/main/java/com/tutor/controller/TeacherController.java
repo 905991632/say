@@ -148,7 +148,7 @@ public class TeacherController {
 		if (MyselfUtils.isChooseCity(request)!=null) {
 			return "chooseCity";
 		}
-		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		/*int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		Teacher teacher = new Teacher();
 		if(request.getParameter("sex")!=null){
 			teacher.setSex(request.getParameter("sex"));
@@ -166,7 +166,7 @@ public class TeacherController {
 		Pager<Teacher> pager = new Pager<Teacher>(pageNum, 12, list);
 		modelMap.addAttribute("teacherList", pager.getDataList());
 		modelMap.addAttribute("pageNum", pageNum);
-		modelMap.addAttribute("totalPage", pager.getTotalPage());
+		modelMap.addAttribute("totalPage", pager.getTotalPage());*/
 		return "teacher_list";
 	}
 	

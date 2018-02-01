@@ -22,15 +22,22 @@
 <script src="js/jquery.multi-select.js"></script>
 
 <script>
- 	var USER_PROVINCE = "${USER_PROVINCE}";
-	var USER_CITY = "${USER_CITY}" 
-</script> 
- 
+	var USER_PROVINCE = "${USER_PROVINCE}";
+	var USER_CITY = "${USER_CITY}"
+</script>
+
 </head>
 <body style="overflow-y: scroll;" onload="myfunction()">
 	<div class="theTop">
 		<div class="theTop_div1">
-			<a href="">亲,请登录</a> <a href="">免费注册</a>
+			<c:choose>
+				<c:when test="${USER_ID!=null}">欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<a href="toLogin">亲,请登录</a>
+					<a href="toRegister">免费注册</a>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="theTop_div2">全国投诉专线：12345678901</div>
 	</div>
@@ -41,7 +48,7 @@
 		<div class="top1">
 			<img src="img/logo.png" />
 			<div>
-				<span>中山</span>
+				<a href="toChooseCity">${USER_CITY }</a>
 			</div>
 		</div>
 		<!-- 导航 -->
@@ -59,8 +66,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">教师中心</a>
-			<span> > 基本资料</span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a
+				href="toPersonal">教师中心</a> <span> > 基本资料</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -70,18 +77,10 @@
 			<div class="left_div_div">
 				<div class="left_div_img1"></div>
 				<ul>
-					<li>
-							<a href="toTeacher_myRequirement">我的订单</a>
-						</li>
-						<li>
-							<a href="toTeacher_myOrder">我的预约</a>
-						</li>
-						<li>
-							<a href="toTeacher_myStudent?pageNum=1">我的学生</a>
-						</li>
-						<li>
-							<a href="toTeacher_appraisal">我的评价</a>
-						</li>
+					<li><a href="toTeacher_myRequirement">我的订单</a></li>
+					<li><a href="toTeacher_myOrder">我的预约</a></li>
+					<li><a href="toTeacher_myStudent?pageNum=1">我的学生</a></li>
+					<li><a href="toTeacher_appraisal">我的评价</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
 				<ul>
@@ -136,16 +135,14 @@
 							</tr>
 							<tr>
 								<th>审核状态：</th>
-								<td>
-								<c:choose>
-									<c:when test="${teacher.permission==0}">
+								<td><c:choose>
+										<c:when test="${teacher.permission==0}">
 										未通过
 									</c:when>
-									<c:otherwise>
+										<c:otherwise>
 										已通过
 									</c:otherwise>
-								</c:choose>
-								</td>
+									</c:choose></td>
 							</tr>
 						</tbody>
 					</table>
@@ -153,28 +150,29 @@
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
 					<img src="${teacher.photo}" />
-					<form action="teacher_info" class="form-horizontal" enctype="multipart/form-data" method="post">
+					<form action="teacher_info" class="form-horizontal"
+						enctype="multipart/form-data" method="post">
 						<input class="hidden" name="id" value="${teacher.id}">
 						<div class="form-group">
-    						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile" name="file">
-  						</div>
-  						<div class="form-group">
-    						<label class="col-sm-2 control-label">身份证：</label>
-    					<input type="file" id="inputfile" name="file">
-  						</div>
+							<label class="col-sm-2 control-label">修改头像：</label> <input
+								type="file" id="inputfile" name="file">
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">身份证：</label> <input
+								type="file" id="inputfile" name="file">
+						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师姓名：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="name"
-								name="name"	value="${teacher.name}" required>
+								<input type="text" class="form-control" id="name" name="name"
+									value="${teacher.name}" required>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师性别：</label>
 							<c:choose>
-									<c:when test="${teacher.sex=='男'}">
+								<c:when test="${teacher.sex=='男'}">
 									<div class="radio-inline">
 										<label> <input type="radio" name="sex"
 											id="optionsRadios1" value="男" checked> 男
@@ -186,10 +184,10 @@
 										</label>
 									</div>
 								</c:when>
-									<c:otherwise>
-										<div class="radio-inline">
+								<c:otherwise>
+									<div class="radio-inline">
 										<label> <input type="radio" name="sex"
-											id="optionsRadios1" value="男" > 男
+											id="optionsRadios1" value="男"> 男
 										</label>
 									</div>
 									<div class="radio-inline">
@@ -197,55 +195,56 @@
 											id="optionsRadios2" value="女" checked> 女
 										</label>
 									</div>
-									</c:otherwise>
-								</c:choose>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师年龄：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="age"
-								 name="age" value="${teacher.age}" required>
+								<input type="text" class="form-control" id="age" name="age"
+									value="${teacher.age}" required>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">联系方式：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="mobile"
-								name="mobile" value="${teacher.mobile}">
+									name="mobile" value="${teacher.mobile}">
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导课程：</label>
 							<div class="col-sm-10">
-								<select  id="courses" multiple='multiple' required>
+								<select id="courses" multiple='multiple' required>
 								</select>
 							</div>
-							<input class="hidden" id="courses_value" name="courses"  />
+							<input class="hidden" id="courses_value" name="courses" />
 						</div>
 
-						<input class="hidden" type="text" name="address" value="${USER_PROVINCE},${USER_CITY}"/>
-						
+						<input class="hidden" type="text" name="address"
+							value="${USER_PROVINCE},${USER_CITY}" />
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">辅导地区：</label>
 							<div class="col-sm-10">
-							<select id="area" multiple='multiple' required>
-							</select>
+								<select id="area" multiple='multiple' required>
+								</select>
 							</div>
-							<input class="hidden" id="area_value" name="area"  />
+							<input class="hidden" id="area_value" name="area" />
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">期待薪酬：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="price"
-								name="price" value="${teacher.price}">
+								<input type="text" class="form-control" id="price" name="price"
+									value="${teacher.price}">
 							</div>
-						</div>	
-							
-						 <input type="submit" class="btn btn-default" value="提交">
+						</div>
+
+						<input type="submit" class="btn btn-default" value="提交">
 					</form>
 				</div>
 

@@ -154,6 +154,16 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return myStudents;
 	}
+
+	//通过requirement获取学生
+	@Override
+	public List<Student> getStudentsByRequirements(List<Requirement> list) {
+		List<Student> list2 = new ArrayList<Student>();
+		for(int i=0;i<list.size();i++){
+			list2.add(this.selectByPrimaryKey(list.get(i).getStudentid()));
+		}
+		return list2;
+	}
 	
 
 	

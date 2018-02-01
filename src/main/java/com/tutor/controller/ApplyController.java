@@ -21,12 +21,6 @@ public class ApplyController {
 	@Autowired
 	RequirementService requirementService;
 		
-	
-	@RequestMapping(value="apply_delete")
-	public String apply_list(int id,HttpServletRequest request,ModelMap modelMap){
-		return "";
-	}
-	
 	//添加订单申请
 	@RequestMapping(value="apply_add")
 	public String apply_add(Apply apply,HttpServletRequest request,ModelMap modelMap){

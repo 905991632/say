@@ -19,13 +19,28 @@
 <script src="js/student_info.js"></script>
 </head>
 <script>
- 	var USER_PROVINCE = "${USER_PROVINCE}";
-	var USER_CITY = "${USER_CITY}" 
-</script> 
+	var USER_PROVINCE = "${USER_PROVINCE}";
+	var USER_CITY = "${USER_CITY}"
+</script>
 <body style="overflow-y: scroll;" onload="myfunction()">
 	<div class="theTop">
 		<div class="theTop_div1">
-			<a href="">亲,请登录</a> <a href="">免费注册</a>
+			<c:choose>
+				<c:when test="${USER_ID!=null}">
+					欢迎进入家教系统，<a href="toLogin">退出</a>
+				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${USER_ID!=null}">欢迎进入家教系统，<a
+								href="toLogin">退出</a>
+						</c:when>
+						<c:otherwise>
+							<a href="toLogin">亲,请登录</a>
+							<a href="toRegister">免费注册</a>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="theTop_div2">全国投诉专线：12345678901</div>
 	</div>
@@ -36,7 +51,7 @@
 		<div class="top1">
 			<img src="img/logo.png" />
 			<div>
-				<span>中山</span>
+				<a href="toChooseCity">${USER_CITY }</a>
 			</div>
 		</div>
 		<!-- 导航 -->
@@ -54,8 +69,8 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a href="toPersonal">学生中心</a>
-			<span> > 基本资料</span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a
+				href="toPersonal">学生中心</a> <span> > 基本资料</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -120,24 +135,25 @@
 
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
 					<img src="${student.photo}" />
-					<form action="student_info" class="form-horizontal" enctype="multipart/form-data" method="post" >
+					<form action="student_info" class="form-horizontal"
+						enctype="multipart/form-data" method="post">
 						<div class="form-group">
-    						<label class="col-sm-2 control-label">修改头像：</label>
-    					<input type="file" id="inputfile" name="file">
-  						</div>
-  						<input type="text" class="hidden" name="id" value="${student.id}" />
+							<label class="col-sm-2 control-label">修改头像：</label> <input
+								type="file" id="inputfile" name="file">
+						</div>
+						<input type="text" class="hidden" name="id" value="${student.id}" />
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生姓名：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="name"
-								name="name"	value="${student.name}" required>
+								<input type="text" class="form-control" id="name" name="name"
+									value="${student.name}" required>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生性别：</label>
 							<c:choose>
-									<c:when test="${student.sex=='男'}">
+								<c:when test="${student.sex=='男'}">
 									<div class="radio-inline">
 										<label> <input type="radio" name="sex"
 											id="optionsRadios1" value="男" checked> 男
@@ -149,10 +165,10 @@
 										</label>
 									</div>
 								</c:when>
-									<c:otherwise>
-										<div class="radio-inline">
+								<c:otherwise>
+									<div class="radio-inline">
 										<label> <input type="radio" name="sex"
-											id="optionsRadios1" value="男" > 男
+											id="optionsRadios1" value="男"> 男
 										</label>
 									</div>
 									<div class="radio-inline">
@@ -160,36 +176,37 @@
 											id="optionsRadios2" value="女" checked> 女
 										</label>
 									</div>
-									</c:otherwise>
-								</c:choose>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">学生年龄：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="age"
-								 name="age" value="${student.age}" required>
+								<input type="text" class="form-control" id="age" name="age"
+									value="${student.age}" required>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">联系方式：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="mobile"
-								name="mobile" value="${student.mobile}" required>
+									name="mobile" value="${student.mobile}" required>
 							</div>
 						</div>
-						
-						<input type="text" class="hidden" name="address" value="${USER_PROVINCE},${USER_CITY}" >
+
+						<input type="text" class="hidden" name="address"
+							value="${USER_PROVINCE},${USER_CITY}">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">家庭住址：</label>
 							<div class="col-sm-10">
-							<select class="form-control" name="area" id="area" required>
-								<option value="${student.area}">${student.area}</option>
-							</select>
+								<select class="form-control" name="area" id="area" required>
+									<option value="${student.area}">${student.area}</option>
+								</select>
 							</div>
 						</div>
-						 <input type="submit" class="btn btn-default" value="提交">
+						<input type="submit" class="btn btn-default" value="提交">
 					</form>
 				</div>
 
