@@ -424,4 +424,30 @@ public class TeacherController {
 		ResponseUtils.renderJson(response,result);
 	}
 	
+	//teacher_list页面ajax请求教师列表
+	@RequestMapping(value = "/teacher_list_ajax_teacherList")
+	public void teacher_list_ajax_teacherList(HttpServletRequest request, HttpServletResponse response) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		Teacher teacher = new Teacher();
+		if(request.getParameter("sex")!=null){
+			teacher.setSex(request.getParameter("sex"));
+		}
+		if(request.getParameter("course")!=null){
+			teacher.setCourses(request.getParameter("course"));
+		}
+		if(request.getParameter("area")!=null){
+			teacher.setArea(request.getParameter("area"));
+		}
+		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
+		String city = (String) request.getSession().getAttribute("USER_CITY");
+		teacher.setAddress(province+","+city);
+		List<Teacher> list = teacherService.getTeachersByCondition(teacher);
+		Pager<Teacher> pager = new Pager<Teacher>(pageNum, 12, list);
+		MyObject<Teacher> myObject = new MyObject<Teacher>();
+		myObject.setTotalPage(pager.getTotalPage());
+		myObject.setList(pager.getDataList());
+		String result = JSON.toJSONString(myObject);
+		ResponseUtils.renderJson(response,result);
+	}
+	
 }

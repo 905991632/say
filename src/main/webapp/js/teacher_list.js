@@ -14,11 +14,11 @@ function myfunction(){
             }
         }
     });
-    new SelectTag({
+   /* new SelectTag({
         child : ".sx_child", //所有筛选范围内的子类
         over : 'on', //选中状态样式名称
         all : ".all"
-    });
+    });*/
 }
 
 function addEle(ele,value){

@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -18,7 +18,8 @@
 <script src="js/teacher.js"></script>
 <link rel="stylesheet" href="css/common.css">
 <link href="css/index.css" rel="stylesheet" type="text/css" />
-<script src="js/tagSelect.js"></script>
+<script src="js/tagSelete2.js"></script>
+<script src="js/teacher_list.js"></script>
 <script type="text/javascript" src="js/area.js"></script>
 </head>
 <script>
@@ -26,7 +27,7 @@ var USER_PROVINCE = "${USER_PROVINCE}";
 var USER_CITY = "${USER_CITY}" 
 </script>
 
-<body style="overflow-y: scroll;">
+<body style="overflow-y: scroll;" onload="myfunction();">
 
 	<div class="theTop">
 		<div class="theTop_div1">
@@ -177,8 +178,8 @@ var USER_CITY = "${USER_CITY}"
 			</div>
 		</div>
 
-	<div class="content_div_div2" id="list_tbody">
-		<%-- <c:forEach items="${teacherList}" var="item">
+	<div class="content_div_div2">
+		<c:forEach items="${teacherList}" var="item">
 		<section>
 		<div>
 			<a href=""><img class="opcityaa" src="img/touming.png" /></a>
@@ -201,12 +202,21 @@ var USER_CITY = "${USER_CITY}"
 			</div>
 		</div>
 		</section>
-		</c:forEach> --%>
+		</c:forEach>
 	</div>
-	<div id="list_nav" style="width: 900px;height: 100px;margin: 0 auto;text-align: center;">
 	
-	</div>
 
 	</div>
 </body>
+<!-- <script>  
+    $(function(){
+        new SelectTag({
+            child : ".sx_child", //所有筛选范围内的子类
+            over : 'on', //选中状态样式名称
+            all : ".all"
+        });
+    })
+</script> -->
+
+
 </html>
