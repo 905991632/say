@@ -1,10 +1,9 @@
 $(document).ready(function(){
 	var URL="";
-	$(".sx_child").click(function(){
+$(".sx_child").click(function(){
 	var i = URL,
 		n = $(this).attr("rel"),
 		r = $(this).attr("name");
-	  URL = "";
 	  URL = changeURLPar(i, r, n);
 	  setCss(URL);
 	  click_pageNum(1,URL);
@@ -15,7 +14,6 @@ $(".all").click(function(){
 		n = $(this).attr("name");
 	  $("[name=" + n + "]").removeClass("on");
 	  $(this).addClass("on");
-	  URL = "";
 	  URL = delUrlPar(i, n);
 	  click_pageNum(1,URL);
 });
@@ -61,8 +59,6 @@ function delUrlPar(_url,_name){
 	var n = _url;
 	var r = "";
 	var a = "";
-	var b = "";
-	alert(_url);
 	if(n.indexOf("&") != -1) {
 		r = n.split("&");
 		for(i in r) r[i].split("=")[0] != _name && (a = a + r[i].split("=")[0] + "=" + r[i].split("=")[1] + "&");
@@ -70,7 +66,7 @@ function delUrlPar(_url,_name){
 	}else{
 		r = n.split("=");
 		if(r[0] == _name){
-			return b;
+			return null;
 		}else{
 			return _url;
 		}
@@ -80,20 +76,20 @@ function delUrlPar(_url,_name){
 
 
 
-	function click_pageNum(pageNum,url){
+	function click_pageNum(pageNum,url1){
 		$.ajax({
 			type : "POST",
-			url: "tagSelect_test?"+url+"&pageNum" + pageNum,
+			url: "tagSelect_test?pageNum" + pageNum + url1,
 			contentType : "application/json;charset=utf-8",
 			dataType : "json",
 			error : function() {
-				alert("请求失败，请重试！");
+				alert("请求失败!请重试");
 			},
 			success:function (data) {
 				alert("请求成功");
 			}
 			
 			});
-				}
+	}
 
 
