@@ -32,8 +32,9 @@
 	 var msg=document.getElementById("msg").value;
 	 ws.send(msg);
 	 document.getElementById("msg").value=("");
- }	
- window.onbeforeunload = function(){
+ }
+ 	
+ window.onunload = function(){
 	 ws.close();
 }
  
