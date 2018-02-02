@@ -51,7 +51,7 @@
 				<li><a href="index">首&nbsp;&nbsp;页</a></li>
 				<li><a href="toTeacher_list?pageNum=1">教师库</a></li>
 				<li><a href="toRequirement_list">学生库</a></li>
-				<li><a href="">家教论坛</a></li>
+				<li><a href="toChat">家教论坛</a></li>
 				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>

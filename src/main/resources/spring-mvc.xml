@@ -33,6 +33,14 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+<!-- 	<bean id="websocket" class="com.up.websocket.handler.WebsocketEndPoint" />
+	<websocket:handlers>
+		<websocket:mapping path="/websocket" handler="websocket" />
+		<websocket:handshake-interceptors>
+			<bean class="com.up.websocket.HandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+	</websocket:handlers> -->
+
     <!--4:扫描web相关的controller-->
     <context:component-scan base-package="com.tutor.controller"/>
 </beans>

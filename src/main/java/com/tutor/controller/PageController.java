@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
+import com.tutor.dto.ChatSocket;
 import com.tutor.dto.MyObject;
 import com.tutor.dto.MyselfUtils;
 import com.tutor.dto.NewRequirement;
@@ -109,6 +110,15 @@ public class PageController {
 		model.addAttribute("teacherList", pager1.getDataList());
 		model.addAttribute("requirementsList", pager2.getDataList());
 		return "index";
+	}
+	
+	@RequestMapping(value = "/toChat")
+	public String toChat(HttpServletRequest request, ModelMap model) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
+		ChatSocket.setHttpsession(request.getSession()); 
+		return "chat";
 	}
 	
 	
