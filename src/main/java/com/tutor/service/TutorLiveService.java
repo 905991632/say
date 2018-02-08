@@ -12,4 +12,6 @@ public interface TutorLiveService {
 	int updateByPrimaryKeySelective(TutorLive tutorLive);
 	
 	List<TutorLive> getTutorLivesByCondition(TutorLive tutorLive);
+	
+	int getTutorLiveStatusByTeacherId(int teacherId);
 }

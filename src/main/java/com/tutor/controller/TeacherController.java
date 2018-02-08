@@ -23,12 +23,14 @@ import com.tutor.entity.Requirement;
 import com.tutor.entity.Stuappraisal;
 import com.tutor.entity.Teaappraisal;
 import com.tutor.entity.Teacher;
+import com.tutor.entity.TutorLive;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StuAppraisalService;
 import com.tutor.service.StudentService;
 import com.tutor.service.TeaAppraisalService;
 import com.tutor.service.TeacherService;
+import com.tutor.service.TutorLiveService;
 
 @Controller
 public class TeacherController {
@@ -45,7 +47,8 @@ public class TeacherController {
 	StuAppraisalService stuAppraisalService;
 	@Autowired
 	TeaAppraisalService teaAppraisalService;
-	
+	@Autowired
+	TutorLiveService tutorLiveService;
 	
 	// 前往老师订单页面
 	@RequestMapping(value = "toTeacher_myRequirement")
@@ -87,7 +90,51 @@ public class TeacherController {
 	// 前往教师中心我的评价页面
 	@RequestMapping(value = "toTeacher_appraisal")
 	public String toTeacher_appraisal(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
 		return "teacher_appraisal";
+	}
+	
+	// 前往教师中心我的直播页面
+	@RequestMapping(value = "toTeacher_myLive")
+	public String toTeacher_myLive(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
+		int teacherId = (int)request.getSession().getAttribute("USER_ID");
+		int statues = tutorLiveService.getTutorLiveStatusByTeacherId(teacherId);
+		if(statues==3){
+			TutorLive tutorLive = new TutorLive();
+			tutorLive.setTeacherid(teacherId);
+			List<TutorLive> list = tutorLiveService.getTutorLivesByCondition(tutorLive);
+			TutorLive tutorLive2 = list.get(0);
+			modelMap.addAttribute("tutorLive", tutorLive2);
+		}
+		modelMap.addAttribute("statues", statues);
+		return "teacher_myLive";
+	}
+	
+	// 申请直播
+	@RequestMapping(value = "teacher_myLive")
+	public String teacher_myLive(HttpServletRequest request, ModelMap modelMap) {
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
+		int teacherId = (int)request.getSession().getAttribute("USER_ID");
+		TutorLive tutorLive = new TutorLive();
+		tutorLive.setTeacherid(teacherId);
+		tutorLive.setPermission(0);
+		tutorLive.setRtmpurl("rtmp://139.199.75.20/Mylive");
+		tutorLive.setCreatetime(new Date());
+		tutorLiveService.add(tutorLive);
+		return "redirect:toTeacher_myLive";
+	}
+
+	// 前往老师订单页面
+	@RequestMapping(value = "teacherToLiveRoom")
+	public String teacherToLiveRoom(HttpServletRequest request, ModelMap modelMap) {
+		return "LiveRoom";
 	}
 	
 	

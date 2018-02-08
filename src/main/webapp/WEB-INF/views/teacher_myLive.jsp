@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -11,13 +11,16 @@
 <head>
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
-
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/teacher_myOrder.js"></script>
 </head>
 <body style="overflow-y: scroll;">
+	<script>
+		if ('${message}' != "") {
+			alert('${message}');
+		}
+	</script>
 
 	<div class="theTop">
 		<div class="theTop_div1">
@@ -58,7 +61,7 @@
 	<div class="nowplace">
 		<div>
 			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > </span> <a
-				href="toPersonal">教师中心</a> <span> > 我的预约</span>
+				href="toPersonal">教师中心</a> <span> > 我的直播</span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -83,30 +86,44 @@
 		</div>
 		<!-- 右板块 -->
 		<div class="right_div">
-			<div class="right_div_div1">我的预约</div>
-			<div class="right_div_div2">
-				<div class="right_div_div2_div1">
-					<span>我的预约</span>
+			<div class="right_div_div1">我的直播</div>
+			<c:if test="${statues==0}">
+				<div style="width: 500px;height: 300px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 20px; ">
+					<span style="line-height: 280px;">个人信息通过审核才能申请直播间</span>
 				</div>
-				<div class="right_div_div2_div2" id="bottom_1_div">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th style="text-align: center;">订单号</th>
-								<th style="text-align: center;">辅导科目</th>
-								<th style="text-align: center;">时间</th>
-								<th style="text-align: center;">操作</th>
-							</tr>
-						</thead>
-						<tbody style="text-align: center;" id="order_tbody">
-
-
-						</tbody>
-					</table>
-					<div id="order_nav"></div>
+			</c:if>				
+			<c:if test="${statues==1}">
+				<div style="width: 500px;height: 200px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 20px; ">
+					<div style="margin-top: 120px;">
+					<form action="teacher_myLive" method="post">
+						<input type="submit" class="btn btn-default" value="一键申请">
+					</form>
+					</div>
 				</div>
+			</c:if>
+			<c:if test="${statues==2}">
+				<div style="width: 500px;height: 300px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 20px; ">
+					<span style="line-height: 280px;">直播间申请中，请耐性等候</span>
+				</div>
+			</c:if>
+			<c:if test="${statues==3}">
+			<div style="width: 600px;height: 250px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 16px; ">
+				<div style="margin-top: 120px;">
+				<form action="student_alterPassword" method="post">
+					<div class="form-group">
+						<span class="col-sm-2 control-label">直播流：</span>
+						<span class="col-sm-2 control-label" style="width: 450px;">${tutorLive.rtmpurl}</span>
+					</div>
 
+					<div class="form-group">
+						<span class="col-sm-2 control-label">流秘钥：</span>
+						<span class="col-sm-2 control-label" style="width: 450px;">${tutorLive.rtmpkey}</span>
+					</div>
+					<input type="submit" class="btn btn-default" style="margin-top: 20px;" value="进入我的直播">
+				</form>
+				</div>
 			</div>
+			</c:if>
 		</div>
 	</div>
 </body>

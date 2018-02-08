@@ -72,6 +72,7 @@
 					<li><a href="toTeacher_myOrder">我的预约</a></li>
 					<li><a href="toTeacher_myStudent?pageNum=1">我的学生</a></li>
 					<li><a href="toTeacher_appraisal">我的评价</a></li>
+					<li><a href="toTeacher_myLive">我的直播间</a></li>
 				</ul>
 				<div class="left_div_img2"></div>
 				<ul>
