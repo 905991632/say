@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tutor.dao.RequirementMapper;
 import com.tutor.dao.StudentMapper;
-import com.tutor.dto.Pager;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.RequirementExample;

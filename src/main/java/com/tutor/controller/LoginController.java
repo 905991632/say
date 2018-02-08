@@ -81,7 +81,7 @@ public class LoginController {
 	public String Registert(Login login, Teacher teacher, HttpServletRequest request, ModelMap model) {
 		// 获取本机省市地址
 		LoadJson loadJson = new LoadJson();
-		String json = loadJson.LoadJson("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=");
+		String json = loadJson.getAddressJson("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=");
 		if (json.equals("error")) {
 			return "page_404";
 		} else {
@@ -116,7 +116,7 @@ public class LoginController {
 	public String Registers(Login login, Student student, HttpServletRequest request, ModelMap model) {
 		// 获取本机省市地址
 		LoadJson loadJson = new LoadJson();
-		String json = loadJson.LoadJson("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=");
+		String json = loadJson.getAddressJson("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=");
 		if (json.equals("error")) {
 			return "page_404";
 		} else {

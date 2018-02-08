@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.tutor.dao.LoginMapper;
 import com.tutor.dao.TeacherMapper;
 import com.tutor.dto.MyTeacher;
-import com.tutor.dto.Pager;
 import com.tutor.entity.Apply;
 import com.tutor.entity.Login;
 import com.tutor.entity.Requirement;

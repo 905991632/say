@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.alibaba.fastjson.JSON;
 import com.tutor.dto.MyObject;
 import com.tutor.dto.MyselfUtils;
@@ -18,7 +16,6 @@ import com.tutor.dto.Pager;
 import com.tutor.dto.ResponseUtils;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
-import com.tutor.entity.Teacher;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StudentService;
 
