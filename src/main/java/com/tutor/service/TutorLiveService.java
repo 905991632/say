@@ -1,6 +1,8 @@
 package com.tutor.service;
 
 import java.util.List;
+
+import com.tutor.dto.Live;
 import com.tutor.entity.TutorLive;
 
 public interface TutorLiveService {
@@ -14,4 +16,8 @@ public interface TutorLiveService {
 	List<TutorLive> getTutorLivesByCondition(TutorLive tutorLive);
 	
 	int getTutorLiveStatusByTeacherId(int teacherId);
+	
+	TutorLive getTutorLiveByTeacherId(int teacherId);
+	
+	List<Live> getLives(List<TutorLive> tutorLives);
 }

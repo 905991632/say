@@ -15,6 +15,8 @@ public class TutorLive {
 
     private Date createtime;
 
+    private String address;
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class TutorLive {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 }

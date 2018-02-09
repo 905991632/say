@@ -7,17 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.tutor.dto.ChatSocket;
+
+import com.tutor.dto.Live;
 import com.tutor.dto.MyselfUtils;
 import com.tutor.dto.NewRequirement;
 import com.tutor.dto.Pager;
 import com.tutor.entity.Requirement;
 import com.tutor.entity.Student;
 import com.tutor.entity.Teacher;
+import com.tutor.entity.TutorLive;
 import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StudentService;
 import com.tutor.service.TeacherService;
+import com.tutor.service.TutorLiveService;
 
 @Controller
 public class PageController {
@@ -30,6 +33,8 @@ public class PageController {
 	ApplyService applyService;
 	@Autowired
 	StudentService studentService;
+	@Autowired
+	TutorLiveService tutorLiveService;
 	
 	//前往个人中心
 	@RequestMapping(value="toPersonal")
@@ -110,8 +115,42 @@ public class PageController {
 		if(MyselfUtils.isLogin(request)!=null){
 			return "Login";
 		}
-		ChatSocket.setHttpsession(request.getSession()); 
 		return "chat";
+	}
+	
+	//前往直播列表
+	@RequestMapping(value = "/toLiveRoomList")
+	public String toLiveRoomList(HttpServletRequest request, ModelMap model) {
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		String province = (String)request.getSession().getAttribute("USER_PROVINCE");
+		String city = (String)request.getSession().getAttribute("USER_CITY");
+		String address = province+","+city;
+		TutorLive tutorLive = new TutorLive();
+		tutorLive.setAddress(address);
+		tutorLive.setPermission(1);
+		List<TutorLive> list = tutorLiveService.getTutorLivesByCondition(tutorLive);
+		List<Live> list2 = tutorLiveService.getLives(list);
+		Pager<Live> pager = new Pager<Live>(pageNum,9,list2);
+		model.addAttribute("liveList", pager.getDataList());
+		model.addAttribute("totalPage", pager.getTotalPage());
+		model.addAttribute("pageNum", pageNum);
+		return "liveRoom_list";
+	}
+	
+	//前往直播列表
+	@RequestMapping(value = "/toLiveRoom")
+	public String toLiveRoom(HttpServletRequest request, ModelMap model) {
+		int teacherid = Integer.parseInt(request.getParameter("teacherid"));
+		String type = (String)request.getSession().getAttribute("USER_TYPE");
+		if(type.equals("学生")){
+			type = "student";
+		}else {
+			type = "teacher";
+		}
+		TutorLive tutorLive = tutorLiveService.getTutorLiveByTeacherId(teacherid);
+		model.addAttribute("type",type);
+		model.addAttribute("tutorLive", tutorLive);
+		return "LiveRoom";
 	}
 	
 	

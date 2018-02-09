@@ -109,7 +109,7 @@
 			<c:if test="${statues==3}">
 			<div style="width: 600px;height: 250px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 16px; ">
 				<div style="margin-top: 120px;">
-				<form action="student_alterPassword" method="post">
+				<form action="teacherToLiveRoom/${tutorLive.teacherid}" method="post">
 					<div class="form-group">
 						<span class="col-sm-2 control-label">直播流：</span>
 						<span class="col-sm-2 control-label" style="width: 450px;">${tutorLive.rtmpurl}</span>

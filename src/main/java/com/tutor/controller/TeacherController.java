@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -105,11 +106,8 @@ public class TeacherController {
 		int teacherId = (int)request.getSession().getAttribute("USER_ID");
 		int statues = tutorLiveService.getTutorLiveStatusByTeacherId(teacherId);
 		if(statues==3){
-			TutorLive tutorLive = new TutorLive();
-			tutorLive.setTeacherid(teacherId);
-			List<TutorLive> list = tutorLiveService.getTutorLivesByCondition(tutorLive);
-			TutorLive tutorLive2 = list.get(0);
-			modelMap.addAttribute("tutorLive", tutorLive2);
+			TutorLive tutorLive = tutorLiveService.getTutorLiveByTeacherId(teacherId);
+			modelMap.addAttribute("tutorLive", tutorLive);
 		}
 		modelMap.addAttribute("statues", statues);
 		return "teacher_myLive";
@@ -122,21 +120,27 @@ public class TeacherController {
 			return "Login";
 		}
 		int teacherId = (int)request.getSession().getAttribute("USER_ID");
+		String province = (String)request.getSession().getAttribute("USER_PROVINCE");
+		String city = (String)request.getSession().getAttribute("USER_CITY");
+		String address = province+","+city;
 		TutorLive tutorLive = new TutorLive();
 		tutorLive.setTeacherid(teacherId);
 		tutorLive.setPermission(0);
 		tutorLive.setRtmpurl("rtmp://139.199.75.20/Mylive");
+		tutorLive.setAddress(address);
 		tutorLive.setCreatetime(new Date());
 		tutorLiveService.add(tutorLive);
 		return "redirect:toTeacher_myLive";
 	}
 
-	// 前往老师订单页面
-	@RequestMapping(value = "teacherToLiveRoom")
-	public String teacherToLiveRoom(HttpServletRequest request, ModelMap modelMap) {
+	// 前往老师个人中心前往直播间
+	@RequestMapping(value = "teacherToLiveRoom/{teacherId}")
+	public String teacherToLiveRoom(@PathVariable("teacherId") int teacherId,HttpServletRequest request, ModelMap modelMap) {
+		TutorLive tutorLive = tutorLiveService.getTutorLiveByTeacherId(teacherId);
+		modelMap.addAttribute("type", "teacher");
+		modelMap.addAttribute("tutorLive", tutorLive);
 		return "LiveRoom";
 	}
-	
 	
 	// 前往老师个人中心的基本资料
 	@RequestMapping(value = "toTeacher_info")

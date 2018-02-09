@@ -1,11 +1,13 @@
 package com.tutor.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tutor.dao.TutorLiveMapper;
+import com.tutor.dto.Live;
 import com.tutor.entity.Teacher;
 import com.tutor.entity.TutorLive;
 import com.tutor.entity.TutorLiveExample;
@@ -20,6 +22,7 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 	TutorLiveMapper tutorLiveMapper;
 	@Autowired
 	TeacherService teacherService;
+	
 	
 	@Override
 	public int add(TutorLive tutorLive) {
@@ -45,6 +48,9 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 		}
 		if(tutorLive.getTeacherid()!=null){
 			criteria.andTeacheridEqualTo(tutorLive.getTeacherid());
+		}
+		if(tutorLive.getAddress()!=null){
+			criteria.andAddressEqualTo(tutorLive.getAddress());
 		}
 		example.setOrderByClause("createtime desc");
 		return tutorLiveMapper.selectByExample(example);
@@ -76,7 +82,26 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 			}
 		}
 	}
-	
+
+	@Override
+	public TutorLive getTutorLiveByTeacherId(int teacherId) {
+		TutorLive tutorLive = new TutorLive();
+		tutorLive.setTeacherid(teacherId);
+		List<TutorLive> list = this.getTutorLivesByCondition(tutorLive);
+		return list.get(0);
+	}
+
+	@Override
+	public List<Live> getLives(List<TutorLive> tutorLives) {
+		List<Live> list = new ArrayList<Live>();
+		for(int i=0;i<tutorLives.size();i++){
+			Teacher teacher = teacherService.selectByPrimaryKey(tutorLives.get(i).getTeacherid());
+			Live live =new Live(teacher, tutorLives.get(i));
+			list.add(live);
+		}	
+		return list;
+	}
+
 	
 	
 
