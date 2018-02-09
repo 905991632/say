@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tutor.dao.TutorLiveMapper">
+  <resultMap id="BaseResultMap" type="com.tutor.entity.TutorLive">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="permission" jdbcType="INTEGER" property="permission" />
+    <result column="rtmpurl" jdbcType="VARCHAR" property="rtmpurl" />
+    <result column="rtmpkey" jdbcType="VARCHAR" property="rtmpkey" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, teacherid, permission, rtmpurl, rtmpkey, createtime, address
+  </sql>
+  <select id="selectByExample" parameterType="com.tutor.entity.TutorLiveExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tutor_live
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tutor_live
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tutor_live
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tutor.entity.TutorLiveExample">
+    delete from tutor_live
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tutor.entity.TutorLive">
+    insert into tutor_live (id, teacherid, permission, 
+      rtmpurl, rtmpkey, createtime, 
+      address)
+    values (#{id,jdbcType=INTEGER}, #{teacherid,jdbcType=INTEGER}, #{permission,jdbcType=INTEGER}, 
+      #{rtmpurl,jdbcType=VARCHAR}, #{rtmpkey,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tutor.entity.TutorLive">
+    insert into tutor_live
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="teacherid != null">
+        teacherid,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="rtmpurl != null">
+        rtmpurl,
+      </if>
+      <if test="rtmpkey != null">
+        rtmpkey,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teacherid != null">
+        #{teacherid,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=INTEGER},
+      </if>
+      <if test="rtmpurl != null">
+        #{rtmpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmpkey != null">
+        #{rtmpkey,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tutor.entity.TutorLiveExample" resultType="java.lang.Long">
+    select count(*) from tutor_live
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tutor_live
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherid != null">
+        teacherid = #{record.teacherid,jdbcType=INTEGER},
+      </if>
+      <if test="record.permission != null">
+        permission = #{record.permission,jdbcType=INTEGER},
+      </if>
+      <if test="record.rtmpurl != null">
+        rtmpurl = #{record.rtmpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rtmpkey != null">
+        rtmpkey = #{record.rtmpkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tutor_live
+    set id = #{record.id,jdbcType=INTEGER},
+      teacherid = #{record.teacherid,jdbcType=INTEGER},
+      permission = #{record.permission,jdbcType=INTEGER},
+      rtmpurl = #{record.rtmpurl,jdbcType=VARCHAR},
+      rtmpkey = #{record.rtmpkey,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      address = #{record.address,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tutor.entity.TutorLive">
+    update tutor_live
+    <set>
+      <if test="teacherid != null">
+        teacherid = #{teacherid,jdbcType=INTEGER},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=INTEGER},
+      </if>
+      <if test="rtmpurl != null">
+        rtmpurl = #{rtmpurl,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmpkey != null">
+        rtmpkey = #{rtmpkey,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tutor.entity.TutorLive">
+    update tutor_live
+    set teacherid = #{teacherid,jdbcType=INTEGER},
+      permission = #{permission,jdbcType=INTEGER},
+      rtmpurl = #{rtmpurl,jdbcType=VARCHAR},
+      rtmpkey = #{rtmpkey,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
