@@ -14,7 +14,7 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
 <link href="css/multi-select.css" rel="stylesheet">
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/alterInfo.js"></script>
 <script src="js/area.js"></script>
@@ -135,15 +135,18 @@
 								<td>${teacher.logintime.toLocaleString()}</td>
 							</tr>
 							<tr>
-								<th>审核状态：</th>
-								<td><c:choose>
-										<c:when test="${teacher.permission==0}">
-										未通过
-									</c:when>
-										<c:otherwise>
-										已通过
-									</c:otherwise>
-									</c:choose></td>
+								<th>认证状态：</th>
+								<td>
+									<c:if test="${teacher.permission==0}">
+									未通过认证
+									</c:if>
+									<c:if test="${teacher.permission==1}">
+									已通过认证
+									</c:if>
+									<c:if test="${teacher.permission==2}">
+									正在审核
+									</c:if>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -152,15 +155,15 @@
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
 					<img src="${teacher.photo}" />
 					<form action="teacher_info" class="form-horizontal"
-						enctype="multipart/form-data" method="post">
+						enctype="multipart/form-data" method="post" onsubmit="return formcheck();">
 						<input class="hidden" name="id" value="${teacher.id}">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">修改头像：</label> <input
-								type="file" id="inputfile" name="file">
+								type="file" id="inputfile1" name="file" onblur="photocheck1();">
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">身份证：</label> <input
-								type="file" id="inputfile" name="file">
+								type="file" id="inputfile2" name="file" onblur="photocheck2();">
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">教师姓名：</label>

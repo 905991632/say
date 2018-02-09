@@ -16,6 +16,31 @@ $(document).ready(function(){
     });
 });
 
+var flag = true;
+
+function photocheck(){
+	var photo = $("#inputfile1");
+	if(photo.val()!==""){
+		if(!/\.(jpg)$/.test(photo.val())){
+			alert("图片必须为jpg格式");
+			flag = false;
+			return;
+		}else if(document.getElementById('inputfile1').files[0].size >102400){
+			alert("图片必须小于100KB");
+			flag = false;
+		}else{
+			flag = true;
+		}
+	}else{
+		flag = true;
+	}
+}
+
+function formcheck(){
+	return flag;
+}
+
+
 function addEle(ele,value){
     var optionStr="";
     optionStr="<option value="+value+">"+value+"</option>";

@@ -13,7 +13,7 @@
 <title>家教平台系统</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/alterInfo.js"></script>
 <script src="js/area.js"></script>
 <script src="js/student_info.js"></script>
@@ -22,7 +22,7 @@
 	var USER_PROVINCE = "${USER_PROVINCE}";
 	var USER_CITY = "${USER_CITY}"
 </script>
-<body style="overflow-y: scroll;" onload="myfunction()">
+<body style="overflow-y: scroll;">
 	<div class="theTop">
 		<div class="theTop_div1">
 			<c:choose>
@@ -136,10 +136,10 @@
 				<div class="right_div_div2_div2" id="right_bottom_appraisal">
 					<img src="${student.photo}" />
 					<form action="student_info" class="form-horizontal"
-						enctype="multipart/form-data" method="post">
+						enctype="multipart/form-data" method="post" onsubmit="return formcheck();">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">修改头像：</label> <input
-								type="file" id="inputfile" name="file">
+								type="file" id="inputfile1" name="file" onblur="photocheck();">
 						</div>
 						<input type="text" class="hidden" name="id" value="${student.id}" />
 						<div class="form-group">

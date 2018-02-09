@@ -12,7 +12,7 @@
 <base href="<%=basePath%>">
 <title>家教平台系统</title>
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body style="overflow-y: scroll;">
 	<script>

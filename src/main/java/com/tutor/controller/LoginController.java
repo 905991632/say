@@ -99,7 +99,7 @@ public class LoginController {
 				teacher.setLoginid(Integer.valueOf(loginId));
 				teacher.setLogintime(new Date());
 				teacher.setAddress(province + "," + city);
-				teacher.setPhoto("images/photo/teacher.jpg");
+				teacher.setPhoto("images/teacher/photo/teacher.jpg");
 				teacher.setPermission(0);
 				if (teacherService.addTeacher(teacher) != 1) {
 					return "page_404";
@@ -133,7 +133,7 @@ public class LoginController {
 			} else {
 				student.setLoginid(Integer.valueOf(loginId));
 				student.setAddress(province + "," + city);
-				student.setPhoto("images/photo/student.jpg");
+				student.setPhoto("images/student/photo/student.jpg");
 				student.setLogintime(new Date());
 				if (studentService.addStudent(student) < 1) {
 					return "page_404";

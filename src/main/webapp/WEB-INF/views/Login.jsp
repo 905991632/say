@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,8 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>家教管理系统</title>
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   	<link rel="stylesheet" href="css/Login.css" type="text/css"/>
+  	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   </head>
   <%
   	if(request.getAttribute("login_message")!=null){

@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/student_detail.js"></script>
 </head>
 
@@ -79,7 +79,7 @@
 		<div class="teacher_info">
 			<div class="teacher_info_div">
 				<div class="teacher_info_div_left">
-					<img src="img/student.jpg" />
+					<img src="${student.photo}" />
 				</div>
 				<div class="teacher_info_div_right">
 					<div class="teacher_info_div_right_top">

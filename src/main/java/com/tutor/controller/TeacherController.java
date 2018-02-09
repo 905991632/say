@@ -174,7 +174,7 @@ public class TeacherController {
 				}
 			}
 		}
-		teacher.setPermission(0);
+		teacher.setPermission(2);
 		if(teacherService.updateByPrimaryKeySelective(teacher)!=1){
 			modelMap.addAttribute("message", "修改信息失败");
 			return "teacher_index";

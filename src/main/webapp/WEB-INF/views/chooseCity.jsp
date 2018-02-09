@@ -7,12 +7,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<script type="text/javascript" src="js/choose.js"></script>
+<!-- <base href="http://139.199.75.20:8080/tutor/"> -->
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>家教平台系统</title>
-
 <link href="css/chooseCity.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/area.js"></script>
 <script src="js/select.js"></script>
 </head>

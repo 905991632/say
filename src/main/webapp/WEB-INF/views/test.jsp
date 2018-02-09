@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <meta charset="UTF-8">
     <title>分类筛选</title>
     <link rel="stylesheet" href="css/common.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/tagSelect2.js"></script>
   </head>
   

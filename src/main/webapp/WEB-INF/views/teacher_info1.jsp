@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/student.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/alterInfo.js"></script>
 <script src="js/area.js"></script>
 <script src="js/select.js"></script>

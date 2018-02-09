@@ -99,7 +99,50 @@ function myfunction(){
 
 }
 
+var flag = [true,true];
 
+function photocheck1(){
+	var photo = $("#inputfile1");
+	if(photo.val()!==""){
+		if(!/\.(jpg)$/.test(photo.val())){
+			alert("图片必须为jpg格式");
+			flag[0] = false;
+			return;
+		}else if(document.getElementById('inputfile1').files[0].size >102400){
+			alert("图片必须小于100KB");
+			flag[0] = false;
+		}else{
+			flag[0] = true;
+		}
+	}else{
+		flag[0] = true;
+	}
+}
+
+function photocheck2(){
+	var photo = $("#inputfile2");
+	if(photo.val()!==""){
+		if(!/\.(jpg)$/.test(photo.val())){
+			alert("图片必须为jpg格式");
+			flag[1] = false;
+			return;
+		}else if(document.getElementById('inputfile2').files[0].size >102400){
+			alert("图片必须小于100KB");
+			flag[1] = false;
+		}else{
+			flag[1] = true;
+		}
+	}else{
+		flag[1] = true;
+	}
+}
+
+function formcheck(){
+	if(flag[0]==true && flag[1]==true){
+		return true;
+	}
+	return false;
+}
 
 
 
