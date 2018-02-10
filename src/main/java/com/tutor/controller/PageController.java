@@ -153,6 +153,11 @@ public class PageController {
 		return "LiveRoom";
 	}
 	
+	//前往直播列表
+	@RequestMapping(value = "/toAdmin_index")
+	public String toAdmin_index(HttpServletRequest request, ModelMap model) {
+		return "admin_index";
+	}
 	
 	
 	
