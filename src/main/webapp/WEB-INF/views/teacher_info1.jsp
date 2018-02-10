@@ -43,7 +43,7 @@
 				<li><a href="">教师库</a></li>
 				<li><a href="">学生库</a></li>
 				<!--<li><a href=""><span style="font-size:23px;font-family: '微软雅黑';">在线课堂</span></a></li>-->
-				<li><a href="">家教论坛</a></li>
+				<li><a href="toLiveRoomList?pageNum=1">老师直播间</a></li>
 				<li><a href="">个人中心</a></li>
 			</ul>
 		</div>

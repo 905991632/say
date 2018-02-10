@@ -16,12 +16,6 @@
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body style="overflow-y: scroll;">
-	<script>
-		if ('${message}' != "") {
-			alert('${message}');
-		}
-	</script>
-
 	<div class="theTop">
 		<div class="theTop_div1">
 			<c:choose>
@@ -51,7 +45,7 @@
 				<li><a href="index">首&nbsp;&nbsp;页</a></li>
 				<li><a href="toTeacher_list">教师库</a></li>
 				<li><a href="toRequirement_list">学生库</a></li>
-				<li><a href="">家教论坛</a></li>
+				<li><a href="toLiveRoomList?pageNum=1">老师直播间</a></li>
 				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>

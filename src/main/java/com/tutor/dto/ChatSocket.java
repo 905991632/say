@@ -2,9 +2,7 @@ package com.tutor.dto;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -20,13 +18,13 @@ public class ChatSocket {
 	private static Map<Session, String> queryMap  = new HashMap<Session, String>();
 	
 	@OnOpen
-	public void open(@PathParam("roomid") String roomid,@PathParam("username") String username,@PathParam("type") String type,Session session)throws Exception{
+	public void open(@PathParam("roomid") String roomid ,@PathParam("type") String type ,@PathParam("username") String username ,Session session)throws Exception{
 		if(type.equals("teacher")){
 			username = "老师"+username;
 		}else {
 			username = "学生"+username;
 		}
-		if(queryMap.containsKey(session)){
+		/*if(queryMap.containsKey(session)){
 			HashMap<Session, String> hashMap = map.get(roomid);
 			hashMap.put(session, username);
 		}else {
@@ -34,32 +32,40 @@ public class ChatSocket {
 			HashMap<Session, String> hashMap = new HashMap<Session, String>();
 			hashMap.put(session, username);
 			map.put(roomid, hashMap);
+		}*/
+		if(map.containsKey(roomid)){
+			HashMap<Session, String> hashMap = map.get(roomid);
+			hashMap.put(session, username);
+		}else {
+			HashMap<Session, String> hashMap = new HashMap<Session, String>();
+			hashMap.put(session, username);
+			map.put(roomid, hashMap);
 		}
 		String msg="欢迎"+username+"来到本直播间<br>";
-		broadcast(session,msg);
+		broadcast(roomid,msg);
 	}
 
 	@OnMessage
-	public void message(Session session,String msg){
-		String roomid = queryMap.get(session);
+	public void message(@PathParam("roomid") String roomid,Session session,String msg){
+		System.out.println("*************"+roomid);
 		HashMap<Session, String> hashMap = map.get(roomid);
 		String username = hashMap.get(session);
 		String newmsg=username+":"+msg+"<br>";
-		broadcast(session,newmsg);
+		broadcast(roomid,newmsg);
 	}
 	@OnClose
-	public void close(Session session){
-		String roomid = queryMap.get(session);
+	public void close(@PathParam("roomid") String roomid,Session session){
 		HashMap<Session, String> hashMap = map.get(roomid);
 		String username = hashMap.get(session);
 		hashMap.remove(session);
-		String msg=username+"已离开直播间<br>";
-		broadcast(session,msg);
+		if(hashMap.size()!=0){
+			String msg=username+"已离开直播间<br>";
+			broadcast(roomid,msg);
+		}
 	}
 	
 	
-	public void broadcast(Session session,String msg){
-		String roomid = queryMap.get(session);
+	public void broadcast(String roomid,String msg){
 		HashMap<Session, String> hashMap = map.get(roomid);
 		ChatJson json =new ChatJson();
 		json.setRoomid(Integer.parseInt(roomid));

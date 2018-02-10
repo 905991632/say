@@ -62,7 +62,7 @@
 				<li><a href="index">首&nbsp;&nbsp;页</a></li>
 				<li><a href="toTeacher_list">教师库</a></li>
 				<li><a href="toRequirement_list">学生库</a></li>
-				<li><a href="">家教论坛</a></li>
+				<li><a href="toLiveRoomList?pageNum=1">老师直播间</a></li>
 				<li><a href="toPersonal">个人中心</a></li>
 			</ul>
 		</div>
@@ -71,7 +71,7 @@
 	<!-- 当前位置 -->
 	<div class="nowplace">
 		<div>
-			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > 学生库 </span>
+			&nbsp;当前位置:&nbsp; <a href="index">首页</a> <span> > 老师直播间 </span>
 		</div>
 	</div>
 	<!-- 主内容 -->
@@ -82,7 +82,7 @@
 			<c:forEach items="${liveList}" var="item">
 				<section>
 				<div>
-					<a href="toLiveRoom?teacherid=${item.teacherid}"><img class="opcityaa" src="img/touming.png" /></a>
+					<a href="toLiveRoom?teacherid=${item.teacherid}" target="_blank"><img class="opcityaa" src="img/touming.png" /></a>
 				</div>
 				<div>
 					<img class="content_div_div2_img" src="${item.photo}" />
