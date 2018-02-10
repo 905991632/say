@@ -15,7 +15,6 @@ import com.alibaba.fastjson.JSON;
 @ServerEndpoint("/chatSocket/{roomid}/{type}/{username}")
 public class ChatSocket {
 	private static Map<String,HashMap<Session, String>> map=new HashMap<String,HashMap<Session, String>>();
-	private static Map<Session, String> queryMap  = new HashMap<Session, String>();
 	
 	@OnOpen
 	public void open(@PathParam("roomid") String roomid ,@PathParam("type") String type ,@PathParam("username") String username ,Session session)throws Exception{

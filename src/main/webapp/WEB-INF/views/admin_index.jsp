@@ -43,20 +43,12 @@
 							</tr>
 						</thead>
 						<tbody style="text-align: center;" id="unfinish_tbody">
-							<tr>
-								<td>123456789</td>
-								<td>陈晓佳</td>
-								<td>男</td>
-								<td>21</td>
-								<td>那四点哦啊你是假的加速科技的卡时间段立刻就拉开四点哦啊你是假的加速科技的卡时间段立刻就拉开</td>
-								<td>
-									<a href="javascript:void(0);" onclick="lookup(1)" class="label label-success">查看</a>
-								</td>
-							</tr>
+							
 						</tbody>
 					</table>
-
-					<div id="unfinish_nav_insert"></div>
+					<div id="unfinish_nav_insert">
+					
+					</div>
 				</div>
 
 
@@ -81,8 +73,9 @@
 							</tr>
 						</tbody>
 					</table>
-					<div id="finish_nav_insert"></div>
-
+					<div id="finish_nav_insert">
+					
+					</div>
 				</div>
 
 				<div style="margin: 0 auto;margin-top:10px;overflow: hidden;width: 1200px;" id="div_apply">
@@ -93,7 +86,7 @@
 					<div style="width: 900px;height: 600px;margin: 0 auto;" id="div_img">
 						<img src="img/timg.jpg" width="900" height="600">
 					</div>
-					<div style="width: 300px;height: 120px;margin: 0 auto;margin-top: 30px;">
+					<div style="width: 300px;height: 120px;margin: 0 auto;margin-top: 30px;" id="div_opera">
 						<a href="javascript:void(0);" onclick="javascript:alert(1)" class="label label-success" style="font-size: 20px;">接受</a>
 						<a href="javascript:void(0);" onclick="javascript:alert(1)" class="label label-danger" style="font-size: 20px;">拒绝</a>
 					</div>

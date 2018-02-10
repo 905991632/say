@@ -156,7 +156,10 @@ public class LoginController {
 			return "Login";
 		} else {
 			int id = loginList.get(0).getId();
-			if (login.getUsertype().equals("学生")) {
+			if(login.getUsertype().equals("管理员")){
+				request.getSession().setAttribute("ADMIN", "admin");
+				return "admin_index";
+			}else if (login.getUsertype().equals("学生")) {
 				List<Student> student = studentService.getStudentByForeignKey(id);
 				student.get(0).setLogintime(new Date());
 				USER_ID = student.get(0).getId();

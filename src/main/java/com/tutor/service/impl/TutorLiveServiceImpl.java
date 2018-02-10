@@ -36,7 +36,7 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 
 	@Override
 	public int updateByPrimaryKeySelective(TutorLive tutorLive) {
-		return updateByPrimaryKeySelective(tutorLive);
+		return tutorLiveMapper.updateByPrimaryKeySelective(tutorLive);
 	}
 
 	@Override
@@ -61,7 +61,8 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 	 * 	0:没有完善信息不能申请直播
 	 * 	1:没申请直播
 	 * 	2:直播申请中
-	 * 	其他返回值为直播间id号，表示已申请
+	 * 	3:直播申请成功
+	 * 	4:直播申请失败
 	 */
 	//
 	@Override
@@ -77,8 +78,10 @@ public class TutorLiveServiceImpl implements TutorLiveService {
 				return 1;
 			}else if(list.get(0).getPermission()==0){
 				return 2;
-			}else {
+			}else if(list.get(0).getPermission()==1){
 				return 3;
+			}else {
+				return 4;
 			}
 		}
 	}

@@ -492,6 +492,7 @@ public class TeacherController {
 		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
 		String city = (String) request.getSession().getAttribute("USER_CITY");
 		teacher.setAddress(province+","+city);
+		teacher.setPermission(1);
 		List<Teacher> list = teacherService.getTeachersByCondition(teacher);
 		Pager<Teacher> pager = new Pager<Teacher>(pageNum, 12, list);
 		MyObject<Teacher> myObject = new MyObject<Teacher>();

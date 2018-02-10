@@ -90,7 +90,7 @@ public class PageController {
 		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
 		String city = (String) request.getSession().getAttribute("USER_CITY");
 		Teacher teacher = new Teacher();
-		teacher.setPermission(0);
+		teacher.setPermission(1);
 		teacher.setAddress(province + "," + city);
 		List<Teacher> teacherList = teacherService.getTeachersByCondition(teacher);
 		Requirement requirement = new Requirement();
@@ -152,13 +152,5 @@ public class PageController {
 		model.addAttribute("tutorLive", tutorLive);
 		return "LiveRoom";
 	}
-	
-	//前往直播列表
-	@RequestMapping(value = "/toAdmin_index")
-	public String toAdmin_index(HttpServletRequest request, ModelMap model) {
-		return "admin_index";
-	}
-	
-	
 	
 }

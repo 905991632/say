@@ -118,6 +118,15 @@
 				</div>
 			</div>
 			</c:if>
+			<c:if test="${statues==4}">
+				<div style="width: 500px;height: 200px;margin: 0 auto;text-align: center;font-family: '微软雅黑';font-size: 20px; ">
+					<div style="margin-top: 120px;">
+					<form action="teacher_myLive" method="post">
+						<input type="submit" class="btn btn-default" value="重新申请">
+					</form>
+					</div>
+				</div>
+			</c:if>
 		</div>
 	</div>
 </body>

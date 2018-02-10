@@ -63,6 +63,7 @@ public class RequirementController {
 		String province = (String) request.getSession().getAttribute("USER_PROVINCE");
 		String city = (String) request.getSession().getAttribute("USER_CITY");
 		requirement.setAddress(province+","+city);
+		requirement.setPermission(0);
 		List<Requirement> list = requirementService.getRequirementsByCondition(requirement);
 		List<Student> list2 = studentService.getStudentsByRequirements(list);
 		List<NewRequirement> list3 = new ArrayList<NewRequirement>();
