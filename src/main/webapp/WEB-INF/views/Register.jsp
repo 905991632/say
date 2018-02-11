@@ -11,12 +11,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>家教管理系统</title>
-	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
   	<link rel="stylesheet" href="css/Register.css" type="text/css"/>
   	<script type="text/javascript" src="js/Register.js"></script>
-  	<script type="text/javascript" src="js/area.js"></script>
-  	<script type="text/javascript" src="js/select.js"></script>  	
-  	
   </head>
 <body>
 	<c:if test="${not empty Register_message}">

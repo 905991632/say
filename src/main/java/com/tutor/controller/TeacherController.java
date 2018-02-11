@@ -162,8 +162,10 @@ public class TeacherController {
 				String filePath;
 				if(i==0){
 					filePath=request.getSession().getServletContext().getRealPath("/")+"images/teacher/idcard/";
+					System.out.println("*******************1"+filePath);
 				}else {
 					filePath=request.getSession().getServletContext().getRealPath("/")+"images/teacher/photo/";
+					System.out.println("*******************1"+filePath);
 				}
 				File targetFile = new File(filePath, fileName);
 				try {
@@ -172,9 +174,9 @@ public class TeacherController {
                     e.printStackTrace();
                 }
 				if(i==0){
-					teacher.setPhoto("images/teacher/photo/"+fileName);
-				}else {
 					teacher.setIdcard("images/teacher/idcard/"+fileName);
+				}else {
+					teacher.setPhoto("images/teacher/photo/"+fileName);
 				}
 			}
 		}

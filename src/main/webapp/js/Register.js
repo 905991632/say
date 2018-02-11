@@ -1,5 +1,4 @@
 function enableSubmit(bool) {
-
 		if(bool) {
 			$("#student_submit").removeAttr("disabled");
 			$("#teacher_submit").removeAttr("disabled");
@@ -135,7 +134,6 @@ function enableSubmit(bool) {
 							student_flags[0]=true;
 							student_submitbutton();
 							lineState("student_account", "corect", "");
-							
 						}
 						
 			        }//定义交互完成,并且服务器正确返回数据时调用回调函数 
@@ -184,7 +182,7 @@ function enableSubmit(bool) {
 				lineState("student_password", "corect", "");
 				student_flags[1]=true;
 		}
-		student_submitbutton()
+		student_submitbutton();
 	}
 
 	function teacher_v_password() {
@@ -209,7 +207,7 @@ function enableSubmit(bool) {
 				lineState("student_repeat", "corect", "");
 				student_flags[2]=true;
 		}
-		student_submitbutton()
+		student_submitbutton();
 	}
 
 	function teacher_v_repeat() {

@@ -211,7 +211,7 @@ function click_pageNum1(pageNum){
 			}else{
 				$("#finish_tbody").text("");
 			$.each(list,function(i,item){
-			var tr_str = '<tr><td>'+item.id+'</td><td>'+new Date(item.createtime).toLocaleString()
+			var tr_str = '<tr><td>'+item.teacherid+'</td><td>'+new Date(item.createtime).toLocaleString()
 						+'</td><td><a href="javascript:void(0);" onclick="accept_tutorlive('+item.id+')" class="label label-success">接受</a>'
 						+'<a href="javascript:void(0);" onclick="reject_tutorlive('+item.id+')" class="label label-danger">拒绝</a></td></tr>';
 			$("#finish_tbody").append(tr_str);
