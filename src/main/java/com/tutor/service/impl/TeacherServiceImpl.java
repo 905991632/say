@@ -165,6 +165,18 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return myTeachers;
 	}
+
+	//判断是否通过审核
+	@Override
+	public Boolean isCheckOut(int id) {
+		Teacher teacher = this.selectByPrimaryKey(id);
+		if(teacher.getPermission()!=1){
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
 	
 
 }

@@ -140,6 +140,10 @@
 									<td colspan="2" style="text-align: center;"><span>已申请</span>
 									</td>
 								</c:if>
+								<c:if test="${testPermission==4 }">
+									<td colspan="2" style="text-align: center;"><span>您未通过审核，请先完善个人信息</span>
+									</td>
+								</c:if>
 							</tr>
 						</tbody>
 					</table>

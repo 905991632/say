@@ -25,4 +25,6 @@ public interface TeacherService {
 	
 	List<MyTeacher> getMyTeachersByApply(Apply apply);
 	
+	Boolean isCheckOut(int id);
+	
 }

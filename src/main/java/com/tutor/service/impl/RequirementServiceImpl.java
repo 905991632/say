@@ -17,6 +17,7 @@ import com.tutor.service.ApplyService;
 import com.tutor.service.RequirementService;
 import com.tutor.service.StuAppraisalService;
 import com.tutor.service.TeaAppraisalService;
+import com.tutor.service.TeacherService;
 
 /*
  *  订单需求模块
@@ -34,6 +35,8 @@ public class RequirementServiceImpl implements RequirementService {
 	StuAppraisalService stuAppraisalService;
 	@Autowired
 	TeaAppraisalService teaAppraisalService;
+	@Autowired
+	TeacherService teacherService;
 	
 	/*
 	 * 添加订单需求 返回1
@@ -92,16 +95,16 @@ public class RequirementServiceImpl implements RequirementService {
 		return requirementMapper.selectByPrimaryKey(id);
 	}
 
-	//检测是否能够申请订单，1为可以，2为已申请，3为不可申请(用户为学生)
+	//检测是否能够申请订单，1为可以，2为已申请，3为不可申请(用户为学生),4为教师未通过审核
 	@Override
 	public int testPermission(HttpServletRequest request ,int requireId) {
-		if(request.getSession().getAttribute("USER_TYPE")==null || request.getSession().getAttribute("USER_ID")==null){
-			return 4;
-		}
 		String userType = (String)request.getSession().getAttribute("USER_TYPE");
 		int userId = (int)request.getSession().getAttribute("USER_ID");
 		if(userType.equals("学生")){
 			return 3;
+		}
+		if(!teacherService.isCheckOut(userId)) {
+			return 4;
 		}
 		Apply apply = new Apply();
 		apply.setPermission(0);

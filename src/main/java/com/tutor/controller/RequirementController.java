@@ -38,6 +38,9 @@ public class RequirementController {
 	//前往发布订单需求页面
 	@RequestMapping(value="/toRequirement_info")
 	public String toRequirement_info(int id,HttpServletRequest request,ModelMap modelMap){
+		if(MyselfUtils.isLogin(request)!=null){
+			return "Login";
+		}
 		if(request.getParameter("message")!=null){
 			modelMap.addAttribute("message", request.getParameter("message"));
 		}
