@@ -158,11 +158,11 @@
 						enctype="multipart/form-data" method="post" onsubmit="return formcheck();">
 						<input class="hidden" name="id" value="${teacher.id}">
 						<div class="form-group">
-							<label class="col-sm-2 control-label">修改头像：</label> <input
+							<label class="col-sm-2 control-label">身份证：</label> <input
 								type="file" id="inputfile1" name="file" onblur="photocheck1();">
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">身份证：</label> <input
+							<label class="col-sm-2 control-label">修改头像：</label> <input
 								type="file" id="inputfile2" name="file" onblur="photocheck2();">
 						</div>
 						<div class="form-group">
